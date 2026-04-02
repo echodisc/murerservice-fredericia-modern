@@ -57,7 +57,7 @@ const Header = () => {
             <a
               key={l.label}
               href={l.href}
-              className="text-muted-foreground text-[15px] no-underline transition-colors hover:text-foreground"
+              className={`text-[15px] no-underline transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'}`}
             >
               {l.label}
             </a>
