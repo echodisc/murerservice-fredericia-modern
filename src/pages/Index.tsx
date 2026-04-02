@@ -142,7 +142,7 @@ const Index = () => {
                   <h3 className="font-semibold text-lg text-foreground mb-2">{card.title}</h3>
                   <p className="text-muted-foreground text-[15px] mb-4 leading-relaxed">{card.text}</p>
                   <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline">
-                    Læs mere →
+                    Læs mere <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
                   </a>
                 </div>
               </div>
