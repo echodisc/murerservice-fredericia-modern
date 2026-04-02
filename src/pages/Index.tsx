@@ -78,7 +78,7 @@ const Index = () => {
           <div className="w-full lg:w-[40%]">
             <img
               src={heroImg}
-              alt="Professionelt murerarbejde"
+              alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
               className="w-full min-h-[320px] lg:min-h-[400px] rounded-2xl object-cover"
             />
           </div>
