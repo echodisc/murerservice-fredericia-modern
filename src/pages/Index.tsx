@@ -1,5 +1,20 @@
 import { CheckCircle, Clock, Users } from 'lucide-react';
 import heroImg from '@/assets/hero-placeholder.jpg';
+import murerImg from '@/assets/murerarbejde-placeholder.jpg';
+import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
+
+const serviceCards = [
+  {
+    image: murerImg,
+    title: 'Murerarbejde',
+    text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
+  },
+  {
+    image: fliseImg,
+    title: 'Flisearbejde',
+    text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
+  },
+];
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
