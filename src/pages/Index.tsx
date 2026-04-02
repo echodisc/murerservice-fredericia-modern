@@ -20,9 +20,9 @@ const trustItems = [
 const serviceCards = [
   {
     images: [
-      { src: murerImg, alt: 'Murerarbejde — mursten' },
-      { src: murer2, alt: 'Skorstensreparation' },
-      { src: murer3, alt: 'Omfugning af murværk' },
+      { src: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding' },
+      { src: murer2, alt: 'Skorstensreparation af murer i Fredericia' },
+      { src: murer3, alt: 'Omfugning af murværk i Trekantområdet' },
     ],
     title: 'Murerarbejde',
     text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
