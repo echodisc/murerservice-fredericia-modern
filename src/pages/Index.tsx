@@ -10,6 +10,7 @@ import aboutImg from '@/assets/about-placeholder.jpg';
 import ImageCarousel from '@/components/ImageCarousel';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import ReviewCarousel from '@/components/ReviewCarousel';
 import Header from '@/components/Header';
 
 const trustItems = [
@@ -43,6 +44,10 @@ const reviews = [
   { quote: 'Super flot arbejde med vores badeværelse. Professionel og nem at have i huset.', name: '— Jens, Kolding' },
   { quote: 'Altid til at stole på. Kommer til tiden og leverer kvalitet hver gang.', name: '— Maria, Vejle' },
   { quote: 'Fantastisk murerarbejde. Kan varmt anbefales til alle i Trekantområdet.', name: '— Peter, Fredericia' },
+  { quote: 'Vores nye terrasse er blevet helt fantastisk. Grundigt og pænt arbejde fra start til slut.', name: '— Henrik, Kolding' },
+  { quote: 'Fik lagt fliser i hele køkkenet. Hurtigt, rent og til en fair pris.', name: '— Sofie, Fredericia' },
+  { quote: 'Meget professionel og nem at kommunikere med. Vil helt klart bruge ham igen.', name: '— Lars, Vejle' },
+  { quote: 'Reparation af skorsten klaret på én dag. Dygtig og effektiv.', name: '— Anne, Børkop' },
 ];
 
 const Index = () => {
@@ -183,17 +188,7 @@ const Index = () => {
               Det siger vores kunder
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {reviews.map((r) => (
-              <div key={r.name} className="bg-background rounded-xl p-8">
-                <div className="text-[18px] text-accent mb-3">★★★★★</div>
-                <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
-                  "{r.quote}"
-                </p>
-                <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
-              </div>
-            ))}
-          </div>
+          <ReviewCarousel reviews={reviews} />
         </div>
       </section>
 
