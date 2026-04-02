@@ -29,6 +29,7 @@ const serviceCards = [
     ],
     title: 'Murerarbejde',
     text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
+    link: '/murerarbejde',
   },
   {
     images: [
