@@ -73,7 +73,7 @@ const Header = () => {
         {/* Mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-foreground p-1"
+          className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}
           aria-label={open ? 'Luk menu' : 'Åbn menu'}
         >
           {open ? <X size={26} /> : <Menu size={26} />}
