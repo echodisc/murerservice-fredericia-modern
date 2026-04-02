@@ -10,6 +10,7 @@ import aboutImg from '@/assets/about-placeholder.jpg';
 import ImageCarousel from '@/components/ImageCarousel';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
@@ -47,8 +48,9 @@ const reviews = [
 const Index = () => {
   return (
     <main>
+      <Header />
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center bg-card py-10 lg:py-20 px-6 lg:px-16">
+      <section className="min-h-screen flex items-center bg-card pt-20 pb-10 lg:pt-20 lg:pb-20 px-6 lg:px-16">
         <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="w-full lg:w-[60%] flex flex-col gap-6">
             <h1
@@ -99,7 +101,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="bg-card py-16 px-6 lg:px-16">
+      <section id="ydelser" className="bg-card py-16 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-3">
@@ -134,7 +136,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="bg-background py-16 px-6 lg:px-16">
+      <section id="om" className="bg-background py-16 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="w-full lg:w-[45%]">
             <img
@@ -164,7 +166,7 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section className="bg-card py-16 px-6 lg:px-16">
+      <section id="anmeldelser" className="bg-card py-16 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
