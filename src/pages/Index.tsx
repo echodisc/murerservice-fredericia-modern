@@ -165,7 +165,7 @@ const Index = () => {
             />
           </div>
           <div className="w-full lg:w-[55%] flex flex-col gap-4">
-            <span className="uppercase tracking-[1px] text-primary font-medium text-[13px]">
+            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
               Om ML Murerservice
             </span>
             <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
