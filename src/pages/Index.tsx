@@ -1,25 +1,38 @@
 import { CheckCircle, Clock, Users } from 'lucide-react';
 import heroImg from '@/assets/hero-placeholder.jpg';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
+import murer2 from '@/assets/murer-2.jpg';
+import murer3 from '@/assets/murer-3.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
-
-const serviceCards = [
-  {
-    image: murerImg,
-    title: 'Murerarbejde',
-    text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
-  },
-  {
-    image: fliseImg,
-    title: 'Flisearbejde',
-    text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
-  },
-];
+import flise2 from '@/assets/flise-2.jpg';
+import flise3 from '@/assets/flise-3.jpg';
+import ImageCarousel from '@/components/ImageCarousel';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
   { icon: Clock, label: 'Færdig til tiden', text: 'Vi overholder altid vores aftaler' },
   { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
+];
+
+const serviceCards = [
+  {
+    images: [
+      { src: murerImg, alt: 'Murerarbejde — mursten' },
+      { src: murer2, alt: 'Skorstensreparation' },
+      { src: murer3, alt: 'Omfugning af murværk' },
+    ],
+    title: 'Murerarbejde',
+    text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
+  },
+  {
+    images: [
+      { src: fliseImg, alt: 'Flisearbejde — badeværelse' },
+      { src: flise2, alt: 'Køkken med fliser' },
+      { src: flise3, alt: 'Terrasse med fliser' },
+    ],
+    title: 'Flisearbejde',
+    text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
+  },
 ];
 
 const Index = () => {
@@ -53,7 +66,6 @@ const Index = () => {
               </a>
             </div>
           </div>
-
           <div className="w-full lg:w-[40%]">
             <img
               src={heroImg}
@@ -98,14 +110,7 @@ const Index = () => {
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)')}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)')}
               >
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="w-full h-[200px] object-cover"
-                />
+                <ImageCarousel images={card.images} />
                 <div className="p-6">
                   <h3 className="font-semibold text-lg text-foreground mb-2">{card.title}</h3>
                   <p className="text-muted-foreground text-[15px] mb-4 leading-relaxed">{card.text}</p>
