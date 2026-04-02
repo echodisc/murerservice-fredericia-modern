@@ -20,18 +20,18 @@ const trustItems = [
 const serviceCards = [
   {
     images: [
-      { src: murerImg, alt: 'Murerarbejde — mursten' },
-      { src: murer2, alt: 'Skorstensreparation' },
-      { src: murer3, alt: 'Omfugning af murværk' },
+      { src: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding' },
+      { src: murer2, alt: 'Skorstensreparation af murer i Fredericia' },
+      { src: murer3, alt: 'Omfugning af murværk i Trekantområdet' },
     ],
     title: 'Murerarbejde',
     text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
   },
   {
     images: [
-      { src: fliseImg, alt: 'Flisearbejde — badeværelse' },
-      { src: flise2, alt: 'Køkken med fliser' },
-      { src: flise3, alt: 'Terrasse med fliser' },
+      { src: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle' },
+      { src: flise2, alt: 'Køkken med fliser udført af ML Murerservice' },
+      { src: flise3, alt: 'Terrasse med fliser i Kolding' },
     ],
     title: 'Flisearbejde',
     text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
@@ -68,7 +68,7 @@ const Index = () => {
                 Få et gratis tilbud
               </a>
               <a
-                href="tel:20329095"
+                href="tel:+4520329095"
                 className="inline-flex items-center justify-center rounded-lg border-2 border-primary text-primary font-medium px-8 py-4 text-base transition-colors hover:bg-primary/10"
               >
                 Ring 20 32 90 95
@@ -78,7 +78,7 @@ const Index = () => {
           <div className="w-full lg:w-[40%]">
             <img
               src={heroImg}
-              alt="Professionelt murerarbejde"
+              alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
               className="w-full min-h-[320px] lg:min-h-[400px] rounded-2xl object-cover"
             />
           </div>
@@ -139,7 +139,7 @@ const Index = () => {
           <div className="w-full lg:w-[45%]">
             <img
               src={aboutImg}
-              alt="Murermester fra ML Murerservice"
+              alt="Murermester fra ML Murerservice i Fredericia"
               loading="lazy"
               width={800}
               height={800}
@@ -196,7 +196,7 @@ const Index = () => {
               Ring, skriv, eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
             </p>
             <div className="flex flex-col gap-3 mt-2">
-              <a href="tel:20329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
+              <a href="tel:+4520329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
               <a href="mailto:ml@mlmurerservice.dk" className="text-white no-underline hover:underline">✉️ ml@mlmurerservice.dk</a>
               <span className="text-white">📍 Fruetoften 2, 7000 Fredericia</span>
             </div>
