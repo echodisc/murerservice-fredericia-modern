@@ -1,10 +1,18 @@
+import { CheckCircle, Clock, Users } from 'lucide-react';
+import heroImg from '@/assets/hero-placeholder.jpg';
+
+const trustItems = [
+  { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
+  { icon: Clock, label: 'Færdig til tiden', text: 'Vi overholder altid vores aftaler' },
+  { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
+];
+
 const Index = () => {
   return (
     <main>
       {/* Hero Section */}
       <section className="min-h-screen flex items-center bg-card py-10 lg:py-20 px-6 lg:px-16">
         <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Text Side — 60% */}
           <div className="w-full lg:w-[60%] flex flex-col gap-6">
             <h1
               className="font-semibold text-foreground leading-tight"
@@ -31,13 +39,26 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Image Side — 40% */}
           <div className="w-full lg:w-[40%]">
-            <div
-              className="w-full min-h-[320px] lg:min-h-[400px] rounded-2xl"
-              style={{ backgroundColor: '#e8e8e8' }}
+            <img
+              src={heroImg}
+              alt="Professionelt murerarbejde"
+              className="w-full min-h-[320px] lg:min-h-[400px] rounded-2xl object-cover"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className="bg-background py-12 px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+          {trustItems.map(({ icon: Icon, label, text }) => (
+            <div key={label} className="flex flex-col items-center text-center gap-3">
+              <Icon className="text-primary" size={40} strokeWidth={1.5} />
+              <h3 className="font-semibold text-lg text-foreground">{label}</h3>
+              <p className="text-muted-foreground text-[15px]">{text}</p>
+            </div>
+          ))}
         </div>
       </section>
     </main>
