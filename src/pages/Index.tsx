@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { CheckCircle, Clock, Users } from 'lucide-react';
-import heroImg from '@/assets/hero-placeholder.jpg';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
 import murer3 from '@/assets/murer-3.jpg';
