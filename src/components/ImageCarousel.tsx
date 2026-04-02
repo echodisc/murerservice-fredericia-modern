@@ -1,6 +1,6 @@
+import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCallback } from 'react';
 
 interface ImageCarouselProps {
   images: { src: string; alt: string }[];
