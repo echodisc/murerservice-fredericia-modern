@@ -188,17 +188,7 @@ const Index = () => {
               Det siger vores kunder
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {reviews.map((r) => (
-              <div key={r.name} className="bg-background rounded-xl p-8">
-                <div className="text-[18px] text-accent mb-3">★★★★★</div>
-                <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
-                  "{r.quote}"
-                </p>
-                <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
-              </div>
-            ))}
-          </div>
+          <ReviewCarousel reviews={reviews} />
         </div>
       </section>
 
