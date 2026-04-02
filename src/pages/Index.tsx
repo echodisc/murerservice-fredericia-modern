@@ -196,7 +196,7 @@ const Index = () => {
               Ring, skriv, eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
             </p>
             <div className="flex flex-col gap-3 mt-2">
-              <a href="tel:20329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
+              <a href="tel:+4520329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
               <a href="mailto:ml@mlmurerservice.dk" className="text-white no-underline hover:underline">✉️ ml@mlmurerservice.dk</a>
               <span className="text-white">📍 Fruetoften 2, 7000 Fredericia</span>
             </div>

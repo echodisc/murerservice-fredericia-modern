@@ -38,7 +38,7 @@ const Footer = () => (
       <div>
         <p className="text-white font-semibold text-[14px] uppercase tracking-[1px] mb-3">Kontakt</p>
         <ul className="flex flex-col gap-2 text-[14px]" style={{ color: 'rgba(255,255,255,0.6)' }}>
-          <li><a href="tel:20329095" className="no-underline hover:text-white transition-colors" style={{ color: 'inherit' }}>20 32 90 95</a></li>
+          <li><a href="tel:+4520329095" className="no-underline hover:text-white transition-colors" style={{ color: 'inherit' }}>20 32 90 95</a></li>
           <li><a href="mailto:ml@mlmurerservice.dk" className="no-underline hover:text-white transition-colors" style={{ color: 'inherit' }}>ml@mlmurerservice.dk</a></li>
           <li>Fruetoften 2, 7000 Fredericia</li>
           <li className="mt-2">CVR: 21871796</li>
