@@ -47,7 +47,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <a href="#" onClick={handleClick} className="font-semibold text-foreground text-lg no-underline">
+        <a href="/" onClick={handleLogoClick} className="font-semibold text-foreground text-lg no-underline">
           ML Murerservice
         </a>
 
