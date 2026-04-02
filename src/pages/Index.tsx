@@ -29,9 +29,9 @@ const serviceCards = [
   },
   {
     images: [
-      { src: fliseImg, alt: 'Flisearbejde — badeværelse' },
-      { src: flise2, alt: 'Køkken med fliser' },
-      { src: flise3, alt: 'Terrasse med fliser' },
+      { src: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle' },
+      { src: flise2, alt: 'Køkken med fliser udført af ML Murerservice' },
+      { src: flise3, alt: 'Terrasse med fliser i Kolding' },
     ],
     title: 'Flisearbejde',
     text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
