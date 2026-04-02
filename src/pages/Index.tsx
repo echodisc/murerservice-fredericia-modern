@@ -124,6 +124,36 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* About Section */}
+      <section className="bg-background py-16 px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="w-full lg:w-[45%]">
+            <img
+              src={aboutImg}
+              alt="Murermester fra ML Murerservice"
+              loading="lazy"
+              width={800}
+              height={800}
+              className="w-full aspect-square rounded-2xl object-cover"
+            />
+          </div>
+          <div className="w-full lg:w-[55%] flex flex-col gap-4">
+            <span className="uppercase tracking-[1px] text-primary font-medium text-[13px]">
+              Om ML Murerservice
+            </span>
+            <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
+              Erfaren murer med øje for kvalitet
+            </h2>
+            <p className="text-muted-foreground text-[16px] leading-relaxed">
+              ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder. Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.
+            </p>
+            <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline mt-2">
+              Lær mig bedre at kende →
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
