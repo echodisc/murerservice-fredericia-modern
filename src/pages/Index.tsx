@@ -136,7 +136,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="bg-background py-16 px-6 lg:px-16">
+      <section id="om" className="bg-background py-16 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="w-full lg:w-[45%]">
             <img
