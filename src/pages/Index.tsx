@@ -8,6 +8,7 @@ import flise2 from '@/assets/flise-2.jpg';
 import flise3 from '@/assets/flise-3.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
 import ImageCarousel from '@/components/ImageCarousel';
+import ContactForm from '@/components/ContactForm';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
@@ -179,6 +180,28 @@ const Index = () => {
                 <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="kontakt" className="py-16 px-6 lg:px-16" style={{ background: '#1a1a2e' }}>
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
+          <div className="w-full lg:w-1/2 flex flex-col gap-5">
+            <h2 className="font-semibold text-2xl md:text-3xl text-white">
+              Få et uforpligtende tilbud
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.75)' }} className="text-base leading-relaxed">
+              Ring, skriv, eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
+            </p>
+            <div className="flex flex-col gap-3 mt-2">
+              <a href="tel:20329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
+              <a href="mailto:ml@mlmurerservice.dk" className="text-white no-underline hover:underline">✉️ ml@mlmurerservice.dk</a>
+              <span className="text-white">📍 Fruetoften 2, 7000 Fredericia</span>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <ContactForm />
           </div>
         </div>
       </section>
