@@ -9,6 +9,7 @@ import flise3 from '@/assets/flise-3.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
 import ImageCarousel from '@/components/ImageCarousel';
 import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
