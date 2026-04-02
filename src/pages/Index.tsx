@@ -139,7 +139,7 @@ const Index = () => {
           <div className="w-full lg:w-[45%]">
             <img
               src={aboutImg}
-              alt="Murermester fra ML Murerservice"
+              alt="Murermester fra ML Murerservice i Fredericia"
               loading="lazy"
               width={800}
               height={800}
