@@ -72,6 +72,7 @@ const Index = () => {
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}
           >
             Din murer i Kolding, Vejle &amp; Fredericia
+            <span className="block h-1 w-16 rounded-full mt-4 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
