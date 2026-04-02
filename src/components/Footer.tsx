@@ -24,13 +24,13 @@ const Footer = () => (
         <ul className="flex flex-col gap-2">
           {footerLinks.map((l) => (
             <li key={l.label}>
-              <a
-                href={l.href}
+              <Link
+                to={l.href}
                 className="text-[14px] no-underline transition-colors hover:text-white"
                 style={{ color: 'rgba(255,255,255,0.6)' }}
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
