@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 const footerLinks = [
-  { label: 'Hjem', href: '#' },
-  { label: 'Murerarbejde', href: '#' },
-  { label: 'Flisearbejde', href: '#' },
-  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Hjem', href: '/' },
+  { label: 'Murerarbejde', href: '/murerarbejde' },
+  { label: 'Flisearbejde', href: '/flisearbejde' },
+  { label: 'Kontakt', href: '/#kontakt' },
 ];
 
 const Footer = () => (
@@ -22,13 +24,13 @@ const Footer = () => (
         <ul className="flex flex-col gap-2">
           {footerLinks.map((l) => (
             <li key={l.label}>
-              <a
-                href={l.href}
+              <Link
+                to={l.href}
                 className="text-[14px] no-underline transition-colors hover:text-white"
                 style={{ color: 'rgba(255,255,255,0.6)' }}
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
