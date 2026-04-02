@@ -36,6 +36,12 @@ const serviceCards = [
   },
 ];
 
+const reviews = [
+  { quote: 'Super flot arbejde med vores badeværelse. Professionel og nem at have i huset.', name: '— Jens, Kolding' },
+  { quote: 'Altid til at stole på. Kommer til tiden og leverer kvalitet hver gang.', name: '— Maria, Vejle' },
+  { quote: 'Fantastisk murerarbejde. Kan varmt anbefales til alle i Trekantområdet.', name: '— Peter, Fredericia' },
+];
+
 const Index = () => {
   return (
     <main>
@@ -151,6 +157,28 @@ const Index = () => {
             <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline mt-2">
               Lær mig bedre at kende →
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="bg-card py-16 px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
+              Det siger vores kunder
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {reviews.map((r) => (
+              <div key={r.name} className="bg-background rounded-xl p-8">
+                <div className="text-[18px] text-accent mb-3">★★★★★</div>
+                <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
+                  "{r.quote}"
+                </p>
+                <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
