@@ -72,6 +72,7 @@ const Index = () => {
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}
           >
             Din murer i Kolding, Vejle &amp; Fredericia
+            <span className="block h-1 w-16 rounded-full mt-4 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
@@ -141,7 +142,7 @@ const Index = () => {
                   <h3 className="font-semibold text-lg text-foreground mb-2">{card.title}</h3>
                   <p className="text-muted-foreground text-[15px] mb-4 leading-relaxed">{card.text}</p>
                   <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline">
-                    Læs mere →
+                    Læs mere <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
                   </a>
                 </div>
               </div>
@@ -164,7 +165,7 @@ const Index = () => {
             />
           </div>
           <div className="w-full lg:w-[55%] flex flex-col gap-4">
-            <span className="uppercase tracking-[1px] text-primary font-medium text-[13px]">
+            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
               Om ML Murerservice
             </span>
             <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
