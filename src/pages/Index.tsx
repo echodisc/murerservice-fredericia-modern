@@ -48,8 +48,9 @@ const reviews = [
 const Index = () => {
   return (
     <main>
+      <Header />
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center bg-card py-10 lg:py-20 px-6 lg:px-16">
+      <section className="min-h-screen flex items-center bg-card pt-20 pb-10 lg:pt-20 lg:pb-20 px-6 lg:px-16">
         <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="w-full lg:w-[60%] flex flex-col gap-6">
             <h1
