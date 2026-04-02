@@ -76,6 +76,48 @@ const Index = () => {
           ))}
         </div>
       </section>
+
+      {/* Services Section */}
+      <section className="bg-card py-16 px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-3">
+              Hvad kan vi hjælpe med?
+            </h2>
+            <p className="text-muted-foreground text-base">
+              Vi dækker alle former for murerarbejde i Trekantområdet
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {serviceCards.map((card) => (
+              <div
+                key={card.title}
+                className="bg-card rounded-xl overflow-hidden transition-shadow duration-200"
+                style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)')}
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)')}
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                  className="w-full h-[200px] object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg text-foreground mb-2">{card.title}</h3>
+                  <p className="text-muted-foreground text-[15px] mb-4 leading-relaxed">{card.text}</p>
+                  <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline">
+                    Læs mere →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
