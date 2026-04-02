@@ -39,6 +39,7 @@ const serviceCards = [
     ],
     title: 'Flisearbejde',
     text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
+    link: '/flisearbejde',
   },
 ];
 
