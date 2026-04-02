@@ -6,6 +6,7 @@ import murer3 from '@/assets/murer-3.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 import flise2 from '@/assets/flise-2.jpg';
 import flise3 from '@/assets/flise-3.jpg';
+import aboutImg from '@/assets/about-placeholder.jpg';
 import ImageCarousel from '@/components/ImageCarousel';
 
 const trustItems = [
