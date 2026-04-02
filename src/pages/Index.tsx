@@ -206,6 +206,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };
