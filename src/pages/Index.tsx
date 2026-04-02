@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
 import heroImg from '@/assets/hero-fullscreen.jpg';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
