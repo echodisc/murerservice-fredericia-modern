@@ -53,12 +53,18 @@ const Index = () => {
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-1">
-            <a
-              href="#kontakt"
+            <button
+              onClick={() => {
+                const el = document.getElementById('kontakt');
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                }
+              }}
               className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:brightness-90"
             >
               Få et gratis tilbud
-            </a>
+            </button>
             <a
               href="tel:+4520329095"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 text-white font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-white/10"
