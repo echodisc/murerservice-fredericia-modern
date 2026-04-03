@@ -164,10 +164,6 @@
     forced-color-adjust: none;
   }
 
-  section {
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-  }
 
   @keyframes fadeIn {
     from { opacity: 0; }

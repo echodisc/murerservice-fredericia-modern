@@ -190,7 +190,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* <FloatingScrollArrow /> */}
+      <FloatingScrollArrow />
       <Footer />
     </main>
   );
