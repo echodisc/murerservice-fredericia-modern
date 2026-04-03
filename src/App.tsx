@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Murerarbejde from "./pages/Murerarbejde.tsx";
 import Flisearbejde from "./pages/Flisearbejde.tsx";
+import OmMig from "./pages/OmMig.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
