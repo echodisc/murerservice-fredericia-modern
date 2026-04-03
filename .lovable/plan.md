@@ -1,79 +1,65 @@
 
-Goal
-- Keep the site light by default.
-- Serve dark mode only when `prefers-color-scheme: dark` is true.
-- Stop Brave from force-dark mangling.
-- Fix the mobile USP/arrow overlap in Safari without changing the desktop hero.
-- Reduce Brave scroll choppiness and make the header feel truly persistent.
 
-What I found
-1. `index.html` currently uses `<meta name="color-scheme" content="light">`, which tells the browser only light UI is supported. That works against the “native dark mode” setup you want and can encourage Brave to do its own dark rewrite.
-2. `src/index.css` currently has two dark systems at once: an unused `.dark` block and a `@media (prefers-color-scheme: dark)` block. That makes the theme logic harder to reason about.
-3. Several main components still hardcode black/white/dark surfaces instead of using theme variables: hero overlays, header, footer, OmMig CTA, modal/menu overlays, accent bars, etc. So even when dark mode is requested, parts of the UI are not truly theme-aware.
-4. On the homepage hero, the USP row is still absolutely positioned while the arrow is fixed to the viewport. Safari’s dynamic toolbar/safe-area behavior changes the effective bottom spacing more than Brave, so they collide.
-5. The fixed header and floating arrow still use `backdrop-blur`, which is a likely cause of Brave’s choppy scrolling and may also contribute to the “header disappears until I scroll up” behavior.
+# Combined Fix: Brave Colors, Scroll Jump, Contact Bounce, Header Blocking, Safari USP
 
-Plan
-1. Rebuild theme handling as true native auto mode
-- In `index.html`, change the meta tag to `content="light dark"`.
-- In `src/index.css`, keep only one theme system:
-  - light tokens in `:root`
-  - dark tokens only inside `@media (prefers-color-scheme: dark) { :root { ... } }`
-- Remove the unused `.dark` block and the `:root:not(.light)` escape hatch since this project is now “auto only”.
-- Keep light as the default token set; dark only applies when the browser explicitly asks for it.
+## Summary
 
-2. Add missing semantic color tokens
-- Expand the token set so components stop relying on raw `white/black` and inline dark colors.
-- Add variables for things like:
-  - inverse sections
-  - hero overlays
-  - menu/modal overlays
-  - image brightness in dark mode
-- Slightly reduce accent intensity in dark mode so buttons feel calmer against dark backgrounds.
+Six issues consolidated into one pass across six files.
 
-3. Convert the visible pages/components to theme-aware styling
-- `src/pages/Index.tsx`: hero overlay, hero text treatment, CTA borders, USP colors.
-- `src/components/Header.tsx`: top-state colors, mobile menu overlay/panel, logo/link contrast.
-- `src/components/Footer.tsx`: replace hardcoded always-dark styling with proper inverse-section tokens.
-- `src/pages/OmMig.tsx`: hero overlay, accent bars, anecdote cards, CTA section.
-- `src/pages/Ydelser.tsx` and `src/components/ContactForm.tsx`: modal overlay, cards, accent details.
-- Clean up repeated inline `hsl(0 65% 48%)` usages to use `--red-accent`.
+## Changes by file
 
-4. Fix the USP overlap on mobile only
-- Leave the desktop hero untouched.
-- On mobile, stop relying on “absolute USP + fixed arrow” spacing.
-- Rework the mobile hero so it reserves explicit bottom space for:
-  - the USP row
-  - the floating arrow
-  - Safari safe-area/browser chrome
-- Best fix: make the mobile USP sit in normal flow near the bottom of the hero (`mt-auto`) instead of pinning it absolutely.
-- Move the arrow up slightly on mobile and make its offset safe-area aware.
+### 1. `src/index.css` — Hero tokens + remove smooth scroll
 
-5. Reduce the Brave scroll/rendering issues
-- Remove `backdrop-blur` from the fixed header and floating arrow first.
-- Replace it with solid/semi-opaque backgrounds plus subtle text shadow/drop shadow where needed.
-- Replace `transition-all` on the header with narrower transitions for color/shadow/border only.
-- Keep blur only on non-scrolling overlays if needed, and revisit those only if Brave still feels heavy.
+Add to `:root` and duplicate in the dark media query (same values — hero is always over a dark overlay):
 
-6. Verify the intended behavior
-- Browser preference = light → full light theme.
-- Browser preference = dark → native dark theme, not a forced/inverted one.
-- Mobile Safari → USP and arrow no longer overlap.
-- Mobile Brave → header stays visible and scrolling feels smoother.
+```css
+--hero-text: 0 0% 100%;
+--hero-text-muted: 0 0% 100% / 0.8;
+--hero-text-subtle: 0 0% 100% / 0.5;
+--hero-border: 0 0% 100%;
+```
 
-Files to update
-- `index.html`
-- `src/index.css`
-- `src/pages/Index.tsx`
-- `src/components/Header.tsx`
-- `src/components/FloatingScrollArrow.tsx`
-- `src/components/Footer.tsx`
-- `src/pages/OmMig.tsx`
-- `src/pages/Ydelser.tsx`
-- `src/components/ContactForm.tsx`
-- `src/components/ServiceCarousel.tsx`
-- `src/components/ReviewCarousel.tsx`
-- `src/components/ImageCarousel.tsx`
+Remove `scroll-behavior: smooth` from `html` (keep `scroll-padding-top: 5rem`). JS `scrollTo({ behavior: 'smooth' })` still works independently.
 
-Important note
-- With “Auto only”, the site should still appear dark in any browser/device that is actively reporting `prefers-color-scheme: dark`. That is expected. The goal here is to make that dark version intentional and clean, while keeping light as the true default whenever the browser is not explicitly requesting dark.
+### 2. `src/pages/Index.tsx` — Token swap, `svh`, USP spacing
+
+- **Hero height**: `min-h-screen min-h-[100dvh]` → `min-h-screen min-h-[100svh]`
+- **Hardcoded whites → tokens**:
+  - `text-white` → `text-[hsl(var(--hero-text))]`
+  - `text-white/80` → `text-[hsl(var(--hero-text-muted))]`
+  - `text-white/90` → `text-[hsl(var(--hero-text)/0.9)]`
+  - `text-white/50` → `text-[hsl(var(--hero-text-subtle))]`
+  - `border-white/60` → `border-[hsl(var(--hero-border)/0.6)]`
+  - `hover:bg-white/10` → `hover:bg-[hsl(var(--hero-border)/0.1)]`
+- **USP bottom**: `bottom-[70px]` → `bottom-[100px]` (mobile only, `md:bottom-20` unchanged)
+
+### 3. `src/pages/OmMig.tsx` — Hero `text-white` → token
+
+Line 49: `text-white` → `text-[hsl(var(--hero-text))]`
+
+### 4. `src/components/Header.tsx` — Transparent-state tokens + solid scrolled bg
+
+Unscrolled state only:
+- `text-white/90` → `text-[hsl(var(--hero-text)/0.9)]`
+- `text-white` → `text-[hsl(var(--hero-text))]`
+- `after:bg-white` → `after:bg-[hsl(var(--hero-text))]`
+- Logo + hamburger `text-white` → `text-[hsl(var(--hero-text))]`
+
+Scrolled state: `bg-card/98` → `bg-card` (fully opaque, blocks content in dark mode).
+
+### 5. `src/components/ContactForm.tsx` — Submit button
+
+`text-white` → `text-[hsl(var(--inverse-fg))]` (on red background, not a hero context).
+
+### 6. `src/components/FloatingScrollArrow.tsx` — Performance
+
+- Remove `animate-bounce` from the button.
+- Replace conditional `return null` with always-rendered element using `opacity-0/opacity-100` + `transition-opacity` + `pointer-events-none` when hidden.
+
+## Technical rationale
+
+- **Brave inversion**: Brave's forced dark mode inverts literal Tailwind color classes (`text-white` → dark). CSS `hsl(var(...))` values are left alone, so using custom properties for hero/header text makes them Brave-proof.
+- **`svh` vs `dvh`**: `dvh` recalculates when mobile browser chrome hides/shows, causing the hero to resize mid-scroll. `svh` is the smallest viewport (URL bar visible) and never changes.
+- **`scroll-behavior: smooth` removal**: The CSS property fights with JS-driven smooth scrolls, causing the "bounce back" near the contact section.
+- **Arrow layout shift**: Mounting/unmounting the arrow DOM node causes reflows; opacity transition keeps it in the DOM.
+
