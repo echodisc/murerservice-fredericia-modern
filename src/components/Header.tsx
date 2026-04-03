@@ -126,7 +126,7 @@ const Header = () => {
         }`}
         style={{
           zIndex: 60,
-          backgroundColor: 'hsl(var(--card))',
+          backgroundColor: 'hsl(var(--card) / 0.97)',
           boxShadow: '-10px 0 40px rgba(0,0,0,0.4)',
         }}
       >
