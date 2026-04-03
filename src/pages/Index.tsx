@@ -1,18 +1,12 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
 import heroImg from '@/assets/hero-fullscreen.jpg';
-import murerImg from '@/assets/murerarbejde-placeholder.jpg';
-import murer2 from '@/assets/murer-2.jpg';
-import murer3 from '@/assets/murer-3.jpg';
-import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
-import flise2 from '@/assets/flise-2.jpg';
-import flise3 from '@/assets/flise-3.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
-import ImageCarousel from '@/components/ImageCarousel';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import ReviewCarousel from '@/components/ReviewCarousel';
 import Header from '@/components/Header';
+import ServiceCarousel from '@/components/ServiceCarousel';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
@@ -20,28 +14,6 @@ const trustItems = [
   { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
 ];
 
-const serviceCards = [
-  {
-    images: [
-      { src: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding' },
-      { src: murer2, alt: 'Skorstensreparation af murer i Fredericia' },
-      { src: murer3, alt: 'Omfugning af murværk i Trekantområdet' },
-    ],
-    title: 'Murerarbejde',
-    text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
-    link: '/murerarbejde',
-  },
-  {
-    images: [
-      { src: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle' },
-      { src: flise2, alt: 'Køkken med fliser udført af ML Murerservice' },
-      { src: flise3, alt: 'Terrasse med fliser i Kolding' },
-    ],
-    title: 'Flisearbejde',
-    text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
-    link: '/flisearbejde',
-  },
-];
 
 const reviews = [
   { quote: 'Super flot arbejde med vores badeværelse. Professionel og nem at have i huset.', name: '— Jens, Kolding' },
@@ -120,39 +92,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="ydelser" className="bg-card py-16 px-6 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-3">
-              Hvad kan vi hjælpe med?
-            </h2>
-            <p className="text-muted-foreground text-base">
-              Vi dækker alle former for murerarbejde i Trekantområdet
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {serviceCards.map((card) => (
-              <div
-                key={card.title}
-                className="bg-card rounded-xl overflow-hidden transition-shadow duration-200"
-                style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)')}
-                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)')}
-              >
-                <ImageCarousel images={card.images} />
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg text-foreground mb-2">{card.title}</h3>
-                  <p className="text-muted-foreground text-[15px] mb-4 leading-relaxed">{card.text}</p>
-                  <Link to={card.link} className="text-primary font-medium text-[15px] no-underline hover:underline">
-                    Læs mere <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceCarousel />
 
       {/* About Section */}
       <section id="om" className="bg-background py-16 px-6 lg:px-16">
