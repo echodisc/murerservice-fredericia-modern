@@ -1,41 +1,39 @@
 
+Goal: restore the old header behavior only, without touching the site’s existing light/dark mode system.
 
-# Layout Changes: Services, Ydelser, and Contact Confirmation
+What’s broken now
+- `src/components/Header.tsx` was simplified into a permanently solid `sticky` header.
+- That removed the previous “overlay at top / solid on scroll” behavior and keeps the red logo details visible all the time.
 
-## 1. Front page ServiceCarousel — Remove Specialarbejde, side-by-side on desktop
+Plan
 
-**Current**: 3 slides (Murerarbejde, Flisearbejde, Specialarbejde) in an Embla carousel on all screen sizes.
+1. Restore the old two-state header in `src/components/Header.tsx`
+- Reintroduce a lightweight `scrolled` boolean based on scroll position.
+- Switch the header back to a persistent `fixed top-0 inset-x-0 z-50` overlay instead of the current in-flow `sticky` bar.
+- Use a small threshold so the state flips only when crossing top/not-top, not on every tiny scroll change.
 
-**New behavior**:
-- Remove the Specialarbejde slide entirely (delete from `serviceSlides` array, remove the `murer2` import)
-- **Desktop (md+)**: Show both cards side-by-side in a simple 2-column grid. No carousel, no arrows, no dots, no fade edges.
-- **Mobile**: Keep Embla carousel with 2 slides, arrows/dots for swiping between them.
+2. Bring back the original visual behavior
+- At the top: translucent header, no red logo/underline details, hero-safe text/icon colors.
+- After scrolling: solid header background, border/shadow visible, normal foreground colors, red accents return.
+- Same transition in reverse when scrolling back up.
+- Keep no backdrop blur, since that conflicts with the project’s Brave/performance rule.
 
-**File**: `src/components/ServiceCarousel.tsx`
+3. Make it match page context
+- Restore the translucent-at-top version on hero-image pages (`/` and `/om`) where the header should sit over the image.
+- Keep service/content pages (`/ydelser`, `/murerarbejde`, `/flisearbejde`) solid from the start for readability.
+- Reuse existing theme tokens (`--hero-*`, `--card`, `--foreground`, `--red-accent`) so light/dark modes continue to work correctly.
 
-## 2. Ydelser page — Rename h1, remove Specialarbejde section, add "special" card to each carousel
+4. Preserve mobile behavior
+- Keep the current mobile drawer and overlay logic.
+- When the mobile menu is open, force the header into the solid state so the controls stay readable.
+- Limit transitions to background, border, shadow, and text color only.
 
-**File**: `src/pages/Ydelser.tsx`
+Files to touch
+- Main file: `src/components/Header.tsx`
+- Only touch `src/index.css` if a tiny header helper class is needed; otherwise no global CSS/theme changes.
 
-- Change h1 from "Vores ydelser" to "Murer- og fliseydelser"
-- Delete the entire `specialServices` array and its `<ServiceBlock>` rendering
-- Remove `Nybyggeri & tilbygninger` from `murerServices` (first item)
-- Add a new last item to `murerServices`: a "Specialarbejde" card with text like "Har du en anden muropgave i tankerne? Vi tager gerne specialopgaver — kontakt os med din idé." (reuse an existing image like `murer3`)
-- Add a new last item to `fliseServices` (it already has "Specialopgaver" as the last item — update its title to "Specialarbejde" for consistency and tweak the text to match the same "request anything" tone)
-
-## 3. Contact form confirmation — Warmer thank-you message
-
-**File**: `src/components/ContactForm.tsx`
-
-The submitted state (lines 18-29) already shows a confirmation. Enhance it:
-- Larger checkmark icon
-- Title: "Tak for din henvendelse!"
-- Body: "Vi sætter stor pris på din tillid. Du hører fra os hurtigst muligt — typisk inden for samme dag."
-- Add a subtle fade-in animation via Tailwind `animate-in fade-in`
-
-## Files to edit
-
-1. `src/components/ServiceCarousel.tsx` — remove Specialarbejde, desktop grid + mobile carousel
-2. `src/pages/Ydelser.tsx` — rename h1, remove specialServices block, remove Nybyg, add Specialarbejde cards
-3. `src/components/ContactForm.tsx` — warmer confirmation message
-
+Checks
+- Home: transparent at top over the hero, solid with red details after scroll.
+- `/om`: same restored behavior.
+- Service pages: solid immediately.
+- Verify both light and dark mode variants and mobile menu open/close states.
