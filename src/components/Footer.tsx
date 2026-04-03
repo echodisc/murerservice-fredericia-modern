@@ -22,8 +22,8 @@ const Footer = () => (
           </p>
         </div>
 
-        {/* Links */}
-        <nav className="flex flex-row flex-wrap gap-x-6 gap-y-1">
+        {/* Links — mobile only */}
+        <nav className="flex md:hidden flex-row flex-wrap gap-x-6 gap-y-1">
           {footerLinks.map((l) => (
             <Link
               key={l.label}
