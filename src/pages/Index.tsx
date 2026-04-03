@@ -177,9 +177,9 @@ const Index = () => {
             <p className="text-muted-foreground text-[16px] leading-relaxed">
               ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder. Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.
             </p>
-            <a href="#" className="text-primary font-medium text-[15px] no-underline hover:underline mt-2">
-              Lær mig bedre at kende →
-            </a>
+            <Link to="/om" className="text-primary font-medium text-[15px] no-underline hover:underline mt-2">
+              Lær mig bedre at kende <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
+            </Link>
           </div>
         </div>
       </section>
