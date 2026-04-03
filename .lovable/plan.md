@@ -1,71 +1,125 @@
 
 
-# Fix: Brave Night Mode, Scroll Jitter, Hero Scaling
+# Fix: Brave Night Mode, Color Shifts, and Scroll Stutter
 
-## Category 1 — Brave Night Mode
+## Findings from code audit
 
-**Current state**: All images already use `<img>` tags (no CSS background-images). However, `src/index.css` line 155-157 applies a global `img { filter: brightness(var(--img-brightness, 1)); }` which in dark mode becomes `0.8`. Brave night mode stacks its own dimming on top, making images invisible.
+1. **OmMig.tsx hero**: Already uses an `<img>` tag — NOT a CSS background-image. No conversion needed. No pages use background-image for photos.
+2. **`forced-color-adjust: none`**: Already applied to `header, footer, section.relative, .bg-card, .bg-background` in `index.css`. Needs to be extended to CTA buttons, divider lines, and card components specifically.
+3. **Fonts**: Already self-hosted (`/fonts/InterVariable.woff2`). No Google Fonts CDN import.
+4. **`scroll-behavior: smooth`**: Already removed. No `scroll-snap` anywhere.
+5. **No IntersectionObserver animations**, no parallax, no `background-attachment: fixed`.
+6. **Hero**: Already a static `<img>` with `object-fit: cover` in a fixed-height (`h-screen h-[100svh] overflow-hidden`) container. No scroll-linked transforms.
 
-**Fix**:
-- **`src/index.css`**: Remove the global `img { filter: brightness() }` rule and the `--img-brightness` variable from both light and dark blocks.
-- **`src/index.css`**: Add `forced-color-adjust: none` to targeted selectors only — hero sections, cards, navbar, footer — not globally. This tells Brave we handle our own theming for those elements.
+### JavaScript running during scroll (the real problem)
+
+These three components have `window.addEventListener('scroll')` or equivalent listeners that fire on every scroll frame:
+
+| Component | What it does on scroll | Impact |
+|-----------|----------------------|--------|
+| `Header.tsx` | Reads `window.scrollY`, sets React state (`scrolled`), toggles classes | **High** — React re-render on every scroll event |
+| `FloatingScrollArrow.tsx` | Reads `window.scrollY`, sets React state (`visible`), toggles opacity | **High** — React re-render on every scroll event |
+| `ServiceCarousel.tsx` | Embla's internal `on('scroll')` updates `scrollProgress` state + dot indicators | **Medium** — only fires during carousel swipe, not page scroll |
+
+The Header and FloatingScrollArrow listeners are the primary cause of stutter. Each scroll event triggers a React state update → re-render → DOM diff → repaint, which Brave's shields compound.
+
+### Other issues found
+
+- Several `<img>` tags still missing `width`/`height` attributes (OmMig, Ydelser, ImageCarousel)
+- Mobile review accordion uses `animate-in fade-in slide-in-from-top-2` (minor)
+- Some cards use `transition-all` instead of targeted transitions
+- `hover:scale-[1.02]` on Ydelser cards triggers layout recalculation
+
+---
+
+## Changes by file
+
+### 1. `src/components/Header.tsx` — Remove scroll listener, use CSS sticky
+
+Remove the entire `useEffect` scroll listener and the `scrolled` state variable. Replace with:
+
+- Change from `fixed` to `sticky top-0`
+- Always use solid `bg-card` background with `shadow-sm` and `border-b`
+- Add `-webkit-transform: translateZ(0)` and `will-change: transform` via inline style for GPU compositing
+- Remove the transparent-over-hero behavior entirely (it requires JS)
+- Text colors: always use `text-foreground` (works in both light/dark via CSS variables)
+- This eliminates the biggest source of scroll-triggered JS
+
+### 2. `src/components/FloatingScrollArrow.tsx` — Remove scroll listener
+
+Remove the `useEffect` scroll listener and `visible` state. Instead:
+
+- Always render the arrow (no conditional visibility based on scroll position)
+- Use CSS `animation-delay` for a simple fade-in on page load
+- Remove `animate-bounce` (constant repaints)
+- Add `pointer-events-auto` always since it's always visible
+- This eliminates the second scroll listener
+
+### 3. `src/index.css` — Extend forced-color-adjust
+
+Add more targeted selectors:
 
 ```css
-/* Add after the body rule */
 header, footer,
-[class*="hero"], section.relative,
-.bg-card, .bg-background {
+section.relative,
+.bg-card, .bg-background,
+a[href^="tel:"],
+button,
+[class*="rounded-lg"][class*="border"],
+[class*="bg-accent"],
+[class*="bg-[hsl(var(--red-accent"])],
+span[class*="h-1"][class*="rounded-full"] {
   forced-color-adjust: none;
 }
 ```
 
-## Category 2 — Scroll Jitter (Brave Shields)
+This covers: navbar, hero sections, CTA buttons, divider lines, card components, and the footer — without being truly global.
 
-### 2a. Missing width/height on images
+### 4. `src/pages/Index.tsx` — Add width/height to about image
 
-Several `<img>` tags lack explicit `width` and `height` attributes, causing layout shift if loading is delayed:
+The hero img already has `width={1920} height={1080}`. Add dimensions to the about section image (line ~99).
 
-| File | Issue |
-|------|-------|
-| `src/pages/OmMig.tsx` line 41 | Hero img — no width/height |
-| `src/pages/Ydelser.tsx` line 96 | Mobile carousel imgs — no width/height |
-| `src/pages/Ydelser.tsx` line 130 | Desktop grid imgs — no width/height |
-| `src/pages/Index.tsx` line 37 | Hero img — no width/height |
-| `src/components/ImageCarousel.tsx` line 21 | Carousel imgs — no width/height |
+### 5. `src/pages/OmMig.tsx` — Add width/height to all images
 
-**Fix**: Add `width={800} height={600}` (or appropriate aspect) to every `<img>` missing them. All already have CSS `object-cover` with fixed heights so this is purely for layout reservation.
+Add explicit `width` and `height` to every `<img>` tag that's missing them.
 
-### 2b. Self-host Google Fonts
+### 6. `src/pages/Ydelser.tsx` — Image dimensions + transition fix
 
-`src/index.css` line 1 loads Inter from Google Fonts CDN. Brave Shields blocks this, causing a font-swap layout shift.
+- Add `width` and `height` to all card images
+- Change `transition-all` to `transition-[box-shadow]` on desktop cards
+- Remove `hover:scale-[1.02]` (causes layout recalculation during nearby scroll)
 
-**Fix**:
-- Download Inter font files (wght 400, 500, 600, 700) and place in `public/fonts/`.
-- Replace the `@import url(...)` with local `@font-face` declarations.
+### 7. `src/components/ImageCarousel.tsx` — Add image dimensions
 
-### 2c. transition-all causing jitter
+Add `width={800} height={600}` to carousel images.
 
-`src/pages/Ydelser.tsx` line 127: Desktop cards use `transition-all` which transitions every CSS property during scroll-triggered repaints. The `hover:scale-[1.02]` also causes layout recalculation.
+### 8. `src/components/ContactForm.tsx` — Transition fix
 
-**Fix**:
-- Change `transition-all` to `transition-[shadow,transform]` on Ydelser desktop cards.
-- Change `transition-all` to `transition-colors` on ContactForm submit button (line 72).
+Change any remaining `transition-all` to `transition-colors`.
 
-## Category 3 — Hero Scaling on Scroll
+### 9. `src/pages/Index.tsx` — Review accordion
 
-**Current state**: `src/pages/Index.tsx` line 36 uses `min-h-screen min-h-[100svh]`. The `min-h` prefix allows the section to grow taller than the viewport if content pushes it, and the hero image with `absolute inset-0` stretches to fill the container — any size change causes the image to visually rescale.
+The mobile "Se kundeanmeldelser" toggle uses conditional rendering. Change to always-rendered with `max-height` + `overflow-hidden` transition instead of mount/unmount with `animate-in`.
 
-**Fix**:
-- Change hero from `min-h-screen min-h-[100svh]` to `h-screen h-[100svh] overflow-hidden`.
-- This locks the hero to exactly one viewport height. `overflow-hidden` prevents any content from expanding it.
+---
+
+## Summary of what gets eliminated
+
+- 2 scroll event listeners removed (Header + FloatingScrollArrow)
+- 0 JavaScript executes during page scroll
+- All images have reserved dimensions
+- `forced-color-adjust: none` on all themed components
+- No `transition-all`, no `hover:scale` on cards
+- Accordion uses fixed `max-height` transition
 
 ## Files to edit
 
-1. **`src/index.css`** — Remove `img { filter }` rule + `--img-brightness` vars, add `forced-color-adjust: none` on key selectors, replace Google Fonts `@import` with local `@font-face`
-2. **`src/pages/Index.tsx`** — Hero `h-screen h-[100svh] overflow-hidden`, add width/height to hero img
-3. **`src/pages/OmMig.tsx`** — Add width/height to hero img
-4. **`src/pages/Ydelser.tsx`** — Add width/height to all card imgs, `transition-all` → `transition-[shadow,transform]`
-5. **`src/components/ImageCarousel.tsx`** — Add width/height to imgs
-6. **`src/components/ContactForm.tsx`** — `transition-all` → `transition-colors`
-7. **`public/fonts/`** — Add Inter font files (400, 500, 600, 700)
+1. `src/components/Header.tsx`
+2. `src/components/FloatingScrollArrow.tsx`
+3. `src/index.css`
+4. `src/pages/Index.tsx`
+5. `src/pages/OmMig.tsx`
+6. `src/pages/Ydelser.tsx`
+7. `src/components/ImageCarousel.tsx`
+8. `src/components/ContactForm.tsx`
 
