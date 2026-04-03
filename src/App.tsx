@@ -8,10 +8,14 @@ import Ydelser from "./pages/Ydelser.tsx";
 import OmMig from "./pages/OmMig.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop";
+import { useStableVh } from "./hooks/useStableVh";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  useStableVh();
+
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
