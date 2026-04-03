@@ -55,9 +55,9 @@ const ServiceCarousel = () => {
         </div>
 
         <div className="relative group">
-          {/* Fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-card to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-card to-transparent" />
+          {/* Fade edges — hidden at extremes */}
+          <div className={`pointer-events-none absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-card to-transparent transition-opacity duration-200 ${canScrollPrev ? 'opacity-100' : 'opacity-0'}`} />
+          <div className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-card to-transparent transition-opacity duration-200 ${canScrollNext ? 'opacity-100' : 'opacity-0'}`} />
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex -ml-5">
@@ -93,21 +93,25 @@ const ServiceCarousel = () => {
             </div>
           </div>
 
-          {/* Nav arrows */}
-          <button
-            onClick={scrollPrev}
-            aria-label="Forrige ydelse"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronLeft size={20} className="text-foreground" />
-          </button>
-          <button
-            onClick={scrollNext}
-            aria-label="Næste ydelse"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronRight size={20} className="text-foreground" />
-          </button>
+          {/* Nav arrows — hidden at extremes */}
+          {canScrollPrev && (
+            <button
+              onClick={scrollPrev}
+              aria-label="Forrige ydelse"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft size={20} className="text-foreground" />
+            </button>
+          )}
+          {canScrollNext && (
+            <button
+              onClick={scrollNext}
+              aria-label="Næste ydelse"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight size={20} className="text-foreground" />
+            </button>
+          )}
         </div>
 
         {/* Progress bar */}
