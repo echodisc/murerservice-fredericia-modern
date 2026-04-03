@@ -33,7 +33,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pb-20 md:pb-0">
+      <section className="relative min-h-[100dvh] flex flex-col items-center justify-center pb-8 md:pb-0">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
@@ -41,7 +41,7 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mt-auto">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
@@ -74,8 +74,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* USP Bar — more breathing room from CTAs */}
-        <div className="absolute bottom-24 md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16">
+        {/* USP Bar — in flow, pushed to bottom */}
+        <div className="relative z-10 mt-auto px-6 lg:px-16 pb-6 md:pb-10 pt-8 md:pt-12 w-full">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5">
