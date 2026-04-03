@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Test</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, sans-serif;
+    background: #1a1c22;
+    color: #d4d6de;
+  }
+
+  /* Header - fixed, same as site */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    background: rgba(30,32,38,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .header span { font-weight: 600; font-size: 18px; color: #fff; }
+  .header .ml { color: #c44; }
+
+  /* Hero - same structure as site */
+  .hero {
+    position: relative;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35);
+  }
+  .hero-text {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 24px;
+    color: white;
+  }
+  .hero-text h1 { font-size: clamp(1.75rem, 6vw, 3.5rem); }
+  .hero-text p { opacity: 0.8; margin-top: 12px; }
+
+  /* Content sections */
+  .section {
+    padding: 64px 24px;
+  }
+  .section:nth-child(odd) { background: #1a1c22; }
+  .section:nth-child(even) { background: #22242a; }
+  .section h2 { font-size: 24px; margin-bottom: 16px; }
+  .section p { line-height: 1.7; opacity: 0.7; margin-bottom: 16px; }
+  .section img {
+    width: 60%;
+    border-radius: 16px;
+    margin: 16px auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span><span class="ml">ML</span> Murerservice</span>
+</div>
+
+<section class="hero">
+  <img src="hero.jpg" alt="Hero" width="1920" height="1080">
+  <div class="hero-text">
+    <h1>Din murer i Kolding, Vejle & Fredericia</h1>
+    <p>Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Om ML Murerservice</h2>
+  <img src="about.jpg" alt="About" width="800" height="600">
+  <p>ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder.</p>
+  <p>Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.</p>
+</section>
+
+<section class="section">
+  <h2>Ydelser</h2>
+  <p>Vi dækker alle former for murerarbejde i Trekantområdet. Fra mindre reparationer til komplette renoveringer.</p>
+  <p>Murerarbejde, flisearbejde, badeværelser, skorstensarbejde, omfugning og meget mere.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</section>
+
+<section class="section">
+  <h2>Kontakt</h2>
+  <p>Ring eller udfyld formularen — så vender jeg tilbage hurtigst muligt.</p>
+  <p>Telefon: 20 32 90 95</p>
+  <p>Email: ml@mlmurerservice.dk</p>
+  <p>Adresse: Fruetoften 2, 7000 Fredericia</p>
+</section>
+
+<section class="section">
+  <h2>Mere indhold</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue.</p>
+  <p>Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</p>
+</section>
+
+</body>
+</html>
