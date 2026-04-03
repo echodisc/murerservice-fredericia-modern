@@ -160,7 +160,7 @@ const OmMig = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 lg:px-16" style={{ background: '#1a1a2e' }}>
+      <section className="py-16 px-6 lg:px-16 bg-foreground">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-semibold text-2xl md:text-3xl text-white mb-4">
             Klar til at komme i gang?
