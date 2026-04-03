@@ -9,7 +9,7 @@ const footerLinks = [
 ];
 
 const Footer = () => (
-  <footer className="bg-foreground text-white/70">
+  <footer className="bg-[hsl(220_20%_8%)] text-white/70">
     <div className="max-w-7xl mx-auto px-6 lg:px-16 py-8 md:py-10">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-12">
         {/* Brand */}
