@@ -65,20 +65,20 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
         {/* Logo — both states always rendered, crossfade via opacity */}
         <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative">
-          {/* Scrolled state: red ML */}
+          {/* Scrolled state: red ML + red underline that scales in */}
           <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
-            <span className="text-[hsl(var(--red-accent))]">ML</span>
-            <span className="text-foreground"> Murerservice</span>
-          </span>
-          {/* Top state: white with red underline that scales from center */}
-          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-            <span className="relative text-white pb-0.5">
-              ML Murerservice
+            <span className="relative pb-0.5">
+              <span className="text-[hsl(var(--red-accent))]">ML</span>
+              <span className="text-foreground"> Murerservice</span>
               <span
                 className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
                 style={{ transform: scrolled ? 'scaleX(1)' : 'scaleX(0)' }}
               />
             </span>
+          </span>
+          {/* Top state: white, no underline */}
+          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
+            <span className="text-white">ML Murerservice</span>
           </span>
         </a>
 
