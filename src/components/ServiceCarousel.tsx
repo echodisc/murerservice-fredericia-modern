@@ -14,7 +14,7 @@ const serviceSlides = [
 ];
 
 const ServiceCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center', slidesToScroll: 1 });
   const [scrollProgress, setScrollProgress] = useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -113,12 +113,12 @@ const ServiceCarousel = () => {
           )}
         </div>
 
-        {/* Progress bar — thicker */}
-        <div className="mt-8 mx-auto max-w-[200px]">
-          <div className="h-[5px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
+        {/* Progress bar */}
+        <div className="mt-8 flex justify-center">
+          <div className="w-[200px] h-[5px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-primary"
-              style={{ width: '33%', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
+              className="absolute top-0 left-0 h-full rounded-full"
+              style={{ width: '33%', background: 'hsl(var(--red-accent))', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
             />
           </div>
         </div>
