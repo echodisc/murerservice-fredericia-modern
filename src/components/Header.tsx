@@ -70,7 +70,7 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ease-in-out ${
-          scrolled ? 'bg-card/98 shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
+          scrolled ? 'bg-card shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
