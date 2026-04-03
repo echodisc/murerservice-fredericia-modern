@@ -25,21 +25,21 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
   return (
     <div className="relative group">
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-r from-card to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-l from-card to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent" />
+      <div className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent" />
 
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-5">
           {reviews.map((r, i) => (
             <div
               key={i}
-              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 bg-background rounded-xl p-8"
+              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 bg-card rounded-xl p-5"
             >
-              <div className="text-[18px] text-accent mb-3">★★★★★</div>
-              <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
+              <div className="text-[16px] text-accent mb-2">★★★★★</div>
+              <p className="italic text-[14px] text-muted-foreground leading-relaxed mb-2">
                 &ldquo;{r.quote}&rdquo;
               </p>
-              <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
+              <span className="font-semibold text-[13px] text-muted-foreground">{r.name}</span>
             </div>
           ))}
         </div>
@@ -49,14 +49,14 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
       <button
         onClick={scrollPrev}
         aria-label="Forrige anmeldelse"
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-card/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
       >
         <ChevronLeft size={20} className="text-foreground" />
       </button>
       <button
         onClick={scrollNext}
         aria-label="Næste anmeldelse"
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-card/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
       >
         <ChevronRight size={20} className="text-foreground" />
       </button>
