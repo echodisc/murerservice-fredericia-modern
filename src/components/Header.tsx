@@ -76,7 +76,7 @@ const Header = () => {
               ML Murerservice
               <span
                 className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
-                style={{ transform: scrolled ? 'scaleX(0)' : 'scaleX(1)' }}
+                style={{ transform: scrolled ? 'scaleX(1)' : 'scaleX(0)' }}
               />
             </span>
           </span>
