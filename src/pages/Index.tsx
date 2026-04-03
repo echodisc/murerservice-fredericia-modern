@@ -130,16 +130,6 @@ const Index = () => {
             <ReviewCarousel reviews={reviews} />
           </div>
 
-          {/* Arrow to contact */}
-          <div className="flex justify-center mt-6">
-            <button
-              onClick={() => scrollToSection('kontakt')}
-              aria-label="Scroll ned til kontakt"
-              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
-            >
-              <ChevronDown size={32} strokeWidth={1.5} />
-            </button>
-          </div>
         </div>
       </section>
 
