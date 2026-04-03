@@ -113,5 +113,6 @@ const Flisearbejde = () => {
     <Footer />
   </main>
 );
+};
 
 export default Flisearbejde;

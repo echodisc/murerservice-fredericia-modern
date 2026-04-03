@@ -113,5 +113,6 @@ const Murerarbejde = () => {
     <Footer />
   </main>
 );
+};
 
 export default Murerarbejde;
