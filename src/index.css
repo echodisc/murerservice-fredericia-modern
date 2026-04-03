@@ -39,6 +39,12 @@
     --radius: 0.5rem;
     --red-accent: 0 65% 48%;
 
+    /* Hero text — always white (over dark overlay), Brave won't invert */
+    --hero-text: 0 0% 100%;
+    --hero-text-muted: 0 0% 100%;
+    --hero-text-subtle: 0 0% 100%;
+    --hero-border: 0 0% 100%;
+
     /* Inverse section (footer, dark CTAs) */
     --inverse-bg: 220 20% 8%;
     --inverse-fg: 0 0% 100%;
