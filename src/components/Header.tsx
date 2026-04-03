@@ -121,18 +121,18 @@ const Header = () => {
 
       {/* Mobile slide-in panel */}
       <nav
-        className={`fixed top-0 right-0 bottom-0 w-72 bg-card shadow-xl flex flex-col pt-20 p-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed inset-0 bg-card flex flex-col pt-20 px-8 pb-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ zIndex: 50 }}
+        style={{ zIndex: 60 }}
       >
-        {/* Close button inside panel */}
+        {/* Close button */}
         <button
           onClick={() => setOpen(false)}
-          className="absolute top-5 right-5 text-foreground p-1"
+          className="absolute top-5 right-6 text-foreground p-1"
           aria-label="Luk menu"
         >
-          <X size={24} />
+          <X size={26} />
         </button>
         {navLinks.map((l) =>
           l.isRoute ? (
