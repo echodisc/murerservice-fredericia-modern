@@ -66,9 +66,9 @@ const Index = () => {
             >
               Få et gratis tilbud
             </button>
-            <a
+             <a
               href="tel:+4520329095"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 text-white font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--hero-border)/0.6)] text-[hsl(var(--hero-text))] font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-[hsl(var(--hero-border)/0.1)]"
             >
               Ring 20 32 90 95
             </a>
