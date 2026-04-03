@@ -44,11 +44,11 @@ const ServiceCarousel = () => {
   return (
     <section id="ydelser" className="bg-card py-16 px-6 lg:px-16 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-3">
+        <div className="text-center mb-6 md:mb-12">
+          <h2 className="font-semibold text-foreground text-lg md:text-3xl mb-1 md:mb-3">
             Hvad kan vi hjælpe med?
           </h2>
-          <p className="text-muted-foreground text-base">
+          <p className="text-muted-foreground text-sm md:text-base">
             Vi dækker alle former for murerarbejde i Trekantområdet
           </p>
         </div>

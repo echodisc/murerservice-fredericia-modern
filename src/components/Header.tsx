@@ -39,7 +39,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -63,9 +62,8 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
-        {/* Logo — both states always rendered, crossfade via opacity */}
-        <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative">
-          {/* Scrolled state: red ML + red underline that scales in */}
+        {/* Logo */}
+        <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative whitespace-nowrap">
           <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
             <span className="relative pb-0.5">
               <span className="text-[hsl(var(--red-accent))]">ML</span>
@@ -76,13 +74,12 @@ const Header = () => {
               />
             </span>
           </span>
-          {/* Top state: white, no underline */}
           <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
             <span className="text-white">ML Murerservice</span>
           </span>
         </a>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — use gap with no borders/dividers */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((l) =>
             l.isRoute ? (
@@ -113,20 +110,30 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile overlay */}
+      {/* Mobile overlay — full screen coverage */}
       <div
-        className={`fixed inset-0 top-16 bg-black/40 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 top-0 bg-black/50 transition-opacity duration-300 md:hidden ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+        style={{ zIndex: 40 }}
         onClick={() => setOpen(false)}
       />
 
       {/* Mobile slide-in panel */}
       <nav
-        className={`fixed top-16 right-0 bottom-0 w-72 bg-card shadow-xl flex flex-col p-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 bottom-0 w-72 bg-card shadow-xl flex flex-col pt-20 p-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{ zIndex: 50 }}
       >
+        {/* Close button inside panel */}
+        <button
+          onClick={() => setOpen(false)}
+          className="absolute top-5 right-5 text-foreground p-1"
+          aria-label="Luk menu"
+        >
+          <X size={24} />
+        </button>
         {navLinks.map((l) =>
           l.isRoute ? (
             <Link key={l.label} to={l.href} onClick={handleClick} className={mobileLinkClass}>
