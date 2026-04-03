@@ -56,85 +56,85 @@ const Header = () => {
   const mobileLinkClass = "text-foreground text-lg font-medium no-underline hover:text-primary transition-colors";
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm' : 'bg-black/20 backdrop-blur-[2px]'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
-        {/* Logo */}
-        <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative whitespace-nowrap">
-          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
-            <span className="relative pb-0.5">
-              <span className="text-[hsl(var(--red-accent))]">ML</span>
-              <span className="text-foreground"> Murerservice</span>
-              <span
-                className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
-                style={{ transform: scrolled ? 'scaleX(1)' : 'scaleX(0)' }}
-              />
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+          scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm' : 'bg-black/20 backdrop-blur-[2px]'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative whitespace-nowrap">
+            <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+              <span className="relative pb-0.5">
+                <span className="text-[hsl(var(--red-accent))]">ML</span>
+                <span className="text-foreground"> Murerservice</span>
+                <span
+                  className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
+                  style={{ transform: scrolled ? 'scaleX(1)' : 'scaleX(0)' }}
+                />
+              </span>
             </span>
-          </span>
-          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-            <span className="text-white">ML Murerservice</span>
-          </span>
-        </a>
-
-        {/* Desktop nav — use gap with no borders/dividers */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) =>
-            l.isRoute ? (
-              <Link key={l.label} to={l.href} className={linkClass(scrolled)}>
-                {l.label}
-              </Link>
-            ) : (
-              <a key={l.label} href={l.href} className={linkClass(scrolled)}>
-                {l.label}
-              </a>
-            )
-          )}
-          <a
-            href="tel:+4520329095"
-            className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-5 py-2.5 text-sm transition-colors hover:brightness-90"
-          >
-            Ring 20 32 90 95
+            <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
+              <span className="text-white">ML Murerservice</span>
+            </span>
           </a>
-        </nav>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setOpen(!open)}
-          className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}
-          aria-label={open ? 'Luk menu' : 'Åbn menu'}
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
-      </div>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((l) =>
+              l.isRoute ? (
+                <Link key={l.label} to={l.href} className={linkClass(scrolled)}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.label} href={l.href} className={linkClass(scrolled)}>
+                  {l.label}
+                </a>
+              )
+            )}
+            <a
+              href="tel:+4520329095"
+              className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-5 py-2.5 text-sm transition-colors hover:brightness-90"
+            >
+              Ring 20 32 90 95
+            </a>
+          </nav>
 
-      {/* Mobile overlay */}
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setOpen(!open)}
+            className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}
+            aria-label={open ? 'Luk menu' : 'Åbn menu'}
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile overlay — OUTSIDE header to avoid stacking context issues */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
-          style={{ zIndex: 40 }}
+          className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
-      {/* Mobile slide-in panel */}
+      {/* Mobile slide-in panel — OUTSIDE header */}
       <nav
-        className={`fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] flex flex-col transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 bottom-0 z-[80] w-[75%] max-w-[300px] flex flex-col bg-card transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ zIndex: 60, backgroundColor: 'hsl(0 0% 100%)', boxShadow: '-10px 0 40px rgba(0,0,0,0.4)' }}
+        style={{ boxShadow: '-10px 0 40px rgba(0,0,0,0.4)' }}
       >
         {/* Panel header with logo + close */}
-        <div className="flex items-center justify-between px-6 pt-6 pb-4" style={{ borderBottom: '1px solid hsl(var(--border))' }}>
-          <span className="font-semibold text-base" style={{ color: 'hsl(var(--foreground))' }}>
-            <span style={{ color: 'hsl(var(--red-accent))' }}>ML</span> Murerservice
+        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
+          <span className="font-semibold text-base text-foreground">
+            <span className="text-[hsl(var(--red-accent))]">ML</span> Murerservice
           </span>
           <button
             onClick={() => setOpen(false)}
-            className="p-1 transition-colors"
-            style={{ color: 'hsl(var(--muted-foreground))' }}
+            className="p-1 text-muted-foreground transition-colors"
             aria-label="Luk menu"
           >
             <X size={22} />
@@ -144,14 +144,13 @@ const Header = () => {
         {/* Nav links */}
         <div className="flex flex-col px-6 pt-6 gap-1">
           {navLinks.map((l) => {
-            const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline transition-colors";
-            const style = { color: 'hsl(var(--foreground))' };
+            const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline text-foreground transition-colors";
             return l.isRoute ? (
-              <Link key={l.label} to={l.href} onClick={handleClick} className={cls} style={style}>
+              <Link key={l.label} to={l.href} onClick={handleClick} className={cls}>
                 {l.label}
               </Link>
             ) : (
-              <a key={l.label} href={l.href} onClick={handleClick} className={cls} style={style}>
+              <a key={l.label} href={l.href} onClick={handleClick} className={cls}>
                 {l.label}
               </a>
             );
@@ -163,14 +162,13 @@ const Header = () => {
           <a
             href="tel:+4520329095"
             onClick={handleClick}
-            className="flex items-center justify-center rounded-lg font-bold px-5 py-3.5 text-[15px] transition-colors hover:brightness-90 w-full"
-            style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
+            className="flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-5 py-3.5 text-[15px] transition-colors hover:brightness-90 w-full"
           >
             Ring 20 32 90 95
           </a>
         </div>
       </nav>
-    </header>
+    </>
   );
 };
 
