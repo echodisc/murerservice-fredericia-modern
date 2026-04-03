@@ -119,9 +119,9 @@ const Header = () => {
         onClick={() => setOpen(false)}
       />
 
-      {/* Mobile slide-in panel */}
+      {/* Mobile slide-in panel — right-aligned, 72% width */}
       <nav
-        className={`fixed inset-0 bg-card flex flex-col pt-20 px-8 pb-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 bottom-0 w-[72%] max-w-[280px] bg-card shadow-[-8px_0_30px_rgba(0,0,0,0.3)] flex flex-col pt-20 px-8 pb-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ zIndex: 60 }}
