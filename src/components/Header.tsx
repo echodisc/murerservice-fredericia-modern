@@ -60,19 +60,17 @@ const Header = () => {
   };
 
   const linkClass = (isScrolled: boolean) =>
-    `relative text-base font-semibold no-underline transition-all duration-500 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
+    `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
       isScrolled
         ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
         : 'text-white/90 hover:text-white after:bg-white'
     }`;
 
-  const mobileLinkClass = "text-foreground text-lg font-medium no-underline hover:text-primary transition-colors";
-
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 will-change-transform transition-all duration-500 ease-in-out ${
-          scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm border-b border-border/50' : 'bg-black/20 backdrop-blur-[2px]'
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ease-in-out ${
+          scrolled ? 'bg-card/98 shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
@@ -89,7 +87,7 @@ const Header = () => {
               </span>
             </span>
             <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-              <span className="text-white">ML Murerservice</span>
+              <span className="text-white drop-shadow-md">ML Murerservice</span>
             </span>
           </a>
 
@@ -125,20 +123,18 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile overlay — blurred background */}
+      {/* Mobile overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-[70] bg-black/40 backdrop-blur-md md:hidden"
+          className="fixed inset-0 z-[70] bg-[hsl(0_0%_0%/0.4)] md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
-      {/* Mobile slide-in panel — compact, not full height */}
+      {/* Mobile slide-in panel */}
       <nav
-        className={`fixed top-0 right-0 z-[80] w-[75%] max-w-[300px] flex flex-col rounded-bl-2xl transition-transform duration-300 ease-out md:hidden ${
-          open ? 'translate-x-0' : 'translate-x-full'
-        }`}
-        style={{ backgroundColor: 'hsl(var(--mobile-menu-bg) / 0.95)', boxShadow: '-10px 4px 40px rgba(0,0,0,0.3)' }}
+        className={`fixed top-0 right-0 z-[80] w-[75%] max-w-[300px] flex flex-col rounded-bl-2xl transition-transform duration-300 ease-out md:hidden bg-[hsl(var(--mobile-menu-bg)/0.95)] shadow-[-10px_4px_40px_rgba(0,0,0,0.3)]`}
+        style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
       >
         {/* Panel header with logo + close */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/50">

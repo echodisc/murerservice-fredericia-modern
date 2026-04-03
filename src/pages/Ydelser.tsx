@@ -43,11 +43,10 @@ const specialServices: ServiceItem[] = [
 /* ── Contact overlay modal ── */
 const ContactOverlay = ({ serviceName, onClose }: { serviceName: string; onClose: () => void }) => (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-    <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+    <div className="absolute inset-0 bg-[hsl(var(--foreground)/0.4)]" />
     <div
-      className="relative z-10 bg-card rounded-2xl p-6 md:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
+      className="relative z-10 bg-card rounded-2xl p-6 md:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_60px_hsl(var(--foreground)/0.2)]"
       onClick={(e) => e.stopPropagation()}
-      style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}
     >
       <button
         onClick={onClose}
@@ -56,7 +55,7 @@ const ContactOverlay = ({ serviceName, onClose }: { serviceName: string; onClose
       >
         <X size={18} />
       </button>
-      <p className="text-[13px] uppercase tracking-wider font-medium mb-1" style={{ color: 'hsl(var(--red-accent))' }}>
+      <p className="text-[13px] uppercase tracking-wider font-medium mb-1 text-[hsl(var(--red-accent))]">
         Få tilbud på
       </p>
       <h3 className="font-semibold text-foreground text-lg mb-4">{serviceName}</h3>
@@ -143,7 +142,7 @@ const ServiceBlock = ({ title, services, id, onCardClick }: { title: string; ser
     <div className="max-w-6xl mx-auto">
       <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-8 md:mb-10 text-center">
         {title}
-        <span className="block h-1 w-12 rounded-full mt-3 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
+        <span className="block h-1 w-12 rounded-full mt-3 mx-auto bg-[hsl(var(--red-accent))]" />
       </h2>
       <div className="md:hidden">
         <MobileServiceCarousel services={services} onCardClick={onCardClick} />
@@ -178,7 +177,7 @@ const Ydelser = () => {
             style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
           >
             Vores ydelser
-            <span className="block h-1 w-16 rounded-full mt-4" style={{ background: 'hsl(0 65% 48%)' }} />
+            <span className="block h-1 w-16 rounded-full mt-4 bg-[hsl(var(--red-accent))]" />
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
             ML Murerservice dækker alle former for murer- og flisearbejde i Kolding, Vejle, Fredericia og resten af Trekantområdet.
