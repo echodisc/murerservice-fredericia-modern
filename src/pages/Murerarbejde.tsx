@@ -36,7 +36,9 @@ const services = [
   },
 ];
 
-const Murerarbejde = () => (
+const Murerarbejde = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
   <main>
     <Header />
 

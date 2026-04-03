@@ -22,6 +22,9 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isHome = location.pathname === '/';
+  const navLinks = isHome ? navLinksHome : navLinksOther;
+
   const handleLogoClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     setOpen(false);

@@ -36,7 +36,9 @@ const services = [
   },
 ];
 
-const Flisearbejde = () => (
+const Flisearbejde = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
   <main>
     <Header />
 
