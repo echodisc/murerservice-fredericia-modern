@@ -86,11 +86,11 @@ const Index = () => {
       <ServiceCarousel />
 
       {/* About + Reviews — one combined card */}
-      <section id="om" className="bg-background py-10 px-6 lg:px-16">
+      <section id="om" className="bg-background py-10 px-6 md:px-16">
         <div className="max-w-5xl mx-auto">
           {/* About row */}
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-6">
-            <div className="w-full sm:w-[60%] sm:mx-auto lg:w-[35%]">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-6">
+            <div className="w-[70%] mx-auto md:mx-0 md:w-[32%] flex-shrink-0">
               <img
                 src={aboutImg}
                 alt="Murermester fra ML Murerservice i Fredericia"
@@ -100,7 +100,7 @@ const Index = () => {
                 className="w-full aspect-[4/3] rounded-2xl object-cover"
               />
             </div>
-            <div className="w-full lg:w-[65%] flex flex-col gap-3">
+            <div className="w-full md:w-[68%] flex flex-col gap-3">
               <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
                 Om ML Murerservice
               </span>
@@ -128,9 +128,9 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="py-16 px-6 lg:px-16 bg-card scroll-mt-24">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          <div className="w-full lg:w-1/2 flex flex-col gap-5">
+      <section id="kontakt" className="py-16 px-6 md:px-16 bg-card scroll-mt-24">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+          <div className="w-full md:w-1/2 flex flex-col gap-5">
             <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
               Kontakt
             </span>
@@ -155,7 +155,7 @@ const Index = () => {
               </span>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <ContactForm />
           </div>
         </div>
