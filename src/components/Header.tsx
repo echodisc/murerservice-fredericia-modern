@@ -121,10 +121,10 @@ const Header = () => {
 
       {/* Mobile slide-in panel */}
       <nav
-        className={`fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] flex flex-col transition-transform duration-300 ease-out md:hidden bg-card shadow-[-10px_0_40px_rgba(0,0,0,0.4)] ${
+        className={`fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] flex flex-col transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ zIndex: 60 }}
+        style={{ zIndex: 60, backgroundColor: 'hsl(0 0% 100%)', boxShadow: '-10px 0 40px rgba(0,0,0,0.4)' }}
       >
         {/* Panel header with logo + close */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4" style={{ borderBottom: '1px solid hsl(var(--border))' }}>
