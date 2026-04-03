@@ -1,41 +1,54 @@
 
 
-## Hero Section Plan
+# Plan: Fix Dark Mode, USP Overlap, and Sticky Header
 
-### What we're building
-A full-viewport hero section for the ML Murerservice homepage — split layout on desktop (60/40), stacked on mobile.
+## Problems identified
 
-### Structure
+1. **Dark mode broken in Brave**: The `color-scheme: light dark` meta tag and CSS declaration *invite* browsers to apply dark mode. The `@media (prefers-color-scheme: dark)` block correctly overrides variables, but several components use hardcoded colors (`text-white`, `bg-black/50`, `hsl(0 65% 48%)` inline styles, `bg-[hsl(220_20%_8%)]` in Footer) that don't adapt. The OmMig CTA section uses `bg-foreground` which swaps to a light color in dark mode, breaking the contrast with its `text-white` children.
 
-```text
-┌─────────────────────────────────────────────────┐
-│  HERO (min-h-screen, white bg)                  │
-│  ┌──────────────────────┬──────────────────┐    │
-│  │  60% TEXT SIDE        │  40% IMAGE SIDE  │    │
-│  │                       │                  │    │
-│  │  H1: Din murer i...   │  Placeholder     │    │
-│  │  Sub: Murerarbejde... │  (#e8e8e8 bg)    │    │
-│  │                       │  rounded-2xl     │    │
-│  │  [Få et gratis tilbud]│                  │    │
-│  │  [Ring 20 32 90 95]   │                  │    │
-│  └──────────────────────┴──────────────────┘    │
-│  Mobile: stacks vertically, text first          │
-└─────────────────────────────────────────────────┘
-```
+2. **USP overlapping scroll arrow on mobile**: The USP bar uses `absolute bottom-[env(safe-area-inset-bottom,0px)] mb-20` while the FloatingScrollArrow is `fixed bottom-10`. On Safari, `env(safe-area-inset-bottom)` can be large, pushing USP up into the arrow zone. The `mb-20` (80px) plus `env()` creates unpredictable stacking.
 
-### Files to change
+3. **Header disappearing on Brave mobile**: The header is `fixed top-0` which should always stay visible. Brave's "hide toolbar on scroll" feature can sometimes interfere when elements use `backdrop-blur`. No code issue — likely a browser rendering quirk with `backdrop-blur-md` on fixed elements.
 
-**1. `src/pages/Index.tsx`** — Replace placeholder with the Hero section component.
+4. **App.css leftover**: `#root { max-width: 1280px; padding: 2rem; }` exists but is not imported — safe to ignore, but cleaning it up is good hygiene.
 
-- Full-height section with white background
-- Flexbox row on `lg:` breakpoint, column on mobile
-- Left column (60%): H1 with `clamp(2rem, 5vw, 3rem)` sizing, semi-bold Inter; subtitle at 18px in `#555`; two buttons side by side
-- Right column (40%): rounded-2xl container with `#e8e8e8` background, min-height ~400px
-- 80px vertical padding on desktop, ~40px on mobile
-- Amber CTA: `#e8a838` bg, `#1a1a2e` text, bold, rounded-lg, `px-8 py-4`, hover darkens slightly
-- Outlined CTA: transparent bg, `#1e5fa6` border and text, rounded-lg, same padding, hover fills with light blue
+---
 
-**2. `src/index.css`** — Add Inter font import via `@import url(...)` at top of file.
+## Changes
 
-No other files changed. No new components — keeping it simple in Index.tsx for now.
+### 1. Fix theme system in `src/index.css`
+- Change `:root` to `color-scheme: light` (default light)
+- Keep the `@media (prefers-color-scheme: dark)` block with `color-scheme: dark` inside it
+- Update `index.html` meta tag from `content="light dark"` to `content="light dark"` (keep as-is, it's correct for auto)
+
+### 2. Fix OmMig.tsx CTA section
+- Replace `bg-foreground` with a hardcoded dark background (`bg-[hsl(220_20%_10%)]`) so it stays dark regardless of theme — it's a design-dark section with white text.
+
+### 3. Fix Footer.tsx
+- The footer uses `bg-[hsl(220_20%_8%)]` with `text-white` — this is fine, it's an always-dark section. No change needed.
+
+### 4. Fix USP/arrow overlap on mobile in `src/pages/Index.tsx`
+- Remove `env(safe-area-inset-bottom)` from USP positioning — it's unreliable
+- Use a simpler approach: `bottom-28 md:bottom-20` for USP bar on mobile
+- Move FloatingScrollArrow from `bottom-10` to `bottom-4` so it sits clearly below USP
+
+### 5. Fix header persistence on Brave in `src/components/Header.tsx`
+- Add `-webkit-transform: translateZ(0)` to force GPU compositing, which prevents Brave from treating the header as part of the scrolling content
+- Alternatively add `will-change: transform` to the header element
+
+### 6. Clean up `src/App.css`
+- Clear the file or remove unused Vite boilerplate styles
+
+---
+
+## Technical details
+
+**Files to edit:**
+- `index.html` — keep meta as `light dark`
+- `src/index.css` — set `:root` `color-scheme: light`, add `color-scheme: dark` inside the media query
+- `src/pages/OmMig.tsx` — line 163: change `bg-foreground` to explicit dark color
+- `src/pages/Index.tsx` — line 78: simplify USP bottom positioning
+- `src/components/FloatingScrollArrow.tsx` — line 46: change `bottom-10` to `bottom-4`
+- `src/components/Header.tsx` — line 74: add `will-change-transform` class
+- `src/App.css` — clear unused boilerplate
 
