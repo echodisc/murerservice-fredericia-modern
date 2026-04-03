@@ -60,10 +60,10 @@ const Header = () => {
   };
 
   const linkClass = (isScrolled: boolean) =>
-    `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
+     `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
       isScrolled
         ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
-        : 'text-white/90 hover:text-white after:bg-white'
+        : 'text-[hsl(var(--hero-text)/0.9)] hover:text-[hsl(var(--hero-text))] after:bg-[hsl(var(--hero-text))]'
     }`;
 
   return (
