@@ -77,13 +77,13 @@ const Index = () => {
           </div>
         </div>
 
-        <a
-          href="#ydelser"
+        <button
+          onClick={() => document.getElementById('ydelser')?.scrollIntoView({ behavior: 'smooth' })}
           aria-label="Scroll ned"
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none"
         >
-          <ChevronDown size={36} strokeWidth={1.5} />
-        </a>
+          <ChevronDown size={32} strokeWidth={1.5} />
+        </button>
       </section>
 
       {/* Services Section */}
