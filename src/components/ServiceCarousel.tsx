@@ -59,10 +59,11 @@ const ServiceCarousel = () => {
 
         {/* Mobile: carousel */}
         <div className="md:hidden relative">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-r from-card/80 to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-l from-card/80 to-transparent" />
-
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div
+            className="overflow-hidden"
+            ref={emblaRef}
+            style={{ touchAction: 'pan-y pinch-zoom', maskImage: 'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)' }}
+          >
             <div className="flex -ml-4">
               {serviceSlides.map((slide) => (
                 <div key={slide.title} className="flex-[0_0_85%] min-w-0 pl-4">

@@ -33,15 +33,14 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative h-screen h-[100svh] overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative h-[100svh] overflow-hidden flex flex-col items-center justify-center">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
           width={1920}
           height={1080}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] via-[hsl(var(--hero-overlay-via))] to-[hsl(var(--hero-overlay-to))]" />
 
         {/* Main content */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[140px] md:mb-0">
