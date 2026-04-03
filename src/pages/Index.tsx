@@ -128,9 +128,9 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="py-16 px-6 lg:px-16 bg-card scroll-mt-24">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          <div className="w-full lg:w-1/2 flex flex-col gap-5">
+      <section id="kontakt" className="py-16 px-6 md:px-16 bg-card scroll-mt-24">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+          <div className="w-full md:w-1/2 flex flex-col gap-5">
             <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
               Kontakt
             </span>
@@ -155,7 +155,7 @@ const Index = () => {
               </span>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <ContactForm />
           </div>
         </div>
