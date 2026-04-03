@@ -90,7 +90,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto">
           {/* About row */}
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-6">
-            <div className="w-full lg:w-[35%]">
+            <div className="w-full sm:w-[60%] sm:mx-auto lg:w-[35%]">
               <img
                 src={aboutImg}
                 alt="Murermester fra ML Murerservice i Fredericia"
