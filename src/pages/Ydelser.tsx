@@ -1,8 +1,10 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
+import { X } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContactForm from '@/components/ContactForm';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
 import murer3 from '@/assets/murer-3.jpg';
@@ -38,8 +40,33 @@ const specialServices: ServiceItem[] = [
   { img: murer3, title: 'Omfugning & facaderenovering', text: 'Gamle fuger og slidt facade? Vi fjerner de gamle fuger, renser, reparerer og omfuger, så facaden fremstår flot og velholdt.' },
 ];
 
-/* ── Mobile carousel for each category ── */
-const MobileServiceCarousel = ({ services }: { services: ServiceItem[] }) => {
+/* ── Contact overlay modal ── */
+const ContactOverlay = ({ serviceName, onClose }: { serviceName: string; onClose: () => void }) => (
+  <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+    <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+    <div
+      className="relative z-10 bg-card rounded-2xl p-6 md:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
+      style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-1.5 rounded-full bg-muted/50 hover:bg-muted text-muted-foreground transition-colors"
+        aria-label="Luk"
+      >
+        <X size={18} />
+      </button>
+      <p className="text-[13px] uppercase tracking-wider font-medium mb-1" style={{ color: 'hsl(var(--red-accent))' }}>
+        Få tilbud på
+      </p>
+      <h3 className="font-semibold text-foreground text-lg mb-4">{serviceName}</h3>
+      <ContactForm />
+    </div>
+  </div>
+);
+
+/* ── Mobile carousel ── */
+const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceItem[]; onCardClick: (title: string) => void }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center', slidesToScroll: 1 });
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
@@ -54,12 +81,19 @@ const MobileServiceCarousel = ({ services }: { services: ServiceItem[] }) => {
   }, [emblaApi]);
 
   return (
-    <div>
+    <div className="relative">
+      {/* Frosted edges */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-r from-card/80 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-l from-card/80 to-transparent" />
+
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4">
           {services.map((s) => (
             <div key={s.title} className="flex-[0_0_85%] min-w-0 pl-4">
-              <div className="bg-background rounded-xl overflow-hidden border border-border">
+              <div
+                className="bg-background rounded-xl overflow-hidden border border-border cursor-pointer active:scale-[0.98] transition-transform"
+                onClick={() => onCardClick(s.title)}
+              >
                 <img src={s.img} alt={s.title} loading="lazy" className="w-full h-[200px] object-cover" />
                 <div className="p-4">
                   <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
@@ -70,7 +104,6 @@ const MobileServiceCarousel = ({ services }: { services: ServiceItem[] }) => {
           ))}
         </div>
       </div>
-      {/* Dots */}
       {count > 1 && (
         <div className="flex justify-center gap-2 mt-4">
           {Array.from({ length: count }).map((_, i) => (
@@ -87,10 +120,14 @@ const MobileServiceCarousel = ({ services }: { services: ServiceItem[] }) => {
 };
 
 /* ── Desktop grid ── */
-const DesktopServiceGrid = ({ services }: { services: ServiceItem[] }) => (
+const DesktopServiceGrid = ({ services, onCardClick }: { services: ServiceItem[]; onCardClick: (title: string) => void }) => (
   <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
     {services.map((s) => (
-      <div key={s.title} className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow">
+      <div
+        key={s.title}
+        className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all cursor-pointer hover:scale-[1.02]"
+        onClick={() => onCardClick(s.title)}
+      >
         <img src={s.img} alt={s.title} loading="lazy" className="w-full h-[180px] object-cover" />
         <div className="p-5">
           <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
@@ -101,25 +138,30 @@ const DesktopServiceGrid = ({ services }: { services: ServiceItem[] }) => (
   </div>
 );
 
-const ServiceBlock = ({ title, services, id }: { title: string; services: ServiceItem[]; id: string }) => (
+const ServiceBlock = ({ title, services, id, onCardClick }: { title: string; services: ServiceItem[]; id: string; onCardClick: (title: string) => void }) => (
   <section id={id} className="py-12 md:py-16 px-6 lg:px-16 scroll-mt-24">
     <div className="max-w-6xl mx-auto">
       <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-8 md:mb-10 text-center">
         {title}
         <span className="block h-1 w-12 rounded-full mt-3 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
       </h2>
-      {/* Mobile: carousel, Desktop: grid */}
       <div className="md:hidden">
-        <MobileServiceCarousel services={services} />
+        <MobileServiceCarousel services={services} onCardClick={onCardClick} />
       </div>
       <div className="hidden md:block">
-        <DesktopServiceGrid services={services} />
+        <DesktopServiceGrid services={services} onCardClick={onCardClick} />
       </div>
     </div>
   </section>
 );
 
 const Ydelser = () => {
+  const [contactService, setContactService] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = contactService ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [contactService]);
 
   return (
     <main>
@@ -144,19 +186,14 @@ const Ydelser = () => {
         </div>
       </section>
 
-      {/* Murerarbejde */}
       <div className="bg-card">
-        <ServiceBlock title="Murerarbejde" services={murerServices} id="murerarbejde" />
+        <ServiceBlock title="Murerarbejde" services={murerServices} id="murerarbejde" onCardClick={setContactService} />
       </div>
-
-      {/* Flisearbejde */}
       <div className="bg-background">
-        <ServiceBlock title="Flisearbejde" services={fliseServices} id="flisearbejde" />
+        <ServiceBlock title="Flisearbejde" services={fliseServices} id="flisearbejde" onCardClick={setContactService} />
       </div>
-
-      {/* Specialarbejde */}
       <div className="bg-card">
-        <ServiceBlock title="Specialarbejde" services={specialServices} id="specialarbejde" />
+        <ServiceBlock title="Specialarbejde" services={specialServices} id="specialarbejde" onCardClick={setContactService} />
       </div>
 
       {/* CTA */}
@@ -182,6 +219,11 @@ const Ydelser = () => {
       </section>
 
       <Footer />
+
+      {/* Contact overlay */}
+      {contactService && (
+        <ContactOverlay serviceName={contactService} onClose={() => setContactService(null)} />
+      )}
     </main>
   );
 };
