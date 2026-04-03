@@ -69,7 +69,7 @@ const Index = () => {
         </div>
 
         {/* USP Bar — inside hero */}
-        <div className="absolute bottom-28 left-0 right-0 z-10 px-6 lg:px-16">
+        <div className="absolute bottom-16 left-0 right-0 z-10 px-6 lg:px-16">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-2">
