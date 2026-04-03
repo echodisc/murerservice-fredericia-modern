@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
-import flise2 from '@/assets/flise-2.jpg';
+
 
 const serviceSlides = [
   { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.', hash: 'murerarbejde' },
