@@ -48,7 +48,11 @@ const Header = () => {
   const handleClick = () => setOpen(false);
 
   const linkClass = (isScrolled: boolean) =>
-    `text-[15px] no-underline transition-colors ${isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'}`;
+    `relative text-[15px] font-semibold no-underline transition-colors pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
+      isScrolled
+        ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
+        : 'text-white/90 hover:text-white after:bg-white'
+    }`;
 
   const mobileLinkClass = "text-foreground text-lg font-medium no-underline hover:text-primary transition-colors";
 
