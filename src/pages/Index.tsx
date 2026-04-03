@@ -25,13 +25,7 @@ const reviews = [
   { quote: 'Reparation af skorsten klaret på én dag. Dygtig og effektiv.', name: '— Anne, Børkop' },
 ];
 
-const scrollToSection = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) {
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-};
+
 
 const Index = () => {
   return (
