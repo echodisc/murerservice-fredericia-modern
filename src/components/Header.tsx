@@ -14,13 +14,30 @@ const navLinksOther = [
   { label: 'Kontakt', href: '/#kontakt', isRoute: false },
 ];
 
+const heroPages = ['/', '/om'];
+
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const isHome = location.pathname === '/';
+  const hasHero = heroPages.includes(location.pathname);
   const navLinks = isHome ? navLinksHome : navLinksOther;
+
+  // Solid from start on non-hero pages
+  const isTransparent = hasHero && !scrolled && !open;
+
+  useEffect(() => {
+    if (!hasHero) return;
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [hasHero]);
 
   const handleLogoClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -52,22 +69,38 @@ const Header = () => {
     }
   };
 
-  const linkClass =
-    'relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]';
+  // Text/link colors based on state
+  const textColor = isTransparent
+    ? 'text-[hsl(var(--hero-text))]'
+    : 'text-foreground';
+  const textMuted = isTransparent
+    ? 'text-[hsl(var(--hero-text)/0.8)]'
+    : 'text-foreground/80';
+  const redAccent = isTransparent ? '' : 'text-[hsl(var(--red-accent))]';
+  const underlineBg = isTransparent ? 'bg-transparent' : 'bg-[hsl(var(--red-accent))]';
+  const afterBg = isTransparent
+    ? 'after:bg-[hsl(var(--hero-text))]'
+    : 'after:bg-[hsl(var(--red-accent))]';
+
+  const linkClass = `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${textMuted} hover:${textColor} ${afterBg}`;
 
   return (
     <>
       <header
-        className="sticky top-0 z-50 bg-card shadow-sm border-b border-border/50"
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          isTransparent
+            ? 'bg-transparent border-b border-transparent'
+            : 'bg-card shadow-sm border-b border-border/50'
+        }`}
         style={{ WebkitTransform: 'translateZ(0)', willChange: 'transform' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline whitespace-nowrap">
+          <a href="/" onClick={handleLogoClick} className={`font-semibold text-lg no-underline whitespace-nowrap ${textColor}`}>
             <span className="relative pb-0.5">
-              <span className="text-[hsl(var(--red-accent))]">ML</span>
-              <span className="text-foreground"> Murerservice</span>
-              <span className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))]" />
+              <span className={redAccent || textColor}>ML</span>
+              <span> Murerservice</span>
+              <span className={`absolute left-0 right-0 bottom-0 h-[3px] rounded-full transition-colors duration-300 ${underlineBg}`} />
             </span>
           </a>
 
@@ -79,9 +112,9 @@ const Header = () => {
                   {l.label}
                 </Link>
               ) : (
-              <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={linkClass}>
-                {l.label}
-              </a>
+                <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={linkClass}>
+                  {l.label}
+                </a>
               )
             )}
             <a
@@ -95,7 +128,7 @@ const Header = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden p-1 text-foreground"
+            className={`md:hidden p-1 ${textColor}`}
             aria-label={open ? 'Luk menu' : 'Åbn menu'}
           >
             {open ? <X size={26} /> : <Menu size={26} />}
@@ -116,7 +149,6 @@ const Header = () => {
         className={`fixed top-0 right-0 z-[80] w-[75%] max-w-[300px] flex flex-col rounded-bl-2xl transition-transform duration-300 ease-out md:hidden bg-[hsl(var(--mobile-menu-bg)/0.95)] shadow-[-10px_4px_40px_rgba(0,0,0,0.3)]`}
         style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
       >
-        {/* Panel header with logo + close */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/50">
           <span className="font-semibold text-base text-foreground">
             <span className="text-[hsl(var(--red-accent))]">ML</span> Murerservice
@@ -130,7 +162,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Nav links */}
         <div className="flex flex-col px-6 pt-4 gap-1">
           {navLinks.map((l) => {
             const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline text-foreground transition-colors";
@@ -146,7 +177,6 @@ const Header = () => {
           })}
         </div>
 
-        {/* CTA right after links */}
         <div className="px-6 pt-4 pb-6">
           <a
             href="tel:+4520329095"
