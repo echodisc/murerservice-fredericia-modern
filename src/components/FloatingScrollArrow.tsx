@@ -43,7 +43,7 @@ const FloatingScrollArrow = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 left-0 right-0 z-40 flex justify-center pointer-events-none">
+    <div className="fixed bottom-10 md:bottom-6 left-0 right-0 z-40 flex justify-center pointer-events-none">
       <button
         onClick={handleClick}
         aria-label="Scroll ned"
