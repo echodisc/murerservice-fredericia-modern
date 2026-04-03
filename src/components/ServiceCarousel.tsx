@@ -17,6 +17,8 @@ const serviceSlides = [
 const ServiceCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -26,13 +28,17 @@ const ServiceCarousel = () => {
     const onScroll = () => {
       const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
       setScrollProgress(progress);
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
     };
     emblaApi.on('scroll', onScroll);
     emblaApi.on('reInit', onScroll);
+    emblaApi.on('select', onScroll);
     onScroll();
     return () => {
       emblaApi.off('scroll', onScroll);
       emblaApi.off('reInit', onScroll);
+      emblaApi.off('select', onScroll);
     };
   }, [emblaApi]);
 
@@ -49,9 +55,9 @@ const ServiceCarousel = () => {
         </div>
 
         <div className="relative group">
-          {/* Fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-card to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-card to-transparent" />
+          {/* Fade edges — hidden at extremes */}
+          <div className={`pointer-events-none absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-card to-transparent transition-opacity duration-200 ${canScrollPrev ? 'opacity-100' : 'opacity-0'}`} />
+          <div className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-card to-transparent transition-opacity duration-200 ${canScrollNext ? 'opacity-100' : 'opacity-0'}`} />
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex -ml-5">
@@ -87,29 +93,33 @@ const ServiceCarousel = () => {
             </div>
           </div>
 
-          {/* Nav arrows */}
-          <button
-            onClick={scrollPrev}
-            aria-label="Forrige ydelse"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronLeft size={20} className="text-foreground" />
-          </button>
-          <button
-            onClick={scrollNext}
-            aria-label="Næste ydelse"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronRight size={20} className="text-foreground" />
-          </button>
+          {/* Nav arrows — hidden at extremes */}
+          {canScrollPrev && (
+            <button
+              onClick={scrollPrev}
+              aria-label="Forrige ydelse"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft size={20} className="text-foreground" />
+            </button>
+          )}
+          {canScrollNext && (
+            <button
+              onClick={scrollNext}
+              aria-label="Næste ydelse"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight size={20} className="text-foreground" />
+            </button>
+          )}
         </div>
 
         {/* Progress bar */}
         <div className="mt-6 mx-auto max-w-[200px]">
           <div className="h-[3px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-primary transition-all duration-150"
-              style={{ width: '30%', left: `${scrollProgress * 70}%` }}
+              className="absolute top-0 left-0 h-full rounded-full bg-primary"
+              style={{ width: '25%', transform: `translateX(${scrollProgress * 300}%)`, transition: 'transform 50ms linear' }}
             />
           </div>
         </div>
