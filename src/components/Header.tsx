@@ -72,7 +72,7 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm' : 'bg-black/20 backdrop-blur-[2px]'
+          scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm border-b border-border/50' : 'bg-black/20 backdrop-blur-[2px]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
@@ -138,7 +138,7 @@ const Header = () => {
         className={`fixed top-0 right-0 z-[80] w-[75%] max-w-[300px] flex flex-col rounded-bl-2xl transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ backgroundColor: 'hsla(30, 10%, 96%, 0.92)', boxShadow: '-10px 4px 40px rgba(0,0,0,0.3)' }}
+        style={{ backgroundColor: 'hsl(var(--mobile-menu-bg) / 0.95)', boxShadow: '-10px 4px 40px rgba(0,0,0,0.3)' }}
       >
         {/* Panel header with logo + close */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/50">
