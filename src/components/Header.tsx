@@ -2,11 +2,18 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-const navLinks = [
+const navLinksHome = [
   { label: 'Ydelser', href: '#ydelser' },
   { label: 'Om os', href: '#om' },
   { label: 'Anmeldelser', href: '#anmeldelser' },
   { label: 'Kontakt', href: '#kontakt' },
+];
+
+const navLinksOther = [
+  { label: 'Ydelser', href: '/#ydelser' },
+  { label: 'Om os', href: '/om' },
+  { label: 'Anmeldelser', href: '/#anmeldelser' },
+  { label: 'Kontakt', href: '/#kontakt' },
 ];
 
 const Header = () => {
@@ -14,6 +21,9 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isHome = location.pathname === '/';
+  const navLinks = isHome ? navLinksHome : navLinksOther;
 
   const handleLogoClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -35,7 +36,9 @@ const services = [
   },
 ];
 
-const Murerarbejde = () => (
+const Murerarbejde = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
   <main>
     <Header />
 
@@ -110,5 +113,6 @@ const Murerarbejde = () => (
     <Footer />
   </main>
 );
+};
 
 export default Murerarbejde;

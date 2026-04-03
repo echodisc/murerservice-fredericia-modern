@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ContactForm from '@/components/ContactForm';
+
 import heroImg from '@/assets/om-mig-hero.jpg';
 import haandvaerkImg from '@/assets/om-haandvaerk.jpg';
 import projektImg from '@/assets/om-projekt.jpg';
@@ -30,6 +31,8 @@ const anecdotes = [
 ];
 
 const OmMig = () => {
+  React.useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
     <main>
       <Header />
