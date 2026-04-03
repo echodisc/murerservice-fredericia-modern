@@ -63,7 +63,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <a href="/" onClick={handleLogoClick} className={`font-semibold text-lg no-underline transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}>
-          ML Murerservice
+          <span className={scrolled ? 'text-[hsl(var(--red-accent))]' : ''}>ML</span> Murerservice
         </a>
 
         {/* Desktop nav */}
