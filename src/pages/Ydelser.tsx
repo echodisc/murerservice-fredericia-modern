@@ -70,7 +70,6 @@ const ServiceBlock = ({ title, services, id }: { title: string; services: typeof
 );
 
 const Ydelser = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <main>

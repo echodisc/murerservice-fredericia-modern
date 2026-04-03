@@ -31,7 +31,6 @@ const anecdotes = [
 ];
 
 const OmMig = () => {
-  React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <main>
