@@ -17,6 +17,8 @@ const serviceSlides = [
 const ServiceCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -26,13 +28,17 @@ const ServiceCarousel = () => {
     const onScroll = () => {
       const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
       setScrollProgress(progress);
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
     };
     emblaApi.on('scroll', onScroll);
     emblaApi.on('reInit', onScroll);
+    emblaApi.on('select', onScroll);
     onScroll();
     return () => {
       emblaApi.off('scroll', onScroll);
       emblaApi.off('reInit', onScroll);
+      emblaApi.off('select', onScroll);
     };
   }, [emblaApi]);
 
