@@ -1,19 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const navLinksHome = [
-  { label: 'Ydelser', href: '#ydelser' },
-  { label: 'Om os', href: '#om' },
-  { label: 'Anmeldelser', href: '#anmeldelser' },
-  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Ydelser', href: '#ydelser', isRoute: false },
+  { label: 'Om os', href: '#om', isRoute: false },
+  { label: 'Anmeldelser', href: '#anmeldelser', isRoute: false },
+  { label: 'Kontakt', href: '#kontakt', isRoute: false },
 ];
 
 const navLinksOther = [
-  { label: 'Ydelser', href: '/ydelser' },
-  { label: 'Om os', href: '/om' },
-  { label: 'Anmeldelser', href: '/#anmeldelser' },
-  { label: 'Kontakt', href: '/#kontakt' },
+  { label: 'Ydelser', href: '/ydelser', isRoute: true },
+  { label: 'Om os', href: '/om', isRoute: true },
+  { label: 'Anmeldelser', href: '/#anmeldelser', isRoute: false },
+  { label: 'Kontakt', href: '/#kontakt', isRoute: false },
 ];
 
 const Header = () => {
@@ -49,6 +49,11 @@ const Header = () => {
 
   const handleClick = () => setOpen(false);
 
+  const linkClass = (isScrolled: boolean) =>
+    `text-[15px] no-underline transition-colors ${isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'}`;
+
+  const mobileLinkClass = "text-foreground text-lg font-medium no-underline hover:text-primary transition-colors";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -63,15 +68,17 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className={`text-[15px] no-underline transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'}`}
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.isRoute ? (
+              <Link key={l.label} to={l.href} className={linkClass(scrolled)}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.href} className={linkClass(scrolled)}>
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="tel:+4520329095"
             className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-5 py-2.5 text-sm transition-colors hover:brightness-90"
@@ -104,16 +111,17 @@ const Header = () => {
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {navLinks.map((l) => (
-          <a
-            key={l.label}
-            href={l.href}
-            onClick={handleClick}
-            className="text-foreground text-lg font-medium no-underline hover:text-primary transition-colors"
-          >
-            {l.label}
-          </a>
-        ))}
+        {navLinks.map((l) =>
+          l.isRoute ? (
+            <Link key={l.label} to={l.href} onClick={handleClick} className={mobileLinkClass}>
+              {l.label}
+            </Link>
+          ) : (
+            <a key={l.label} href={l.href} onClick={handleClick} className={mobileLinkClass}>
+              {l.label}
+            </a>
+          )
+        )}
         <a
           href="tel:+4520329095"
           onClick={handleClick}
