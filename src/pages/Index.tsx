@@ -7,10 +7,6 @@ import Footer from '@/components/Footer';
 import ReviewCarousel from '@/components/ReviewCarousel';
 import Header from '@/components/Header';
 import ServiceCarousel from '@/components/ServiceCarousel';
-import ContactForm from '@/components/ContactForm';
-import Footer from '@/components/Footer';
-import ReviewCarousel from '@/components/ReviewCarousel';
-import Header from '@/components/Header';
 
 const trustItems = [
   { icon: CheckCircle, label: 'Godt håndværk', text: 'Kvalitet i hver eneste opgave' },
