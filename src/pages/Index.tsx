@@ -87,10 +87,10 @@ const Index = () => {
 
       {/* About + Reviews — one combined card */}
       <section id="om" className="bg-background py-10 px-6 lg:px-16">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* About row */}
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-8">
-            <div className="w-full lg:w-[38%]">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-6">
+            <div className="w-full lg:w-[35%]">
               <img
                 src={aboutImg}
                 alt="Murermester fra ML Murerservice i Fredericia"
@@ -100,7 +100,7 @@ const Index = () => {
                 className="w-full aspect-[4/3] rounded-2xl object-cover"
               />
             </div>
-            <div className="w-full lg:w-[62%] flex flex-col gap-3">
+            <div className="w-full lg:w-[65%] flex flex-col gap-3">
               <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
                 Om ML Murerservice
               </span>
@@ -118,7 +118,7 @@ const Index = () => {
 
           {/* Reviews — tight */}
           <div id="anmeldelser" className="scroll-mt-24">
-            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-2">
+            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-1">
               Det siger vores kunder
             </h2>
             <ReviewCarousel reviews={reviews} />
