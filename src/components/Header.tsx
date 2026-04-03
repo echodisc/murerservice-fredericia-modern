@@ -44,7 +44,20 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  const handleClick = () => setOpen(false);
+  const handleClick = (e?: React.MouseEvent, href?: string) => {
+    setOpen(false);
+    if (href?.startsWith('#')) {
+      e?.preventDefault();
+      const id = href.slice(1);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 50);
+    }
+  };
 
   const linkClass = (isScrolled: boolean) =>
     `relative text-base font-semibold no-underline transition-all duration-500 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
