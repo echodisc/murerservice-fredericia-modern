@@ -33,7 +33,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center pb-20 md:pb-0">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
