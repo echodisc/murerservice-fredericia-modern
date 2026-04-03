@@ -127,7 +127,7 @@ const DesktopServiceGrid = ({ services, onCardClick }: { services: ServiceItem[]
         className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-[box-shadow,transform] cursor-pointer hover:scale-[1.02]"
         onClick={() => onCardClick(s.title)}
       >
-        <img src={s.img} alt={s.title} loading="lazy" className="w-full h-[180px] object-cover" />
+        <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[180px] object-cover" />
         <div className="p-5">
           <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
           <p className="text-muted-foreground text-[14px] leading-relaxed">{s.text}</p>
