@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
@@ -123,22 +123,6 @@ const ServiceCarousel = () => {
           </div>
         </div>
 
-        {/* Scroll down arrow */}
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={() => {
-              const el = document.getElementById('om');
-              if (el) {
-                const top = el.getBoundingClientRect().top + window.scrollY;
-                window.scrollTo({ top, behavior: 'smooth' });
-              }
-            }}
-            aria-label="Scroll ned til om os"
-            className="text-muted-foreground/50 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
-          >
-            <ChevronDown size={32} strokeWidth={1.5} />
-          </button>
-        </div>
       </div>
     </section>
   );

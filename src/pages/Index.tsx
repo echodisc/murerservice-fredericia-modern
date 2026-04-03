@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
+import { CheckCircle, Clock, Users } from 'lucide-react';
+import FloatingScrollArrow from '@/components/FloatingScrollArrow';
 import heroImg from '@/assets/hero-fullscreen.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
 import ContactForm from '@/components/ContactForm';
@@ -24,13 +25,7 @@ const reviews = [
   { quote: 'Reparation af skorsten klaret på én dag. Dygtig og effektiv.', name: '— Anne, Børkop' },
 ];
 
-const scrollToSection = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) {
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-};
+
 
 const Index = () => {
   return (
@@ -85,13 +80,6 @@ const Index = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => scrollToSection('ydelser')}
-          aria-label="Scroll ned"
-          className="absolute bottom-4 left-0 right-0 z-10 flex justify-center text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
-        >
-          <ChevronDown size={32} strokeWidth={1.5} />
-        </button>
       </section>
 
       {/* Services Section */}
@@ -136,16 +124,6 @@ const Index = () => {
             <ReviewCarousel reviews={reviews} />
           </div>
 
-          {/* Arrow to contact */}
-          <div className="flex justify-center mt-6">
-            <button
-              onClick={() => scrollToSection('kontakt')}
-              aria-label="Scroll ned til kontakt"
-              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
-            >
-              <ChevronDown size={32} strokeWidth={1.5} />
-            </button>
-          </div>
         </div>
       </section>
 
@@ -182,6 +160,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <FloatingScrollArrow />
       <Footer />
     </main>
   );
