@@ -19,27 +19,11 @@ const trustItems = [
   { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
 ];
 
-const serviceCards = [
-  {
-    images: [
-      { src: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding' },
-      { src: murer2, alt: 'Skorstensreparation af murer i Fredericia' },
-      { src: murer3, alt: 'Omfugning af murværk i Trekantområdet' },
-    ],
-    title: 'Murerarbejde',
-    text: 'Reparationer, ombygninger, tagarbejde, skorstene og meget mere. Solid erfaring med alle typer muropgaver.',
-    link: '/murerarbejde',
-  },
-  {
-    images: [
-      { src: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle' },
-      { src: flise2, alt: 'Køkken med fliser udført af ML Murerservice' },
-      { src: flise3, alt: 'Terrasse med fliser i Kolding' },
-    ],
-    title: 'Flisearbejde',
-    text: 'Badeværelser, køkkener, terrasser og specialopgaver. Præcist flisearbejde med øje for detaljen.',
-    link: '/flisearbejde',
-  },
+const serviceSlides = [
+  { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.' },
+  { img: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle', title: 'Flisearbejde', text: 'Badeværelser, køkkener, terrasser og specialopgaver.' },
+  { img: murer2, alt: 'Reparation af murværk i Fredericia', title: 'Reparationer', text: 'Revner, fugtskader og vedligehold af murværk.' },
+  { img: flise2, alt: 'Skorsten repareret af ML Murerservice', title: 'Skorstene', text: 'Reparation og opbygning af skorstene.' },
 ];
 
 const reviews = [
