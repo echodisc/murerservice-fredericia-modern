@@ -48,7 +48,7 @@ const Header = () => {
   const handleClick = () => setOpen(false);
 
   const linkClass = (isScrolled: boolean) =>
-    `relative text-[15px] font-semibold no-underline transition-colors pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
+    `relative text-base font-semibold no-underline transition-all duration-500 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
       isScrolled
         ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
         : 'text-white/90 hover:text-white after:bg-white'
@@ -58,18 +58,22 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         scrolled ? 'bg-card/95 backdrop-blur-md shadow-sm' : 'bg-black/20 backdrop-blur-[2px]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
-        {/* Logo */}
-        <a href="/" onClick={handleLogoClick} className={`font-semibold text-lg no-underline transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}>
-          {scrolled ? (
-            <><span className="text-[hsl(var(--red-accent))]">ML</span> Murerservice</>
-          ) : (
-            <span className="border-b-[3px] border-[hsl(var(--red-accent))] pb-0.5">ML Murerservice</span>
-          )}
+        {/* Logo — both states always rendered, crossfade via opacity */}
+        <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative">
+          {/* Scrolled state: red ML */}
+          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+            <span className="text-[hsl(var(--red-accent))]">ML</span>
+            <span className="text-foreground"> Murerservice</span>
+          </span>
+          {/* Top state: white with red underline */}
+          <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
+            <span className="text-white border-b-[3px] border-[hsl(var(--red-accent))] pb-0.5">ML Murerservice</span>
+          </span>
         </a>
 
         {/* Desktop nav */}
