@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 
 const footerLinks = [
   { label: 'Hjem', href: '/' },
+  { label: 'Ydelser', href: '/ydelser' },
   { label: 'Om mig', href: '/om' },
-  { label: 'Murerarbejde', href: '/murerarbejde' },
-  { label: 'Flisearbejde', href: '/flisearbejde' },
   { label: 'Kontakt', href: '/#kontakt' },
 ];
 
