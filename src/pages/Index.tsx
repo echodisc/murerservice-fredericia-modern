@@ -50,7 +50,7 @@ const Index = () => {
             Din murer i Kolding, Vejle &amp; Fredericia
             <span className="block h-1 w-16 rounded-full mt-4 mx-auto bg-[hsl(var(--red-accent))]" />
           </h1>
-          <p className="text-white/80 text-base md:text-xl max-w-xl">
+          <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-1">
