@@ -17,13 +17,13 @@ const ContactForm = () => {
 
   if (submitted) {
     return (
-      <div className="w-full max-w-[440px] rounded-2xl p-10 text-center bg-card border border-border">
-        <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: 'hsl(var(--red-accent) / 0.1)' }}>
-          <span className="text-xl" style={{ color: 'hsl(var(--red-accent))' }}>✓</span>
+      <div className="w-full max-w-[440px] rounded-2xl p-10 text-center bg-card border border-border animate-in fade-in duration-300">
+        <div className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style={{ background: 'hsl(var(--red-accent) / 0.1)' }}>
+          <span className="text-2xl" style={{ color: 'hsl(var(--red-accent))' }}>✓</span>
         </div>
-        <p className="text-foreground text-lg font-semibold mb-2">Tak for din besked!</p>
-        <p className="text-muted-foreground text-sm">
-          Jeg vender tilbage hurtigst muligt.
+        <p className="text-foreground text-xl font-semibold mb-2">Tak for din henvendelse!</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          Vi sætter stor pris på din tillid. Du hører fra os hurtigst muligt — typisk inden for samme dag.
         </p>
       </div>
     );

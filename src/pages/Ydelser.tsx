@@ -19,11 +19,11 @@ import fliseTerrace from '@/assets/flise-terrace.jpg';
 type ServiceItem = { img: string; title: string; text: string };
 
 const murerServices: ServiceItem[] = [
-  { img: murerImg, title: 'Nybyggeri & tilbygninger', text: 'Vi opfører murværk til nybyggeri og tilbygninger i alle størrelser. Uanset om det er et nyt hus, en garage eller en udestue, sikrer vi solide og holdbare konstruktioner.' },
   { img: murerRepair, title: 'Reparation & vedligehold', text: 'Revner, fugtskader og slid kan svække dit murværk over tid. Vi udbedrer skader hurtigt og effektivt, så dit hus bevarer sin styrke og sit udseende.' },
   { img: murer2, title: 'Skorstensarbejde', text: 'Fra reparation af eksisterende skorstene til opbygning af nye. Vi sikrer at din skorsten er tæt, stabil og opfylder alle krav.' },
   { img: murerChimney, title: 'Omfugning', text: 'Gamle og smuldrede fuger kan lade fugt trænge ind i murværket. Vi fjerner de gamle fuger og erstatter dem med nye.' },
-  { img: murer3, title: 'Facaderenovering', text: 'Giv dit hus et nyt udtryk med en grundig facaderenovering. Vi renser, reparerer og omfuger, så facaden fremstår flot og velholdt.' },
+  { img: murerImg, title: 'Facaderenovering', text: 'Giv dit hus et nyt udtryk med en grundig facaderenovering. Vi renser, reparerer og omfuger, så facaden fremstår flot og velholdt.' },
+  { img: murer3, title: 'Specialarbejde', text: 'Har du en anden muropgave i tankerne? Vi tager gerne specialopgaver — kontakt os med din idé, så finder vi en løsning.' },
 ];
 
 const fliseServices: ServiceItem[] = [
@@ -31,13 +31,7 @@ const fliseServices: ServiceItem[] = [
   { img: fliseBathroom, title: 'Gulvvarme & vådrum', text: 'Fliser med gulvvarme er den perfekte kombination af komfort og holdbarhed. Vi lægger fliser over gulvvarmesystemer og sørger for korrekt vådrumssikring.' },
   { img: flise2, title: 'Køkkenfliser', text: 'Fliser i køkkenet giver et praktisk og flot resultat. Vi lægger stænkplader, gulvfliser og specialdesign, der passer til netop dit køkken.' },
   { img: fliseTerrace, title: 'Terrasser & udendørs', text: 'Udendørs flisearbejde kræver materialer der kan tåle det danske vejr. Vi arbejder med frostfaste fliser, natursten og klinker.' },
-  { img: flise3, title: 'Specialopgaver', text: 'Har du en unik idé? Vi udfører specialopgaver som mønsterlagte fliser, natursten på vægge, trappebelægning og andet flisearbejde.' },
-];
-
-const specialServices: ServiceItem[] = [
-  { img: murerChimney, title: 'Skorstensarbejde', text: 'Fra reparation af eksisterende skorstene til opbygning af nye. Vi sikrer at din skorsten er tæt, stabil og opfylder alle krav.' },
-  { img: murerRepair, title: 'Reparation & vedligehold', text: 'Revner, fugtskader og slid kan svække dit murværk over tid. Vi udbedrer skader hurtigt og effektivt, så dit hus bevarer sin styrke og sit udseende.' },
-  { img: murer3, title: 'Omfugning & facaderenovering', text: 'Gamle fuger og slidt facade? Vi fjerner de gamle fuger, renser, reparerer og omfuger, så facaden fremstår flot og velholdt.' },
+  { img: flise3, title: 'Specialarbejde', text: 'Har du en unik idé til flisearbejde? Vi udfører specialopgaver som mønsterlagte fliser, natursten på vægge, trappebelægning og meget mere — kontakt os.' },
 ];
 
 /* ── Contact overlay modal ── */
@@ -81,7 +75,6 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
 
   return (
     <div className="relative">
-      {/* Frosted edges */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-r from-card/80 to-transparent" />
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-l from-card/80 to-transparent" />
 
@@ -109,7 +102,7 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
             <button
               key={i}
               onClick={() => emblaApi?.scrollTo(i)}
-              className={`w-2 h-2 rounded-full transition-all ${i === selected ? 'w-5 bg-[hsl(var(--red-accent))]' : 'bg-muted-foreground/30'}`}
+              className={`w-2 h-2 rounded-full transition-colors ${i === selected ? 'w-5 bg-[hsl(var(--red-accent))]' : 'bg-muted-foreground/30'}`}
             />
           ))}
         </div>
@@ -176,7 +169,7 @@ const Ydelser = () => {
             className="font-semibold text-foreground leading-tight mb-4"
             style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
           >
-            Vores ydelser
+            Murer- og fliseydelser
             <span className="block h-1 w-16 rounded-full mt-4 bg-[hsl(var(--red-accent))]" />
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
@@ -191,12 +184,9 @@ const Ydelser = () => {
       <div className="bg-background">
         <ServiceBlock title="Flisearbejde" services={fliseServices} id="flisearbejde" onCardClick={setContactService} />
       </div>
-      <div className="bg-card">
-        <ServiceBlock title="Specialarbejde" services={specialServices} id="specialarbejde" onCardClick={setContactService} />
-      </div>
 
       {/* CTA */}
-      <section className="bg-background py-16 px-6 lg:px-16 text-center">
+      <section className="bg-card py-16 px-6 lg:px-16 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-semibold text-foreground text-2xl mb-4">Klar til at komme i gang?</h2>
           <p className="text-muted-foreground mb-6">Kontakt os i dag for et uforpligtende tilbud på dit næste projekt.</p>
@@ -219,7 +209,6 @@ const Ydelser = () => {
 
       <Footer />
 
-      {/* Contact overlay */}
       {contactService && (
         <ContactOverlay serviceName={contactService} onClose={() => setContactService(null)} />
       )}
