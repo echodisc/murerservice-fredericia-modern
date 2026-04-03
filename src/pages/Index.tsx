@@ -41,7 +41,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-8 -mt-20">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-8 -mt-32">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}
