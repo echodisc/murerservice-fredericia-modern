@@ -68,27 +68,27 @@ const Index = () => {
           </div>
         </div>
 
+        {/* USP Bar — inside hero */}
+        <div className="absolute bottom-20 left-0 right-0 z-10 px-6 lg:px-16">
+          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6">
+            {trustItems.map(({ icon: Icon, label, text }) => (
+              <div key={label} className="flex flex-col items-center text-center gap-1.5">
+                <Icon className="text-white/90" size={28} strokeWidth={1.5} />
+                <h3 className="font-semibold text-sm text-white">{label}</h3>
+                <p className="text-white/60 text-xs hidden sm:block">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Scroll-down arrow */}
         <a
           href="#ydelser"
           aria-label="Scroll ned"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce"
         >
           <ChevronDown size={36} strokeWidth={1.5} />
         </a>
-      </section>
-
-      {/* Trust Bar */}
-      <section className="bg-background py-12 px-6 lg:px-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-          {trustItems.map(({ icon: Icon, label, text }) => (
-            <div key={label} className="flex flex-col items-center text-center gap-3">
-              <Icon className="text-primary" size={40} strokeWidth={1.5} />
-              <h3 className="font-semibold text-lg text-foreground">{label}</h3>
-              <p className="text-muted-foreground text-[15px]">{text}</p>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* Services Section */}
