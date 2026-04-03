@@ -33,13 +33,13 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
           {reviews.map((r, i) => (
             <div
               key={i}
-              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 bg-background rounded-xl p-8"
+              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 bg-card rounded-xl p-5"
             >
-              <div className="text-[18px] text-accent mb-3">★★★★★</div>
-              <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
+              <div className="text-[16px] text-accent mb-2">★★★★★</div>
+              <p className="italic text-[14px] text-muted-foreground leading-relaxed mb-2">
                 &ldquo;{r.quote}&rdquo;
               </p>
-              <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
+              <span className="font-semibold text-[13px] text-muted-foreground">{r.name}</span>
             </div>
           ))}
         </div>
