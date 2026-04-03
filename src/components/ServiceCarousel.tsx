@@ -10,7 +10,7 @@ import flise2 from '@/assets/flise-2.jpg';
 const serviceSlides = [
   { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.', hash: 'murerarbejde' },
   { img: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle', title: 'Flisearbejde', text: 'Badeværelser, køkkener, terrasser og specialopgaver.', hash: 'flisearbejde' },
-  { img: murer2, alt: 'Specialarbejde udført af ML Murerservice', title: 'Specialarbejde', text: 'Skorstene, reparationer, omfugning og facaderenovering.', hash: 'murerarbejde' },
+  { img: murer2, alt: 'Specialarbejde udført af ML Murerservice', title: 'Specialarbejde', text: 'Skorstene, reparationer, omfugning og facaderenovering.', hash: 'specialarbejde' },
 ];
 
 const ServiceCarousel = () => {

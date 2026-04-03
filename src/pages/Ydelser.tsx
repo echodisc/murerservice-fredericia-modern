@@ -29,8 +29,14 @@ const fliseServices = [
   { img: flise3, title: 'Specialopgaver', text: 'Har du en unik idé? Vi udfører specialopgaver som mønsterlagte fliser, natursten på vægge, trappebelægning og andet flisearbejde.' },
 ];
 
+const specialServices = [
+  { img: murerChimney, title: 'Skorstensarbejde', text: 'Fra reparation af eksisterende skorstene til opbygning af nye. Vi sikrer at din skorsten er tæt, stabil og opfylder alle krav.' },
+  { img: murerRepair, title: 'Reparation & vedligehold', text: 'Revner, fugtskader og slid kan svække dit murværk over tid. Vi udbedrer skader hurtigt og effektivt, så dit hus bevarer sin styrke og sit udseende.' },
+  { img: murer3, title: 'Omfugning & facaderenovering', text: 'Gamle fuger og slidt facade? Vi fjerner de gamle fuger, renser, reparerer og omfuger, så facaden fremstår flot og velholdt.' },
+];
+
 const ServiceBlock = ({ title, services, id }: { title: string; services: typeof murerServices; id: string }) => (
-  <section id={id} className="py-16 px-6 lg:px-16">
+  <section id={id} className="py-16 px-6 lg:px-16 scroll-mt-20">
     <div className="max-w-4xl mx-auto">
       <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-12 text-center">
         {title}
@@ -99,8 +105,13 @@ const Ydelser = () => {
         <ServiceBlock title="Flisearbejde" services={fliseServices} id="flisearbejde" />
       </div>
 
+      {/* Specialarbejde */}
+      <div className="bg-card">
+        <ServiceBlock title="Specialarbejde" services={specialServices} id="specialarbejde" />
+      </div>
+
       {/* CTA */}
-      <section className="bg-card py-16 px-6 lg:px-16 text-center">
+      <section className="bg-background py-16 px-6 lg:px-16 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-semibold text-foreground text-2xl mb-4">Klar til at komme i gang?</h2>
           <p className="text-muted-foreground mb-6">Kontakt os i dag for et uforpligtende tilbud på dit næste projekt.</p>
