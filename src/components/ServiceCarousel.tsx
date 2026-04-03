@@ -113,9 +113,9 @@ const ServiceCarousel = () => {
           )}
         </div>
 
-        {/* Progress bar */}
-        <div className="mt-10 mx-auto max-w-[200px]">
-          <div className="h-[6px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
+        {/* Progress bar — thicker */}
+        <div className="mt-8 mx-auto max-w-[200px]">
+          <div className="h-[5px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
               className="absolute top-0 left-0 h-full rounded-full bg-primary"
               style={{ width: '33%', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
