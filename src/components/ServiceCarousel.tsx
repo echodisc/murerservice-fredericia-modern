@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
