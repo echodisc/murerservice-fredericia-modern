@@ -14,7 +14,6 @@ const trustItems = [
   { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
 ];
 
-
 const reviews = [
   { quote: 'Super flot arbejde med vores badeværelse. Professionel og nem at have i huset.', name: '— Jens, Kolding' },
   { quote: 'Altid til at stole på. Kommer til tiden og leverer kvalitet hver gang.', name: '— Maria, Vejle' },
@@ -31,16 +30,13 @@ const Index = () => {
       <Header />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
-        {/* Background image */}
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
-        {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-6">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
@@ -68,7 +64,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* USP Bar — inside hero */}
+        {/* USP Bar */}
         <div className="absolute bottom-16 left-0 right-0 z-10 px-6 lg:px-16">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
@@ -81,7 +77,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scroll-down arrow */}
         <a
           href="#ydelser"
           aria-label="Scroll ned"
@@ -94,62 +89,73 @@ const Index = () => {
       {/* Services Section */}
       <ServiceCarousel />
 
-      {/* About Section */}
-      <section id="om" className="bg-background py-16 px-6 lg:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          <div className="w-full lg:w-[45%]">
-            <img
-              src={aboutImg}
-              alt="Murermester fra ML Murerservice i Fredericia"
-              loading="lazy"
-              width={800}
-              height={800}
-              className="w-full aspect-square rounded-2xl object-cover"
-            />
-          </div>
-          <div className="w-full lg:w-[55%] flex flex-col gap-4">
-            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
-              Om ML Murerservice
-            </span>
-            <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
-              Erfaren murer med øje for kvalitet
-            </h2>
-            <p className="text-muted-foreground text-[16px] leading-relaxed">
-              ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder. Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.
-            </p>
-            <Link to="/om" className="text-primary font-medium text-[15px] no-underline hover:underline mt-2">
-              Lær mig bedre at kende <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section id="anmeldelser" className="bg-card py-16 px-6 lg:px-16">
+      {/* About + Reviews combined section */}
+      <section className="bg-background py-12 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
+          {/* About row — compact */}
+          <div id="om" className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-12 scroll-mt-24">
+            <div className="w-full lg:w-[40%]">
+              <img
+                src={aboutImg}
+                alt="Murermester fra ML Murerservice i Fredericia"
+                loading="lazy"
+                width={800}
+                height={800}
+                className="w-full aspect-[4/3] rounded-2xl object-cover"
+              />
+            </div>
+            <div className="w-full lg:w-[60%] flex flex-col gap-3">
+              <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
+                Om ML Murerservice
+              </span>
+              <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
+                Erfaren murer med øje for kvalitet
+              </h2>
+              <p className="text-muted-foreground text-[15px] leading-relaxed">
+                ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder. Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.
+              </p>
+              <Link to="/om" className="text-primary font-medium text-[15px] no-underline hover:underline mt-1">
+                Lær mig bedre at kende <span style={{ color: 'hsl(var(--red-accent))' }}>→</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Reviews — compact */}
+          <div id="anmeldelser" className="scroll-mt-24">
+            <h2 className="font-semibold text-foreground text-2xl md:text-3xl text-center mb-6">
               Det siger vores kunder
             </h2>
+            <ReviewCarousel reviews={reviews} />
           </div>
-          <ReviewCarousel reviews={reviews} />
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="py-16 px-6 lg:px-16" style={{ background: '#1a1a2e' }}>
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
+      <section id="kontakt" className="py-16 px-6 lg:px-16 bg-background scroll-mt-24">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           <div className="w-full lg:w-1/2 flex flex-col gap-5">
-            <h2 className="font-semibold text-2xl md:text-3xl text-white">
+            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
+              Kontakt
+            </span>
+            <h2 className="font-semibold text-2xl md:text-3xl text-foreground">
               Få et uforpligtende tilbud
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.75)' }} className="text-base leading-relaxed">
+            <p className="text-muted-foreground text-base leading-relaxed">
               Ring, skriv, eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
             </p>
             <div className="flex flex-col gap-3 mt-2">
-              <a href="tel:+4520329095" className="text-white no-underline hover:underline">📞 20 32 90 95</a>
-              <a href="mailto:ml@mlmurerservice.dk" className="text-white no-underline hover:underline">✉️ ml@mlmurerservice.dk</a>
-              <span className="text-white">📍 Fruetoften 2, 7000 Fredericia</span>
+              <a href="tel:+4520329095" className="text-foreground no-underline hover:underline flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>📞</span>
+                20 32 90 95
+              </a>
+              <a href="mailto:ml@mlmurerservice.dk" className="text-foreground no-underline hover:underline flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>✉️</span>
+                ml@mlmurerservice.dk
+              </a>
+              <span className="text-foreground flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>📍</span>
+                Fruetoften 2, 7000 Fredericia
+              </span>
             </div>
           </div>
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">

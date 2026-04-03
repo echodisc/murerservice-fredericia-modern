@@ -1,11 +1,11 @@
 import { useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 import murer2 from '@/assets/murer-2.jpg';
-import flise2 from '@/assets/flise-2.jpg';
+
 
 const serviceSlides = [
   { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.', hash: 'murerarbejde' },
@@ -42,7 +42,7 @@ const ServiceCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <section id="ydelser" className="bg-card py-16 px-6 lg:px-16">
+    <section id="ydelser" className="bg-card py-16 px-6 lg:px-16 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-3">
@@ -113,14 +113,25 @@ const ServiceCarousel = () => {
           )}
         </div>
 
-        {/* Progress bar */}
-        <div className="mt-6 mx-auto max-w-[200px]">
-          <div className="h-[3px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
+        {/* Progress bar — thicker */}
+        <div className="mt-8 mx-auto max-w-[200px]">
+          <div className="h-[5px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
               className="absolute top-0 left-0 h-full rounded-full bg-primary"
               style={{ width: '33%', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
             />
           </div>
+        </div>
+
+        {/* Scroll down arrow */}
+        <div className="flex justify-center mt-6">
+          <a
+            href="#om"
+            aria-label="Scroll ned til om os"
+            className="text-muted-foreground/50 hover:text-muted-foreground transition-colors animate-bounce"
+          >
+            <ChevronDown size={32} strokeWidth={1.5} />
+          </a>
         </div>
       </div>
     </section>

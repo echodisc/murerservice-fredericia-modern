@@ -35,7 +35,7 @@ const specialServices = [
 ];
 
 const ServiceBlock = ({ title, services, id }: { title: string; services: typeof murerServices; id: string }) => (
-  <section id={id} className="py-16 px-6 lg:px-16 scroll-mt-20">
+  <section id={id} className="py-16 px-6 lg:px-16 scroll-mt-24">
     <div className="max-w-4xl mx-auto">
       <h2 className="font-semibold text-foreground text-2xl md:text-3xl mb-12 text-center">
         {title}

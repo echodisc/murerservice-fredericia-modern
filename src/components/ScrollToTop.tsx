@@ -6,11 +6,12 @@ const ScrollToTop = () => {
 
   useLayoutEffect(() => {
     if (hash) {
-      // Small delay to ensure the target element is rendered
       setTimeout(() => {
         const el = document.getElementById(hash.slice(1));
         if (el) {
-          el.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' });
+          const headerOffset = 80;
+          const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top, left: 0, behavior: 'instant' as ScrollBehavior });
         }
       }, 0);
     } else {
