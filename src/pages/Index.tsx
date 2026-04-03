@@ -41,7 +41,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-8 -mt-32">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-6">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}
@@ -52,7 +52,7 @@ const Index = () => {
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-1">
+          <div className="flex flex-wrap justify-center gap-4 mt-2">
             <a
               href="#kontakt"
               className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-8 py-4 text-base transition-colors hover:brightness-90"
