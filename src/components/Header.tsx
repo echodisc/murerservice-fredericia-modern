@@ -101,9 +101,9 @@ const Header = () => {
                   {l.label}
                 </Link>
               ) : (
-                <a key={l.label} href={l.href} className={linkClass(scrolled)}>
-                  {l.label}
-                </a>
+              <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={linkClass(scrolled)}>
+                {l.label}
+              </a>
               )
             )}
             <a
