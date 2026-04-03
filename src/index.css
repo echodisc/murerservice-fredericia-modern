@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
 
     --background: 220 20% 97%;
     --foreground: 240 50% 14%;
@@ -86,6 +86,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
+    color-scheme: dark;
     --background: 220 20% 10%;
     --foreground: 220 20% 90%;
     --card: 220 18% 13%;
