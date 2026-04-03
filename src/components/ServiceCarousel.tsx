@@ -118,8 +118,8 @@ const ServiceCarousel = () => {
         <div className="mt-6 mx-auto max-w-[200px]">
           <div className="h-[3px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-primary transition-all duration-150"
-              style={{ width: '30%', left: `${scrollProgress * 70}%` }}
+              className="absolute top-0 left-0 h-full rounded-full bg-primary"
+              style={{ width: '25%', transform: `translateX(${scrollProgress * 300}%)`, transition: 'transform 50ms linear' }}
             />
           </div>
         </div>
