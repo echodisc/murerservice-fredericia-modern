@@ -43,11 +43,11 @@ const FloatingScrollArrow = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-0 right-0 z-40 flex justify-center pointer-events-none">
+    <div className="fixed bottom-3 md:bottom-6 left-0 right-0 z-40 flex justify-center pointer-events-none pb-[env(safe-area-inset-bottom,0px)]">
       <button
         onClick={handleClick}
         aria-label="Scroll ned"
-        className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-card/80 backdrop-blur-sm shadow-lg text-muted-foreground hover:text-foreground transition-all animate-bounce cursor-pointer border border-border/50"
+        className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-card/90 shadow-lg text-muted-foreground hover:text-foreground transition-colors animate-bounce cursor-pointer border border-border/50"
       >
         <ChevronDown size={22} strokeWidth={1.5} />
       </button>

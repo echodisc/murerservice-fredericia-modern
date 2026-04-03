@@ -33,21 +33,22 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative min-h-screen min-h-[100dvh] flex items-center justify-center pb-20 md:pb-0">
+      <section className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] via-[hsl(var(--hero-overlay-via))] to-[hsl(var(--hero-overlay-to))]" />
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6">
+        {/* Main content — nudged up on mobile to avoid URL bar / arrow overlap */}
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[140px] md:mb-0">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
           >
             Din murer i Kolding, Vejle &amp; Fredericia
-            <span className="block h-1 w-16 rounded-full mt-4 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
+            <span className="block h-1 w-16 rounded-full mt-4 mx-auto bg-[hsl(var(--red-accent))]" />
           </h1>
           <p className="text-white/80 text-base md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
@@ -74,8 +75,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* USP Bar */}
-        <div className="absolute bottom-28 md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16">
+        {/* USP Bar — positioned safely above the scroll arrow on mobile */}
+        <div className="absolute bottom-[70px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5">
@@ -107,7 +108,7 @@ const Index = () => {
               />
             </div>
             <div className="w-full md:w-[68%] flex flex-col gap-2 md:gap-3">
-              <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
+              <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
                 Om ML Murerservice
               </span>
               <h2 className="font-semibold text-foreground text-xl md:text-3xl">
@@ -117,7 +118,7 @@ const Index = () => {
                 ML Murerservice har eksisteret siden 1999. Jeg går op i ærlig kommunikation, præcist arbejde og et godt samarbejde med mine kunder. Når du vælger mig, får du en murer der tager dit projekt lige så seriøst som sit eget hjem.
               </p>
               <Link to="/om" className="text-primary font-medium text-[14px] md:text-[15px] no-underline hover:underline mt-1">
-                Lær mig bedre at kende <span style={{ color: 'hsl(var(--red-accent))' }}>→</span>
+                Lær mig bedre at kende <span className="text-[hsl(var(--red-accent))]">→</span>
               </Link>
             </div>
           </div>
@@ -154,11 +155,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section — compact on mobile */}
+      {/* Contact Section */}
       <section id="kontakt" className="py-6 md:py-16 px-6 md:px-16 bg-card scroll-mt-20">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 md:gap-14 items-start">
           <div className="w-full md:w-1/2 flex flex-col gap-2 md:gap-5">
-            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
+            <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
               Kontakt
             </span>
             <h2 className="font-semibold text-xl md:text-3xl text-foreground">
@@ -167,19 +168,17 @@ const Index = () => {
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
               Ring eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
             </p>
-            {/* Phone always visible */}
             <a href="tel:+4520329095" className="text-foreground no-underline hover:underline flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>📞</span>
+              <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">📞</span>
               20 32 90 95
             </a>
-            {/* Email + address only on desktop */}
             <div className="hidden md:flex flex-col gap-3">
               <a href="mailto:ml@mlmurerservice.dk" className="text-foreground no-underline hover:underline flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>✉️</span>
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">✉️</span>
                 ml@mlmurerservice.dk
               </a>
               <span className="text-foreground flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: 'hsl(var(--red-accent) / 0.1)', color: 'hsl(var(--red-accent))' }}>📍</span>
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">📍</span>
                 Fruetoften 2, 7000 Fredericia
               </span>
             </div>

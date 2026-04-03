@@ -35,14 +35,14 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
           <button
             onClick={scrollPrev}
             aria-label="Forrige billede"
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-card/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-card/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow"
           >
             <ChevronLeft size={20} className="text-foreground" />
           </button>
           <button
             onClick={scrollNext}
             aria-label="Næste billede"
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-card/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-card/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow"
           >
             <ChevronRight size={20} className="text-foreground" />
           </button>

@@ -54,7 +54,7 @@ const ServiceCarousel = () => {
         </div>
 
         <div className="relative group">
-          {/* Fade edges — hidden at extremes */}
+          {/* Fade edges */}
           <div className={`pointer-events-none absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-card to-transparent transition-opacity duration-200 ${canScrollPrev ? 'opacity-100' : 'opacity-0'}`} />
           <div className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-card to-transparent transition-opacity duration-200 ${canScrollNext ? 'opacity-100' : 'opacity-0'}`} />
 
@@ -67,8 +67,7 @@ const ServiceCarousel = () => {
                     className="block no-underline h-full"
                   >
                     <div
-                      className="bg-background rounded-xl overflow-hidden transition-shadow duration-200 h-full hover:shadow-lg cursor-pointer"
-                      style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
+                      className="bg-background rounded-xl overflow-hidden transition-shadow duration-200 h-full hover:shadow-lg cursor-pointer shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]"
                     >
                       <img
                         src={slide.img}
@@ -82,7 +81,7 @@ const ServiceCarousel = () => {
                         <h3 className="font-semibold text-foreground text-lg mb-1.5">{slide.title}</h3>
                         <p className="text-muted-foreground text-[14px] leading-relaxed mb-3">{slide.text}</p>
                         <span className="text-primary font-medium text-[14px]">
-                          Læs mere <span style={{ color: 'hsl(var(--red-accent))' }}>→</span>
+                          Læs mere <span className="text-[hsl(var(--red-accent))]">→</span>
                         </span>
                       </div>
                     </div>
@@ -92,12 +91,12 @@ const ServiceCarousel = () => {
             </div>
           </div>
 
-          {/* Nav arrows — hidden at extremes */}
+          {/* Nav arrows */}
           {canScrollPrev && (
             <button
               onClick={scrollPrev}
               aria-label="Forrige ydelse"
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronLeft size={20} className="text-foreground" />
             </button>
@@ -106,7 +105,7 @@ const ServiceCarousel = () => {
             <button
               onClick={scrollNext}
               aria-label="Næste ydelse"
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 backdrop-blur-sm rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-card/90 rounded-full p-2 shadow opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <ChevronRight size={20} className="text-foreground" />
             </button>
@@ -117,8 +116,8 @@ const ServiceCarousel = () => {
         <div className="mt-8 flex justify-center">
           <div className="w-[200px] h-[5px] rounded-full bg-muted-foreground/20 relative overflow-hidden">
             <div
-              className="absolute top-0 left-0 h-full rounded-full"
-              style={{ width: '33%', background: 'hsl(var(--red-accent))', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
+              className="absolute top-0 left-0 h-full rounded-full bg-[hsl(var(--red-accent))]"
+              style={{ width: '33%', transform: `translateX(${scrollProgress * 200}%)`, transition: 'transform 50ms linear' }}
             />
           </div>
         </div>

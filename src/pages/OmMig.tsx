@@ -43,14 +43,14 @@ const OmMig = () => {
           alt="Murermester fra ML Murerservice i arbejde"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] to-[hsl(var(--hero-overlay-to))]" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}
           >
             Manden bag murerservicen
-            <span className="block h-1 w-16 rounded-full mt-4 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
+            <span className="block h-1 w-16 rounded-full mt-4 mx-auto bg-[hsl(var(--red-accent))]" />
           </h1>
         </div>
       </section>
@@ -62,10 +62,10 @@ const OmMig = () => {
         </div>
       </div>
 
-      {/* Intro — no photo */}
+      {/* Intro */}
       <section className="bg-background py-16 px-6 lg:px-16">
         <div className="max-w-5xl mx-auto flex flex-col gap-4">
-          <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
+          <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
             Om mig
           </span>
           <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
@@ -87,14 +87,12 @@ const OmMig = () => {
             25 år i murerfaget
           </h2>
           <div className="relative">
-            {/* Vertical line */}
             <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-px" />
 
             <div className="flex flex-col gap-10">
               {milestones.map((m, i) => (
                 <div key={m.year} className={`relative flex flex-col lg:flex-row items-start lg:items-center gap-4 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  {/* Dot */}
-                  <div className="absolute left-4 lg:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-1" style={{ background: 'hsl(0 65% 48%)' }} />
+                  <div className="absolute left-4 lg:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-1 bg-[hsl(var(--red-accent))]" />
 
                   <div className={`pl-10 lg:pl-0 lg:w-1/2 ${i % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12'}`}>
                     <span className="font-semibold text-foreground text-lg">{m.year}</span>
@@ -120,7 +118,7 @@ const OmMig = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {anecdotes.map((a) => (
-              <div key={a.title} className="bg-card rounded-xl p-6" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+              <div key={a.title} className="bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
                 <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
                 <p className="text-muted-foreground text-[15px] leading-relaxed italic">{a.text}</p>
               </div>
@@ -143,7 +141,7 @@ const OmMig = () => {
               Jeg samarbejder tæt med mine kunder undervejs, og du er altid velkommen til at kigge forbi byggepladsen. Åbenhed og dialog er en del af måden jeg arbejder på.
             </p>
             <Link to="/#kontakt" className="text-primary font-medium text-[15px] hover:underline mt-2">
-              Lad os snakke om dit projekt <span style={{ color: 'hsl(0 65% 48%)' }}>→</span>
+              Lad os snakke om dit projekt <span className="text-[hsl(var(--red-accent))]">→</span>
             </Link>
           </div>
           <div className="w-full lg:w-[45%]">
@@ -160,12 +158,12 @@ const OmMig = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 lg:px-16 bg-[hsl(220_20%_10%)]">
+      <section className="py-16 px-6 lg:px-16 bg-[hsl(var(--inverse-bg))]">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-semibold text-2xl md:text-3xl text-white mb-4">
+          <h2 className="font-semibold text-2xl md:text-3xl text-[hsl(var(--inverse-fg))] mb-4">
             Klar til at komme i gang?
           </h2>
-          <p className="text-white/70 mb-8 max-w-lg mx-auto">
+          <p className="text-[hsl(var(--inverse-muted))] mb-8 max-w-lg mx-auto">
             Ring eller skriv — så tager vi en uforpligtende snak om dit projekt.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -177,7 +175,7 @@ const OmMig = () => {
             </a>
             <Link
               to="/#kontakt"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 text-white font-medium px-8 py-4 text-base transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--inverse-border)/0.6)] text-[hsl(var(--inverse-fg))] font-medium px-8 py-4 text-base transition-colors hover:bg-[hsl(var(--inverse-fg)/0.1)]"
             >
               Send en besked
             </Link>

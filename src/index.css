@@ -39,6 +39,21 @@
     --radius: 0.5rem;
     --red-accent: 0 65% 48%;
 
+    /* Inverse section (footer, dark CTAs) */
+    --inverse-bg: 220 20% 8%;
+    --inverse-fg: 0 0% 100%;
+    --inverse-muted: 0 0% 70%;
+    --inverse-subtle: 0 0% 40%;
+    --inverse-border: 0 0% 100%;
+
+    /* Hero overlay */
+    --hero-overlay-from: 0 0% 0% / 0.6;
+    --hero-overlay-via: 0 0% 0% / 0.5;
+    --hero-overlay-to: 0 0% 0% / 0.7;
+
+    /* Image brightness for dark mode */
+    --img-brightness: 1;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -51,61 +66,52 @@
     --mobile-menu-bg: 30 10% 96%;
   }
 
-  .dark {
-    --background: 220 20% 10%;
-    --foreground: 220 20% 90%;
-    --card: 220 18% 13%;
-    --card-foreground: 220 20% 90%;
-    --popover: 220 18% 13%;
-    --popover-foreground: 220 20% 90%;
-    --primary: 213 60% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 18% 16%;
-    --secondary-foreground: 220 20% 90%;
-    --muted: 220 14% 18%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 37 78% 56%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 45%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 14% 22%;
-    --input: 220 14% 22%;
-    --ring: 213 60% 55%;
-    --red-accent: 0 65% 55%;
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 220 10% 80%;
-    --sidebar-primary: 213 60% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 18%;
-    --sidebar-accent-foreground: 220 10% 80%;
-    --sidebar-border: 220 14% 22%;
-    --sidebar-ring: 213 60% 55%;
-    --mobile-menu-bg: 220 18% 14%;
-  }
-
   @media (prefers-color-scheme: dark) {
-    :root:not(.light) {
+    :root {
       color-scheme: dark;
+
       --background: 220 20% 10%;
       --foreground: 220 20% 90%;
+
       --card: 220 18% 13%;
       --card-foreground: 220 20% 90%;
+
       --popover: 220 18% 13%;
       --popover-foreground: 220 20% 90%;
+
       --primary: 213 60% 55%;
       --primary-foreground: 0 0% 100%;
+
       --secondary: 220 18% 16%;
       --secondary-foreground: 220 20% 90%;
+
       --muted: 220 14% 18%;
       --muted-foreground: 220 10% 60%;
-      --accent: 37 78% 56%;
+
+      --accent: 37 68% 50%;
       --accent-foreground: 0 0% 100%;
+
       --destructive: 0 62.8% 45%;
       --destructive-foreground: 0 0% 100%;
+
       --border: 220 14% 22%;
       --input: 220 14% 22%;
       --ring: 213 60% 55%;
-      --red-accent: 0 65% 55%;
+
+      --red-accent: 0 60% 55%;
+
+      --inverse-bg: 220 14% 18%;
+      --inverse-fg: 220 20% 90%;
+      --inverse-muted: 220 10% 65%;
+      --inverse-subtle: 220 10% 45%;
+      --inverse-border: 220 14% 28%;
+
+      --hero-overlay-from: 220 20% 5% / 0.7;
+      --hero-overlay-via: 220 20% 5% / 0.6;
+      --hero-overlay-to: 220 20% 5% / 0.8;
+
+      --img-brightness: 0.8;
+
       --sidebar-background: 220 18% 10%;
       --sidebar-foreground: 220 10% 80%;
       --sidebar-primary: 213 60% 55%;
@@ -114,6 +120,7 @@
       --sidebar-accent-foreground: 220 10% 80%;
       --sidebar-border: 220 14% 22%;
       --sidebar-ring: 213 60% 55%;
+
       --mobile-menu-bg: 220 18% 14%;
     }
   }
@@ -133,5 +140,9 @@
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     max-width: 100vw;
+  }
+
+  img {
+    filter: brightness(var(--img-brightness, 1));
   }
 }
