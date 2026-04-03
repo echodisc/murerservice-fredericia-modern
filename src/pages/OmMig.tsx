@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 import heroImg from '@/assets/om-mig-hero.jpg';
-import haandvaerkImg from '@/assets/om-haandvaerk.jpg';
+import profilImg from '@/assets/om-profil.jpg';
 import projektImg from '@/assets/om-projekt.jpg';
 
 const milestones = [
