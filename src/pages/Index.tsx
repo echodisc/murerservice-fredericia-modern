@@ -33,10 +33,12 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative min-h-screen min-h-[100svh] flex flex-col items-center justify-center">
+      <section className="relative h-screen h-[100svh] overflow-hidden flex flex-col items-center justify-center">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
+          width={1920}
+          height={1080}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] via-[hsl(var(--hero-overlay-via))] to-[hsl(var(--hero-overlay-to))]" />

@@ -69,7 +69,7 @@ const ContactForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full rounded-lg font-bold px-4 py-3.5 text-[15px] transition-all text-[hsl(var(--inverse-fg))] mt-1"
+        className="w-full rounded-lg font-bold px-4 py-3.5 text-[15px] transition-colors text-[hsl(var(--inverse-fg))] mt-1"
         style={{ background: 'hsl(var(--red-accent))' }}
       >
         Send besked

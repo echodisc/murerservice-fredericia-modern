@@ -41,6 +41,8 @@ const OmMig = () => {
         <img
           src={heroImg}
           alt="Murermester fra ML Murerservice i arbejde"
+          width={1920}
+          height={1080}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] to-[hsl(var(--hero-overlay-to))]" />
