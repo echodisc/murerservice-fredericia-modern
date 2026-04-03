@@ -126,9 +126,15 @@ const ServiceCarousel = () => {
         {/* Scroll down arrow */}
         <div className="flex justify-center mt-6">
           <button
-            onClick={() => document.getElementById('om')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const el = document.getElementById('om');
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top, behavior: 'smooth' });
+              }
+            }}
             aria-label="Scroll ned til om os"
-            className="text-muted-foreground/50 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none"
+            className="text-muted-foreground/50 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
           >
             <ChevronDown size={32} strokeWidth={1.5} />
           </button>

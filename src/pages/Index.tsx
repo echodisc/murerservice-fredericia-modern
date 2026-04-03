@@ -24,6 +24,14 @@ const reviews = [
   { quote: 'Reparation af skorsten klaret på én dag. Dygtig og effektiv.', name: '— Anne, Børkop' },
 ];
 
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+};
+
 const Index = () => {
   return (
     <main>
@@ -78,9 +86,9 @@ const Index = () => {
         </div>
 
         <button
-          onClick={() => document.getElementById('ydelser')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => scrollToSection('ydelser')}
           aria-label="Scroll ned"
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none"
+          className="absolute bottom-4 left-0 right-0 z-10 flex justify-center text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
         >
           <ChevronDown size={32} strokeWidth={1.5} />
         </button>
@@ -89,11 +97,12 @@ const Index = () => {
       {/* Services Section */}
       <ServiceCarousel />
 
-      {/* About Section */}
-      <section id="om" className="bg-background py-12 px-6 lg:px-16 scroll-mt-20">
+      {/* About + Reviews — one combined card */}
+      <section id="om" className="bg-background py-10 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            <div className="w-full lg:w-[40%]">
+          {/* About row */}
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-8">
+            <div className="w-full lg:w-[38%]">
               <img
                 src={aboutImg}
                 alt="Murermester fra ML Murerservice i Fredericia"
@@ -103,7 +112,7 @@ const Index = () => {
                 className="w-full aspect-[4/3] rounded-2xl object-cover"
               />
             </div>
-            <div className="w-full lg:w-[60%] flex flex-col gap-3">
+            <div className="w-full lg:w-[62%] flex flex-col gap-3">
               <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
                 Om ML Murerservice
               </span>
@@ -118,21 +127,30 @@ const Index = () => {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Reviews Section — compact */}
-      <section id="anmeldelser" className="bg-card py-8 px-6 lg:px-16 scroll-mt-24">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-foreground text-xl md:text-2xl text-center mb-5">
-            Det siger vores kunder
-          </h2>
-          <ReviewCarousel reviews={reviews} />
+          {/* Reviews — tight */}
+          <div id="anmeldelser" className="scroll-mt-24">
+            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-4">
+              Det siger vores kunder
+            </h2>
+            <ReviewCarousel reviews={reviews} />
+          </div>
+
+          {/* Arrow to contact */}
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => scrollToSection('kontakt')}
+              aria-label="Scroll ned til kontakt"
+              className="text-muted-foreground/40 hover:text-muted-foreground transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
+            >
+              <ChevronDown size={32} strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="py-16 px-6 lg:px-16 bg-background scroll-mt-24">
+      <section id="kontakt" className="py-16 px-6 lg:px-16 bg-card scroll-mt-24">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           <div className="w-full lg:w-1/2 flex flex-col gap-5">
             <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
