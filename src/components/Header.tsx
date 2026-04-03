@@ -86,8 +86,8 @@ const Header = () => {
                 />
               </span>
             </span>
-            <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-              <span className="text-white drop-shadow-md">ML Murerservice</span>
+             <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
+              <span className="text-[hsl(var(--hero-text))] drop-shadow-md">ML Murerservice</span>
             </span>
           </a>
 
