@@ -41,18 +41,18 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-6">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-8 -mt-20">
           <h1
             className="font-semibold text-white leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}
           >
             Din murer i Kolding, Vejle &amp; Fredericia
-            <span className="block h-1 w-16 rounded-full mt-4 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
+            <span className="block h-1 w-16 rounded-full mt-5 mx-auto" style={{ background: 'hsl(0 65% 48%)' }} />
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-2">
+          <div className="flex flex-wrap justify-center gap-4 mt-1">
             <a
               href="#kontakt"
               className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-8 py-4 text-base transition-colors hover:brightness-90"
@@ -69,13 +69,13 @@ const Index = () => {
         </div>
 
         {/* USP Bar — inside hero */}
-        <div className="absolute bottom-20 left-0 right-0 z-10 px-6 lg:px-16">
-          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6">
+        <div className="absolute bottom-28 left-0 right-0 z-10 px-6 lg:px-16">
+          <div className="max-w-3xl mx-auto grid grid-cols-3 gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
-              <div key={label} className="flex flex-col items-center text-center gap-1.5">
-                <Icon className="text-white/90" size={28} strokeWidth={1.5} />
-                <h3 className="font-semibold text-sm text-white">{label}</h3>
-                <p className="text-white/60 text-xs hidden sm:block">{text}</p>
+              <div key={label} className="flex flex-col items-center text-center gap-2">
+                <Icon className="text-white/80" size={24} strokeWidth={1.5} />
+                <h3 className="font-medium text-[13px] text-white/90">{label}</h3>
+                <p className="text-white/50 text-xs hidden sm:block">{text}</p>
               </div>
             ))}
           </div>
