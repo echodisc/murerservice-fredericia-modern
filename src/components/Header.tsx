@@ -112,23 +112,23 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile overlay — OUTSIDE header to avoid stacking context issues */}
+      {/* Mobile overlay — blurred background */}
       {open && (
         <div
-          className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-[70] bg-black/40 backdrop-blur-md md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
-      {/* Mobile slide-in panel — OUTSIDE header */}
+      {/* Mobile slide-in panel — compact, not full height */}
       <nav
-        className={`fixed top-0 right-0 bottom-0 z-[80] w-[75%] max-w-[300px] flex flex-col bg-card transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 z-[80] w-[75%] max-w-[300px] flex flex-col rounded-bl-2xl transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ boxShadow: '-10px 0 40px rgba(0,0,0,0.4)' }}
+        style={{ backgroundColor: 'hsla(30, 10%, 96%, 0.92)', boxShadow: '-10px 4px 40px rgba(0,0,0,0.3)' }}
       >
         {/* Panel header with logo + close */}
-        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
+        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border/50">
           <span className="font-semibold text-base text-foreground">
             <span className="text-[hsl(var(--red-accent))]">ML</span> Murerservice
           </span>
@@ -142,7 +142,7 @@ const Header = () => {
         </div>
 
         {/* Nav links */}
-        <div className="flex flex-col px-6 pt-6 gap-1">
+        <div className="flex flex-col px-6 pt-4 gap-1">
           {navLinks.map((l) => {
             const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline text-foreground transition-colors";
             return l.isRoute ? (
@@ -157,8 +157,8 @@ const Header = () => {
           })}
         </div>
 
-        {/* CTA at bottom */}
-        <div className="mt-auto px-6 pb-8">
+        {/* CTA right after links */}
+        <div className="px-6 pt-4 pb-6">
           <a
             href="tel:+4520329095"
             onClick={handleClick}
