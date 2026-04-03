@@ -93,7 +93,7 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
                 className="bg-background rounded-xl overflow-hidden border border-border cursor-pointer active:scale-[0.98] transition-transform"
                 onClick={() => onCardClick(s.title)}
               >
-                <img src={s.img} alt={s.title} loading="lazy" className="w-full h-[200px] object-cover" />
+                <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[200px] object-cover" />
                 <div className="p-4">
                   <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
                   <p className="text-muted-foreground text-[13px] leading-relaxed">{s.text}</p>
