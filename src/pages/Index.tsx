@@ -18,12 +18,6 @@ const trustItems = [
   { icon: Users, label: 'Personlig service', text: 'Direkte dialog med din murer' },
 ];
 
-const serviceSlides = [
-  { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.' },
-  { img: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle', title: 'Flisearbejde', text: 'Badeværelser, køkkener, terrasser og specialopgaver.' },
-  { img: murer2, alt: 'Reparation af murværk i Fredericia', title: 'Reparationer', text: 'Revner, fugtskader og vedligehold af murværk.' },
-  { img: flise2, alt: 'Skorsten repareret af ML Murerservice', title: 'Skorstene', text: 'Reparation og opbygning af skorstene.' },
-];
 
 const reviews = [
   { quote: 'Super flot arbejde med vores badeværelse. Professionel og nem at have i huset.', name: '— Jens, Kolding' },
