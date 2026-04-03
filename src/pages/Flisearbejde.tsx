@@ -37,7 +37,7 @@ const services = [
 ];
 
 const Flisearbejde = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // scroll handled by ScrollToTop
   return (
   <main>
     <Header />

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -70,7 +69,6 @@ const ServiceBlock = ({ title, services, id }: { title: string; services: typeof
 );
 
 const Ydelser = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <main>
