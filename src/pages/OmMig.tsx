@@ -37,14 +37,13 @@ const OmMig = () => {
       <Header />
 
       {/* Hero */}
-      <section className="relative h-[50svh] min-h-[360px] flex items-center justify-center">
+      <section className="relative flex items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 50)', minHeight: '360px' }}>
         <img
           src={heroImg}
           alt="Murermester fra ML Murerservice i arbejde"
           width={1920}
           height={1080}
-          className="absolute top-0 left-1/2 w-[100vw] min-w-[100vw] h-[100%] min-h-[100%] object-cover brightness-[0.35]"
-          style={{ transform: 'translateZ(0) translateX(-50%)' }}
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <h1

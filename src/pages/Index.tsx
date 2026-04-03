@@ -33,14 +33,13 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative h-[100svh] overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative overflow-hidden flex flex-col items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
           width={1920}
           height={1080}
-          className="absolute top-0 left-1/2 w-[100vw] min-w-[100vw] h-[100%] min-h-[100%] object-cover brightness-[0.35]"
-          style={{ transform: 'translateZ(0) translateX(-50%)' }}
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
 
         {/* Main content */}
@@ -191,7 +190,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* <FloatingScrollArrow /> */}
+      <FloatingScrollArrow />
       <Footer />
     </main>
   );
