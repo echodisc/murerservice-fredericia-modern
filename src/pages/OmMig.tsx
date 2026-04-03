@@ -43,9 +43,8 @@ const OmMig = () => {
           alt="Murermester fra ML Murerservice i arbejde"
           width={1920}
           height={1080}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] to-[hsl(var(--hero-overlay-to))]" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <h1
             className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"

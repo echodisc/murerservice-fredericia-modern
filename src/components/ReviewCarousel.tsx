@@ -24,11 +24,11 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
 
   return (
     <div className="relative group">
-      {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent" />
-
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div
+        className="overflow-hidden"
+        ref={emblaRef}
+        style={{ touchAction: 'pan-y pinch-zoom', maskImage: 'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)' }}
+      >
         <div className="flex gap-5">
           {reviews.map((r, i) => (
             <div
