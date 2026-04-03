@@ -2,11 +2,24 @@ import { useEffect } from 'react';
 
 export function useStableVh() {
   useEffect(() => {
-    function setVh() {
-      document.documentElement.style.setProperty('--stable-vh', `${window.innerHeight * 0.01}px`);
+    // Set viewport height ONCE on mount — never update during scroll
+    document.documentElement.style.setProperty(
+      '--stable-vh',
+      `${window.innerHeight * 0.01}px`
+    );
+
+    // Only update on orientation change (phone rotation), not on resize
+    function onOrientationChange() {
+      // Small delay to let the browser settle after rotation
+      setTimeout(() => {
+        document.documentElement.style.setProperty(
+          '--stable-vh',
+          `${window.innerHeight * 0.01}px`
+        );
+      }, 150);
     }
-    setVh();
-    window.addEventListener('resize', setVh);
-    return () => window.removeEventListener('resize', setVh);
+
+    window.addEventListener('orientationchange', onOrientationChange);
+    return () => window.removeEventListener('orientationchange', onOrientationChange);
   }, []);
 }
