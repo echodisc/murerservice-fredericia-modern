@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
 import heroImg from '@/assets/hero-fullscreen.jpg';
-import murerImg from '@/assets/murerarbejde-placeholder.jpg';
-import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
-import murer2 from '@/assets/murer-2.jpg';
-import flise2 from '@/assets/flise-2.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
-import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback, useState, useEffect } from 'react';
+import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
+import ReviewCarousel from '@/components/ReviewCarousel';
+import Header from '@/components/Header';
+import ServiceCarousel from '@/components/ServiceCarousel';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import ReviewCarousel from '@/components/ReviewCarousel';
