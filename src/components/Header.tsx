@@ -70,9 +70,15 @@ const Header = () => {
             <span className="text-[hsl(var(--red-accent))]">ML</span>
             <span className="text-foreground"> Murerservice</span>
           </span>
-          {/* Top state: white with red underline */}
+          {/* Top state: white with red underline that scales from center */}
           <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-            <span className="text-white border-b-[3px] border-[hsl(var(--red-accent))] pb-0.5">ML Murerservice</span>
+            <span className="relative text-white pb-0.5">
+              ML Murerservice
+              <span
+                className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
+                style={{ transform: scrolled ? 'scaleX(0)' : 'scaleX(1)' }}
+              />
+            </span>
           </span>
         </a>
 
