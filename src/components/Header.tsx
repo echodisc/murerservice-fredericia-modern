@@ -60,17 +60,17 @@ const Header = () => {
   };
 
   const linkClass = (isScrolled: boolean) =>
-    `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
+     `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
       isScrolled
         ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
-        : 'text-white/90 hover:text-white after:bg-white'
+        : 'text-[hsl(var(--hero-text)/0.9)] hover:text-[hsl(var(--hero-text))] after:bg-[hsl(var(--hero-text))]'
     }`;
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ease-in-out ${
-          scrolled ? 'bg-card/98 shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
+          scrolled ? 'bg-card shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
@@ -86,8 +86,8 @@ const Header = () => {
                 />
               </span>
             </span>
-            <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-              <span className="text-white drop-shadow-md">ML Murerservice</span>
+             <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
+              <span className="text-[hsl(var(--hero-text))] drop-shadow-md">ML Murerservice</span>
             </span>
           </a>
 
@@ -115,7 +115,7 @@ const Header = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}
+            className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-[hsl(var(--hero-text))]'}`}
             aria-label={open ? 'Luk menu' : 'Åbn menu'}
           >
             {open ? <X size={26} /> : <Menu size={26} />}

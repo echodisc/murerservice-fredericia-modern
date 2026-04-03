@@ -39,6 +39,12 @@
     --radius: 0.5rem;
     --red-accent: 0 65% 48%;
 
+    /* Hero text — always white (over dark overlay), Brave won't invert */
+    --hero-text: 0 0% 100%;
+    --hero-text-muted: 0 0% 100%;
+    --hero-text-subtle: 0 0% 100%;
+    --hero-border: 0 0% 100%;
+
     /* Inverse section (footer, dark CTAs) */
     --inverse-bg: 220 20% 8%;
     --inverse-fg: 0 0% 100%;
@@ -100,6 +106,11 @@
 
       --red-accent: 0 60% 55%;
 
+      --hero-text: 0 0% 100%;
+      --hero-text-muted: 0 0% 100%;
+      --hero-text-subtle: 0 0% 100%;
+      --hero-border: 0 0% 100%;
+
       --inverse-bg: 220 14% 18%;
       --inverse-fg: 220 20% 90%;
       --inverse-muted: 220 10% 65%;
@@ -130,7 +141,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     overflow-x: hidden;
   }

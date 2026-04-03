@@ -33,7 +33,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section */}
-      <section className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center">
+      <section className="relative min-h-screen min-h-[100svh] flex flex-col items-center justify-center">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
@@ -44,13 +44,13 @@ const Index = () => {
         {/* Main content — nudged up on mobile to avoid URL bar / arrow overlap */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[140px] md:mb-0">
           <h1
-            className="font-semibold text-white leading-tight drop-shadow-lg"
+            className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
           >
             Din murer i Kolding, Vejle &amp; Fredericia
             <span className="block h-1 w-16 rounded-full mt-4 mx-auto bg-[hsl(var(--red-accent))]" />
           </h1>
-          <p className="text-white/80 text-base md:text-xl max-w-xl">
+          <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-1">
@@ -66,9 +66,9 @@ const Index = () => {
             >
               Få et gratis tilbud
             </button>
-            <a
+             <a
               href="tel:+4520329095"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 text-white font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--hero-border)/0.6)] text-[hsl(var(--hero-text))] font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-[hsl(var(--hero-border)/0.1)]"
             >
               Ring 20 32 90 95
             </a>
@@ -76,13 +76,13 @@ const Index = () => {
         </div>
 
         {/* USP Bar — positioned safely above the scroll arrow on mobile */}
-        <div className="absolute bottom-[70px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
+         <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5">
-                <Icon className="text-white/80" size={20} strokeWidth={1.5} />
-                <h3 className="font-medium text-[12px] md:text-[13px] text-white/90">{label}</h3>
-                <p className="text-white/50 text-xs hidden sm:block">{text}</p>
+                <Icon className="text-[hsl(var(--hero-text-muted)/0.8)]" size={20} strokeWidth={1.5} />
+                <h3 className="font-medium text-[12px] md:text-[13px] text-[hsl(var(--hero-text)/0.9)]">{label}</h3>
+                <p className="text-[hsl(var(--hero-text-subtle)/0.5)] text-xs hidden sm:block">{text}</p>
               </div>
             ))}
           </div>
