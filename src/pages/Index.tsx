@@ -52,7 +52,7 @@ const Index = () => {
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-1">
+          <div className="flex flex-wrap justify-center gap-4 mt-2">
             <a
               href="#kontakt"
               className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-8 py-4 text-base transition-colors hover:brightness-90"
