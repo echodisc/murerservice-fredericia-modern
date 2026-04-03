@@ -10,7 +10,7 @@ const navLinksHome = [
 ];
 
 const navLinksOther = [
-  { label: 'Ydelser', href: '/#ydelser' },
+  { label: 'Ydelser', href: '/ydelser' },
   { label: 'Om os', href: '/om' },
   { label: 'Anmeldelser', href: '/#anmeldelser' },
   { label: 'Kontakt', href: '/#kontakt' },

@@ -6,8 +6,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Murerarbejde from "./pages/Murerarbejde.tsx";
 import Flisearbejde from "./pages/Flisearbejde.tsx";
+import Ydelser from "./pages/Ydelser.tsx";
 import OmMig from "./pages/OmMig.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,8 +19,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/ydelser" element={<Ydelser />} />
           <Route path="/murerarbejde" element={<Murerarbejde />} />
           <Route path="/flisearbejde" element={<Flisearbejde />} />
           <Route path="/om" element={<OmMig />} />
