@@ -118,7 +118,7 @@ const Index = () => {
 
           {/* Reviews — tight */}
           <div id="anmeldelser" className="scroll-mt-24">
-            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-4">
+            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-2">
               Det siger vores kunder
             </h2>
             <ReviewCarousel reviews={reviews} />
