@@ -151,7 +151,7 @@ const Index = () => {
       {/* Contact Section — compact on mobile */}
       <section id="kontakt" className="py-6 md:py-16 px-6 md:px-16 bg-card scroll-mt-20">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 md:gap-14 items-start">
-          <div className="w-full md:w-1/2 flex flex-col gap-3 md:gap-5">
+          <div className="w-full md:w-1/2 flex flex-col gap-2 md:gap-5">
             <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(var(--red-accent))' }}>
               Kontakt
             </span>

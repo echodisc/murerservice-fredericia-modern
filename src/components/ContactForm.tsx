@@ -30,8 +30,8 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-[440px] flex flex-col gap-5 bg-card rounded-2xl p-8 border border-border">
-      <div className="flex flex-col gap-1.5">
+    <form onSubmit={handleSubmit} className="w-full max-w-[440px] flex flex-col gap-4 bg-card rounded-2xl p-6 md:p-8 border border-border">
+      <div className="flex flex-col gap-1">
         <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Navn</label>
         <input
           type="text"
@@ -40,10 +40,10 @@ const ContactForm = () => {
           required
           value={form.navn}
           onChange={(e) => setForm({ ...form, navn: e.target.value })}
-          className="w-full rounded-lg px-4 py-3 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] transition-colors"
+          className="w-full rounded-lg px-4 py-2.5 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] transition-colors"
         />
       </div>
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1">
         <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Telefon</label>
         <input
           type="tel"
@@ -52,19 +52,19 @@ const ContactForm = () => {
           required
           value={form.telefon}
           onChange={(e) => setForm({ ...form, telefon: e.target.value })}
-          className="w-full rounded-lg px-4 py-3 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] transition-colors"
+          className="w-full rounded-lg px-4 py-2.5 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] transition-colors"
         />
       </div>
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1">
         <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Besked</label>
         <textarea
           placeholder="Fortæl os om dit projekt..."
-          rows={4}
+          rows={3}
           maxLength={1000}
           required
           value={form.besked}
           onChange={(e) => setForm({ ...form, besked: e.target.value })}
-          className="w-full rounded-lg px-4 py-3 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] resize-none transition-colors"
+          className="w-full rounded-lg px-4 py-2.5 text-foreground text-[15px] bg-background outline-none placeholder:text-muted-foreground/50 border border-border focus:border-[hsl(var(--red-accent))] resize-none transition-colors"
         />
       </div>
       <button
