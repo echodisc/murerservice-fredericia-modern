@@ -86,13 +86,6 @@ const Index = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => scrollToSection('ydelser')}
-          aria-label="Scroll ned"
-          className="absolute bottom-4 left-0 right-0 z-10 flex justify-center text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none p-0"
-        >
-          <ChevronDown size={32} strokeWidth={1.5} />
-        </button>
       </section>
 
       {/* Services Section */}
