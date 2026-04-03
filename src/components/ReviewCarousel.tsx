@@ -56,7 +56,7 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
       <button
         onClick={scrollNext}
         aria-label="Næste anmeldelse"
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-card/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity shadow"
       >
         <ChevronRight size={20} className="text-foreground" />
       </button>

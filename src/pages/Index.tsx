@@ -89,7 +89,7 @@ const Index = () => {
       <section id="om" className="bg-background py-10 px-6 lg:px-16">
         <div className="max-w-7xl mx-auto">
           {/* About row */}
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-8">
+          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 mb-6">
             <div className="w-full lg:w-[38%]">
               <img
                 src={aboutImg}
