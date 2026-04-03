@@ -43,7 +43,7 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] via-[hsl(var(--hero-overlay-via))] to-[hsl(var(--hero-overlay-to))]" />
 
-        {/* Main content — nudged up on mobile to avoid URL bar / arrow overlap */}
+        {/* Main content */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[140px] md:mb-0">
           <h1
             className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
@@ -77,7 +77,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* USP Bar — positioned safely above the scroll arrow on mobile */}
+        {/* USP Bar */}
          <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
@@ -105,7 +105,7 @@ const Index = () => {
                 alt="Murermester fra ML Murerservice i Fredericia"
                 loading="lazy"
                 width={800}
-                height={800}
+                height={600}
                 className="w-full aspect-[4/3] rounded-2xl object-cover"
               />
             </div>
@@ -135,7 +135,7 @@ const Index = () => {
               <ReviewCarousel reviews={reviews} />
             </div>
 
-            {/* Mobile: toggle */}
+            {/* Mobile: toggle with max-height transition */}
             <div className="md:hidden">
               <button
                 onClick={() => setShowReviews(!showReviews)}
@@ -147,11 +147,12 @@ const Index = () => {
                   className={`transition-transform duration-300 ${showReviews ? 'rotate-180' : ''}`}
                 />
               </button>
-              {showReviews && (
-                <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                  <ReviewCarousel reviews={reviews} />
-                </div>
-              )}
+              <div
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight: showReviews ? '600px' : '0px' }}
+              >
+                <ReviewCarousel reviews={reviews} />
+              </div>
             </div>
           </div>
         </div>

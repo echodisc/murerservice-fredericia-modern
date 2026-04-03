@@ -15,30 +15,19 @@ const serviceSlides = [
 
 const ServiceCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center', slidesToScroll: 1 });
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [selected, setSelected] = useState(0);
+  const [count, setCount] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-    const onScroll = () => {
-      const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-      setScrollProgress(progress);
-      setCanScrollPrev(emblaApi.canScrollPrev());
-      setCanScrollNext(emblaApi.canScrollNext());
-    };
-    emblaApi.on('scroll', onScroll);
-    emblaApi.on('reInit', onScroll);
-    emblaApi.on('select', onScroll);
-    onScroll();
-    return () => {
-      emblaApi.off('scroll', onScroll);
-      emblaApi.off('reInit', onScroll);
-      emblaApi.off('select', onScroll);
-    };
+    setCount(emblaApi.scrollSnapList().length);
+    const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', onSelect);
+    onSelect();
+    return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi]);
 
   return (

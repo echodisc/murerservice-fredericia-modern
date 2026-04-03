@@ -45,7 +45,7 @@
     --radius: 0.5rem;
     --red-accent: 0 65% 48%;
 
-    /* Hero text — always white (over dark overlay), Brave won't invert */
+    /* Hero text — always white (over dark overlay) */
     --hero-text: 0 0% 100%;
     --hero-text-muted: 0 0% 100%;
     --hero-text-subtle: 0 0% 100%;
@@ -153,10 +153,21 @@
     max-width: 100vw;
   }
 
-  /* Prevent Brave forced-color overrides on key components */
+  /* Prevent Brave forced-color overrides on themed components */
   header, footer,
   section.relative,
-  .bg-card, .bg-background {
+  .bg-card, .bg-background,
+  a[href^="tel:"],
+  button,
+  [class*="bg-accent"],
+  [class*="rounded-xl"][class*="border"],
+  [class*="rounded-lg"][class*="border"],
+  span[class*="h-1"][class*="rounded-full"] {
     forced-color-adjust: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }

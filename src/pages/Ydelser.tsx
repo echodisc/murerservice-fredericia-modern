@@ -124,7 +124,7 @@ const DesktopServiceGrid = ({ services, onCardClick }: { services: ServiceItem[]
     {services.map((s) => (
       <div
         key={s.title}
-        className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-[box-shadow,transform] cursor-pointer hover:scale-[1.02]"
+        className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow cursor-pointer"
         onClick={() => onCardClick(s.title)}
       >
         <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[180px] object-cover" />

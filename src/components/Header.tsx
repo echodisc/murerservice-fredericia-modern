@@ -16,7 +16,6 @@ const navLinksOther = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -32,12 +31,6 @@ const Header = () => {
       navigate('/');
     }
   }, [location.pathname, navigate]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -59,35 +52,22 @@ const Header = () => {
     }
   };
 
-  const linkClass = (isScrolled: boolean) =>
-     `relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full ${
-      isScrolled
-        ? 'text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]'
-        : 'text-[hsl(var(--hero-text)/0.9)] hover:text-[hsl(var(--hero-text))] after:bg-[hsl(var(--hero-text))]'
-    }`;
+  const linkClass =
+    'relative text-base font-semibold no-underline transition-colors duration-300 pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full text-foreground/80 hover:text-foreground after:bg-[hsl(var(--red-accent))]';
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ease-in-out ${
-          scrolled ? 'bg-card shadow-sm border-b border-border/50' : 'bg-[hsl(0_0%_0%/0.2)]'
-        }`}
+        className="sticky top-0 z-50 bg-card shadow-sm border-b border-border/50"
+        style={{ WebkitTransform: 'translateZ(0)', willChange: 'transform' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline relative whitespace-nowrap">
-            <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
-              <span className="relative pb-0.5">
-                <span className="text-[hsl(var(--red-accent))]">ML</span>
-                <span className="text-foreground"> Murerservice</span>
-                <span
-                  className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] transition-transform duration-500 ease-in-out origin-center"
-                  style={{ transform: scrolled ? 'scaleX(1)' : 'scaleX(0)' }}
-                />
-              </span>
-            </span>
-             <span className={`transition-opacity duration-500 ${scrolled ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}>
-              <span className="text-[hsl(var(--hero-text))] drop-shadow-md">ML Murerservice</span>
+          <a href="/" onClick={handleLogoClick} className="font-semibold text-lg no-underline whitespace-nowrap">
+            <span className="relative pb-0.5">
+              <span className="text-[hsl(var(--red-accent))]">ML</span>
+              <span className="text-foreground"> Murerservice</span>
+              <span className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))]" />
             </span>
           </a>
 
@@ -95,11 +75,11 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((l) =>
               l.isRoute ? (
-                <Link key={l.label} to={l.href} className={linkClass(scrolled)}>
+                <Link key={l.label} to={l.href} className={linkClass}>
                   {l.label}
                 </Link>
               ) : (
-              <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={linkClass(scrolled)}>
+              <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={linkClass}>
                 {l.label}
               </a>
               )
@@ -115,7 +95,7 @@ const Header = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className={`md:hidden p-1 transition-colors ${scrolled ? 'text-foreground' : 'text-[hsl(var(--hero-text))]'}`}
+            className="md:hidden p-1 text-foreground"
             aria-label={open ? 'Luk menu' : 'Åbn menu'}
           >
             {open ? <X size={26} /> : <Menu size={26} />}
