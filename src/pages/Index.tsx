@@ -77,23 +77,22 @@ const Index = () => {
           </div>
         </div>
 
-        <a
-          href="#ydelser"
+        <button
+          onClick={() => document.getElementById('ydelser')?.scrollIntoView({ behavior: 'smooth' })}
           aria-label="Scroll ned"
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-white/70 hover:text-white transition-colors animate-bounce cursor-pointer bg-transparent border-none"
         >
-          <ChevronDown size={36} strokeWidth={1.5} />
-        </a>
+          <ChevronDown size={32} strokeWidth={1.5} />
+        </button>
       </section>
 
       {/* Services Section */}
       <ServiceCarousel />
 
-      {/* About + Reviews combined section */}
-      <section className="bg-background py-12 px-6 lg:px-16">
+      {/* About Section */}
+      <section id="om" className="bg-background py-12 px-6 lg:px-16 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
-          {/* About row — compact */}
-          <div id="om" className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-12 scroll-mt-24">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
             <div className="w-full lg:w-[40%]">
               <img
                 src={aboutImg}
@@ -119,14 +118,16 @@ const Index = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Reviews — compact */}
-          <div id="anmeldelser" className="scroll-mt-24">
-            <h2 className="font-semibold text-foreground text-2xl md:text-3xl text-center mb-6">
-              Det siger vores kunder
-            </h2>
-            <ReviewCarousel reviews={reviews} />
-          </div>
+      {/* Reviews Section — compact */}
+      <section id="anmeldelser" className="bg-card py-8 px-6 lg:px-16 scroll-mt-24">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-semibold text-foreground text-xl md:text-2xl text-center mb-5">
+            Det siger vores kunder
+          </h2>
+          <ReviewCarousel reviews={reviews} />
         </div>
       </section>
 
