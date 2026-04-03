@@ -5,14 +5,12 @@ import { Menu, X } from 'lucide-react';
 const navLinksHome = [
   { label: 'Ydelser', href: '#ydelser', isRoute: false },
   { label: 'Om os', href: '#om', isRoute: false },
-  { label: 'Anmeldelser', href: '#anmeldelser', isRoute: false },
   { label: 'Kontakt', href: '#kontakt', isRoute: false },
 ];
 
 const navLinksOther = [
   { label: 'Ydelser', href: '/ydelser', isRoute: true },
   { label: 'Om os', href: '/om', isRoute: true },
-  { label: 'Anmeldelser', href: '/#anmeldelser', isRoute: false },
   { label: 'Kontakt', href: '/#kontakt', isRoute: false },
 ];
 

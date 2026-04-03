@@ -68,7 +68,7 @@ const Index = () => {
         </div>
 
         {/* USP Bar */}
-        <div className="absolute bottom-16 left-0 right-0 z-10 px-6 lg:px-16">
+        <div className="absolute bottom-20 left-0 right-0 z-10 px-6 lg:px-16">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-2">
@@ -118,7 +118,7 @@ const Index = () => {
 
           {/* Reviews — tight */}
           <div id="anmeldelser" className="scroll-mt-24">
-            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-4">
+            <h2 className="font-semibold text-foreground text-lg md:text-xl text-center mb-2">
               Det siger vores kunder
             </h2>
             <ReviewCarousel reviews={reviews} />
