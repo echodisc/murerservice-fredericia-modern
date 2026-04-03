@@ -159,11 +159,11 @@ const Header = () => {
           {navLinks.map((l) => {
             const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline text-foreground transition-colors";
             return l.isRoute ? (
-              <Link key={l.label} to={l.href} onClick={handleClick} className={cls}>
+              <Link key={l.label} to={l.href} onClick={() => handleClick()} className={cls}>
                 {l.label}
               </Link>
             ) : (
-              <a key={l.label} href={l.href} onClick={handleClick} className={cls}>
+              <a key={l.label} href={l.href} onClick={(e) => handleClick(e, l.href)} className={cls}>
                 {l.label}
               </a>
             );
