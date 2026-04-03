@@ -76,13 +76,13 @@ const Index = () => {
         </div>
 
         {/* USP Bar — positioned safely above the scroll arrow on mobile */}
-        <div className="absolute bottom-[70px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
+         <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5">
-                <Icon className="text-white/80" size={20} strokeWidth={1.5} />
-                <h3 className="font-medium text-[12px] md:text-[13px] text-white/90">{label}</h3>
-                <p className="text-white/50 text-xs hidden sm:block">{text}</p>
+                <Icon className="text-[hsl(var(--hero-text-muted)/0.8)]" size={20} strokeWidth={1.5} />
+                <h3 className="font-medium text-[12px] md:text-[13px] text-[hsl(var(--hero-text)/0.9)]">{label}</h3>
+                <p className="text-[hsl(var(--hero-text-subtle)/0.5)] text-xs hidden sm:block">{text}</p>
               </div>
             ))}
           </div>

@@ -46,7 +46,7 @@ const OmMig = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-overlay-from))] to-[hsl(var(--hero-overlay-to))]" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <h1
-            className="font-semibold text-white leading-tight drop-shadow-lg"
+            className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}
           >
             Manden bag murerservicen
