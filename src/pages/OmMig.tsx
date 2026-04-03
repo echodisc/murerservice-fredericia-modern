@@ -62,33 +62,21 @@ const OmMig = () => {
         </div>
       </div>
 
-      {/* Intro */}
+      {/* Intro — no photo */}
       <section className="bg-background py-16 px-6 lg:px-16">
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-[40%]">
-            <img
-              src={haandvaerkImg}
-              alt="Håndværk i nærbillede — mursten og mørtel"
-              loading="lazy"
-              width={800}
-              height={600}
-              className="w-full rounded-2xl object-cover aspect-[4/3]"
-            />
-          </div>
-          <div className="w-full lg:w-[60%] flex flex-col gap-4">
-            <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
-              Om mig
-            </span>
-            <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
-              Mere end bare mursten og mørtel
-            </h2>
-            <p className="text-muted-foreground text-[16px] leading-relaxed">
-              Jeg hedder Martin, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det blev hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten til et færdigt resultat, der skal holde i generationer.
-            </p>
-            <p className="text-muted-foreground text-[16px] leading-relaxed">
-              Jeg tror på ærlig kommunikation og ordentligt arbejde. Ingen skjulte overraskelser, ingen sjusk. Når jeg giver et tilbud, holder det. Og når jeg siger tirsdag, mener jeg tirsdag.
-            </p>
-          </div>
+        <div className="max-w-5xl mx-auto flex flex-col gap-4">
+          <span className="uppercase tracking-[1px] font-medium text-[13px]" style={{ color: 'hsl(0 65% 48%)' }}>
+            Om mig
+          </span>
+          <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
+            Mere end bare mursten og mørtel
+          </h2>
+          <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
+            Jeg hedder Martin, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det blev hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten til et færdigt resultat, der skal holde i generationer.
+          </p>
+          <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
+            Jeg tror på ærlig kommunikation og ordentligt arbejde. Ingen skjulte overraskelser, ingen sjusk. Når jeg giver et tilbud, holder det. Og når jeg siger tirsdag, mener jeg tirsdag.
+          </p>
         </div>
       </section>
 
