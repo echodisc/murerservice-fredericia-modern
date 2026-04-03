@@ -148,12 +148,12 @@ const OmMig = () => {
           </div>
           <div className="w-full lg:w-[45%]">
             <img
-              src={projektImg}
-              alt="Færdigt murerprojekt i Trekantområdet"
+              src={profilImg}
+              alt="Murermester Martin — ML Murerservice"
               loading="lazy"
               width={800}
-              height={600}
-              className="w-full rounded-2xl object-cover aspect-[4/3]"
+              height={800}
+              className="w-full rounded-2xl object-cover aspect-square"
             />
           </div>
         </div>
