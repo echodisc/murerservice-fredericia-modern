@@ -110,48 +110,69 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile overlay — full screen coverage */}
-      <div
-        className={`fixed inset-0 top-0 bg-black/50 transition-opacity duration-300 md:hidden ${
-          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        style={{ zIndex: 40 }}
-        onClick={() => setOpen(false)}
-      />
+      {/* Mobile overlay */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
+          style={{ zIndex: 40 }}
+          onClick={() => setOpen(false)}
+        />
+      )}
 
-      {/* Mobile slide-in panel — right-aligned, 72% width */}
+      {/* Mobile slide-in panel */}
       <nav
-        className={`fixed top-0 right-0 bottom-0 w-[72%] max-w-[280px] bg-card shadow-[-8px_0_30px_rgba(0,0,0,0.3)] flex flex-col pt-20 px-8 pb-8 gap-6 transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] flex flex-col transition-transform duration-300 ease-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ zIndex: 60 }}
+        style={{
+          zIndex: 60,
+          backgroundColor: 'hsl(var(--card))',
+          boxShadow: '-10px 0 40px rgba(0,0,0,0.4)',
+        }}
       >
-        {/* Close button */}
-        <button
-          onClick={() => setOpen(false)}
-          className="absolute top-5 right-6 text-foreground p-1"
-          aria-label="Luk menu"
-        >
-          <X size={26} />
-        </button>
-        {navLinks.map((l) =>
-          l.isRoute ? (
-            <Link key={l.label} to={l.href} onClick={handleClick} className={mobileLinkClass}>
-              {l.label}
-            </Link>
-          ) : (
-            <a key={l.label} href={l.href} onClick={handleClick} className={mobileLinkClass}>
-              {l.label}
-            </a>
-          )
-        )}
-        <a
-          href="tel:+4520329095"
-          onClick={handleClick}
-          className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-5 py-3 text-base transition-colors hover:brightness-90 mt-2"
-        >
-          Ring 20 32 90 95
-        </a>
+        {/* Panel header with logo + close */}
+        <div className="flex items-center justify-between px-6 pt-6 pb-4" style={{ borderBottom: '1px solid hsl(var(--border))' }}>
+          <span className="font-semibold text-base" style={{ color: 'hsl(var(--foreground))' }}>
+            <span style={{ color: 'hsl(var(--red-accent))' }}>ML</span> Murerservice
+          </span>
+          <button
+            onClick={() => setOpen(false)}
+            className="p-1 transition-colors"
+            style={{ color: 'hsl(var(--muted-foreground))' }}
+            aria-label="Luk menu"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <div className="flex flex-col px-6 pt-6 gap-1">
+          {navLinks.map((l) => {
+            const cls = "block py-3 px-3 rounded-lg text-[16px] font-medium no-underline transition-colors";
+            const style = { color: 'hsl(var(--foreground))' };
+            return l.isRoute ? (
+              <Link key={l.label} to={l.href} onClick={handleClick} className={cls} style={style}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.href} onClick={handleClick} className={cls} style={style}>
+                {l.label}
+              </a>
+            );
+          })}
+        </div>
+
+        {/* CTA at bottom */}
+        <div className="mt-auto px-6 pb-8">
+          <a
+            href="tel:+4520329095"
+            onClick={handleClick}
+            className="flex items-center justify-center rounded-lg font-bold px-5 py-3.5 text-[15px] transition-colors hover:brightness-90 w-full"
+            style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
+          >
+            Ring 20 32 90 95
+          </a>
+        </div>
       </nav>
     </header>
   );
