@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
+import { CheckCircle, Clock, Users } from 'lucide-react';
+import FloatingScrollArrow from '@/components/FloatingScrollArrow';
 import heroImg from '@/assets/hero-fullscreen.jpg';
 import aboutImg from '@/assets/about-placeholder.jpg';
 import ContactForm from '@/components/ContactForm';
