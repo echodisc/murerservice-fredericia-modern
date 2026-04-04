@@ -118,7 +118,8 @@ const OmMig = () => {
             Hvert projekt har sin egen historie. Her er et par af mine favoritter.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Desktop grid */}
+          <div className="hidden md:grid grid-cols-3 gap-6">
             {anecdotes.map((a) => (
               <div key={a.title} className="bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
                 <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
@@ -126,6 +127,9 @@ const OmMig = () => {
               </div>
             ))}
           </div>
+
+          {/* Mobile carousel */}
+          <AnecdoteCarousel anecdotes={anecdotes} />
         </div>
       </section>
 
