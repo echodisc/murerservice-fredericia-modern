@@ -31,6 +31,48 @@ const anecdotes = [
   },
 ];
 
+const AnecdoteCarousel = ({ anecdotes }: { anecdotes: typeof import('./OmMig')['default'] extends never ? { title: string; text: string }[] : { title: string; text: string }[] }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [selected, setSelected] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelected(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on('select', onSelect);
+    onSelect();
+    return () => { emblaApi.off('select', onSelect); };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div className="md:hidden">
+      <div className="overflow-hidden" ref={emblaRef} style={{ touchAction: 'pan-y pinch-zoom' }}>
+        <div className="flex gap-4">
+          {anecdotes.map((a) => (
+            <div key={a.title} className="flex-[0_0_85%] min-w-0 bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
+              <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
+              <p className="text-muted-foreground text-[15px] leading-relaxed italic">{a.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center gap-2 mt-4">
+        {anecdotes.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === selected ? 'bg-[hsl(var(--red-accent))]' : 'bg-border'}`}
+            aria-label={`Gå til historie ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const OmMig = () => {
 
   return (
