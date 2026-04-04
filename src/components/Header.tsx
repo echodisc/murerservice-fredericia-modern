@@ -76,8 +76,8 @@ const Header = () => {
   const textMuted = isTransparent
     ? 'text-[hsl(var(--hero-text)/0.8)]'
     : 'text-foreground/80';
-  const redAccent = isTransparent ? '' : 'text-[hsl(var(--red-accent))]';
-  const underlineBg = isTransparent ? 'bg-transparent' : 'bg-[hsl(var(--red-accent))]';
+  const redAccent = isTransparent ? 'transition-colors duration-300' : 'text-[hsl(var(--red-accent))] transition-colors duration-300';
+  const underlineScale = isTransparent ? 'scale-x-0' : 'scale-x-100';
   const afterBg = isTransparent
     ? 'after:bg-[hsl(var(--hero-text))]'
     : 'after:bg-[hsl(var(--red-accent))]';
@@ -87,7 +87,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ${
           isTransparent
             ? 'bg-transparent border-b border-transparent'
             : 'bg-card shadow-sm border-b border-border/50'
@@ -100,7 +100,7 @@ const Header = () => {
             <span className="relative pb-0.5">
               <span className={redAccent || textColor}>ML</span>
               <span> Murerservice</span>
-              <span className={`absolute left-0 right-0 bottom-0 h-[3px] rounded-full transition-colors duration-300 ${underlineBg}`} />
+              <span className={`absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[hsl(var(--red-accent))] origin-center transition-transform duration-300 ${underlineScale}`} />
             </span>
           </a>
 
