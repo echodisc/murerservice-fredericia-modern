@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
@@ -64,14 +64,22 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
     setCount(emblaApi.scrollSnapList().length);
-    const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    const onSelect = () => {
+      setSelected(emblaApi.selectedScrollSnap());
+      setCanPrev(emblaApi.canScrollPrev());
+      setCanNext(emblaApi.canScrollNext());
+    };
     const onScroll = () => {
-      const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-      setScrollProgress(progress);
+      setScrollProgress(Math.max(0, Math.min(1, emblaApi.scrollProgress())));
     };
     emblaApi.on('select', onSelect);
     emblaApi.on('scroll', onScroll);
@@ -83,8 +91,10 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
     };
   }, [emblaApi]);
 
+  const thumbWidth = 1 / (services.length || 1);
+
   return (
-    <div className="relative">
+    <div className="relative group">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4">
           {services.map((s) => (
@@ -104,6 +114,26 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
         </div>
       </div>
 
+      {/* Arrows */}
+      {canPrev && (
+        <button
+          onClick={scrollPrev}
+          aria-label="Forrige"
+          className="absolute left-2 md:left-3 top-[100px] md:top-[110px] -translate-y-1/2 z-20 bg-card/90 rounded-full p-2 shadow transition-opacity"
+        >
+          <ChevronLeft size={20} className="text-foreground" />
+        </button>
+      )}
+      {canNext && (
+        <button
+          onClick={scrollNext}
+          aria-label="Næste"
+          className="absolute right-2 md:right-3 top-[100px] md:top-[110px] -translate-y-1/2 z-20 bg-card/90 rounded-full p-2 shadow transition-opacity"
+        >
+          <ChevronRight size={20} className="text-foreground" />
+        </button>
+      )}
+
       {/* Mobile: dots */}
       {count > 1 && (
         <div className="flex md:hidden justify-center gap-2 mt-4">
@@ -121,10 +151,11 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
       <div className="hidden md:flex justify-center mt-6">
         <div className="w-48 h-1 rounded-full bg-border relative overflow-hidden">
           <div
-            className="absolute top-0 left-0 h-full rounded-full bg-[hsl(var(--red-accent))] transition-[left,width] duration-100"
+            className="absolute top-0 left-0 h-full rounded-full bg-[hsl(var(--red-accent))]"
             style={{
-              width: `${(1 / (services.length - 1 || 1)) * 100}%`,
-              left: `${scrollProgress * (1 - 1 / (services.length - 1 || 1)) * 100}%`,
+              width: `${thumbWidth * 100}%`,
+              transform: `translateX(${scrollProgress * (1 / thumbWidth - 1) * 100}%)`,
+              transition: 'transform 300ms ease-out',
             }}
           />
         </div>
