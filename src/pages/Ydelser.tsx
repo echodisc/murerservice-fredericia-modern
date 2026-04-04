@@ -78,7 +78,7 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4">
           {services.map((s) => (
-            <div key={s.title} className={`flex-[0_0_85%] md:flex-[0_0_${slideSizeMd}] min-w-0 pl-4`}>
+            <div key={s.title} className="min-w-0 pl-4 flex-[0_0_85%] md:flex-[0_0_45%]">
               <div
                 className="bg-background rounded-xl overflow-hidden border border-border cursor-pointer hover:shadow-lg transition-shadow h-full flex flex-col"
                 onClick={() => onCardClick(s.title)}
