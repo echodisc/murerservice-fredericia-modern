@@ -179,8 +179,8 @@ const OmMig = () => {
 
       {/* Project showcase */}
       <section className="bg-card py-16 px-6 lg:px-16">
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-[55%] flex flex-col gap-4">
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          <div className="w-full lg:w-[55%] flex flex-col gap-4 order-2 lg:order-1">
             <h2 className="font-semibold text-foreground text-2xl md:text-3xl">
               Stolthed i hvert projekt
             </h2>
@@ -194,7 +194,7 @@ const OmMig = () => {
               Lad os snakke om dit projekt <span className="text-[hsl(var(--red-accent))]">→</span>
             </Link>
           </div>
-          <div className="w-full lg:w-[45%]">
+          <div className="w-[60%] max-w-[280px] lg:w-[45%] lg:max-w-none order-1 lg:order-2">
             <img
               src={profilImg}
               alt="Murermester Martin — ML Murerservice"
