@@ -39,7 +39,7 @@ const ServiceCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <section id="ydelser" className="bg-card py-16 px-6 lg:px-16 scroll-mt-20">
+    <section id="ydelser" className="bg-card pt-10 pb-16 px-6 lg:px-16 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-6 md:mb-12">
           <h2 className="font-semibold text-foreground text-lg md:text-3xl mb-1 md:mb-3">
