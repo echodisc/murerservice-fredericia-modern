@@ -77,13 +77,17 @@ const OmMig = () => {
           <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">Om mig</span>
           <h2 className="font-semibold text-foreground text-2xl md:text-3xl">Mere end bare mursten og mørtel</h2>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
-            Jeg hedder Mogens Larsen, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det
-            blev hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten
-            til et færdigt resultat, der skal holde i generationer.
+            ML Murerservice har eksisteret siden 1999. De første otte år var firmaet på Fyn, men i 2007 rykkede jeg til
+            Trekantområdet — og har siden arbejdet i Kolding, Vejle, Fredericia og omegn.
           </p>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
-            Jeg tror på ærlig kommunikation og ordentligt arbejde. Ingen skjulte overraskelser, ingen sjusk. Når jeg
-            giver et tilbud, holder det. Og når jeg siger tirsdag, mener jeg tirsdag.
+            I dag fokuserer jeg mest på reparationer, renoveringer og flisearbejde. Nybyggeri har jeg lavet rigeligt af i
+            mine unge år — nu nyder jeg de opgaver der kræver præcision, tålmodighed og et godt øje for detaljen.
+            Badeværelser, skorstene, trapper, facader og tusinde andre småting.
+          </p>
+          <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
+            Jeg satser altid på en god dialog med mine kunder. Gensidig tillid og et ærligt svar — det er fundamentet for
+            alt hvad jeg laver. Det giver altid det bedste resultat.
           </p>
         </div>
       </section>
