@@ -58,9 +58,9 @@ const ContactOverlay = ({ serviceName, onClose }: { serviceName: string; onClose
   </div>
 );
 
-/* ── Mobile carousel ── */
-const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceItem[]; onCardClick: (title: string) => void }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'center', slidesToScroll: 1 });
+/* ── Service carousel (used on both mobile and desktop) ── */
+const ServiceCarouselBlock = ({ services, onCardClick, slideSizeMd = '45%' }: { services: ServiceItem[]; onCardClick: (title: string) => void; slideSizeMd?: string }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -75,21 +75,18 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
 
   return (
     <div className="relative">
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-r from-card/80 to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-l from-card/80 to-transparent" />
-
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4">
           {services.map((s) => (
-            <div key={s.title} className="flex-[0_0_85%] min-w-0 pl-4">
+            <div key={s.title} className={`flex-[0_0_85%] md:flex-[0_0_${slideSizeMd}] min-w-0 pl-4`}>
               <div
-                className="bg-background rounded-xl overflow-hidden border border-border cursor-pointer active:scale-[0.98] transition-transform"
+                className="bg-background rounded-xl overflow-hidden border border-border cursor-pointer hover:shadow-lg transition-shadow h-full flex flex-col"
                 onClick={() => onCardClick(s.title)}
               >
-                <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[200px] object-cover" />
-                <div className="p-4">
+                <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[200px] md:h-[220px] object-cover flex-shrink-0" />
+                <div className="p-4 md:p-5 flex flex-col flex-1">
                   <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
-                  <p className="text-muted-foreground text-[13px] leading-relaxed">{s.text}</p>
+                  <p className="text-muted-foreground text-[13px] md:text-[14px] leading-relaxed flex-1">{s.text}</p>
                 </div>
               </div>
             </div>
@@ -102,7 +99,7 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
             <button
               key={i}
               onClick={() => emblaApi?.scrollTo(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === selected ? 'w-5 bg-[hsl(var(--red-accent))]' : 'bg-muted-foreground/30'}`}
+              className={`h-2 rounded-full transition-all ${i === selected ? 'w-5 bg-[hsl(var(--red-accent))]' : 'w-2 bg-muted-foreground/30'}`}
             />
           ))}
         </div>
@@ -111,25 +108,6 @@ const MobileServiceCarousel = ({ services, onCardClick }: { services: ServiceIte
   );
 };
 
-/* ── Desktop grid ── */
-const DesktopServiceGrid = ({ services, onCardClick }: { services: ServiceItem[]; onCardClick: (title: string) => void }) => (
-  <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-    {services.map((s) => (
-      <div
-        key={s.title}
-        className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow cursor-pointer"
-        onClick={() => onCardClick(s.title)}
-      >
-        <img src={s.img} alt={s.title} loading="lazy" width={800} height={600} className="w-full h-[180px] object-cover" />
-        <div className="p-5">
-          <h4 className="font-semibold text-foreground text-base mb-1.5">{s.title}</h4>
-          <p className="text-muted-foreground text-[14px] leading-relaxed">{s.text}</p>
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
 const ServiceBlock = ({ title, services, id, onCardClick }: { title: string; services: ServiceItem[]; id: string; onCardClick: (title: string) => void }) => (
   <section id={id} className="py-12 md:py-16 px-6 lg:px-16 scroll-mt-24">
     <div className="max-w-6xl mx-auto">
@@ -137,12 +115,7 @@ const ServiceBlock = ({ title, services, id, onCardClick }: { title: string; ser
         {title}
         <span className="block h-1 w-12 rounded-full mt-3 mx-auto bg-[hsl(var(--red-accent))]" />
       </h2>
-      <div className="md:hidden">
-        <MobileServiceCarousel services={services} onCardClick={onCardClick} />
-      </div>
-      <div className="hidden md:block">
-        <DesktopServiceGrid services={services} onCardClick={onCardClick} />
-      </div>
+      <ServiceCarouselBlock services={services} onCardClick={onCardClick} />
     </div>
   </section>
 );
