@@ -50,11 +50,13 @@ const AnecdoteCarousel = ({ anecdotes }: { anecdotes: { title: string; text: str
   return (
     <div className="md:hidden">
       <div className="overflow-hidden" ref={emblaRef} style={{ touchAction: 'pan-y pinch-zoom' }}>
-        <div className="flex gap-4">
+        <div className="flex -ml-4">
           {anecdotes.map((a) => (
-            <div key={a.title} className="flex-[0_0_85%] min-w-0 bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
-              <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
-              <p className="text-muted-foreground text-[15px] leading-relaxed italic">{a.text}</p>
+            <div key={a.title} className="flex-[0_0_85%] min-w-0 pl-4">
+              <div className="bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)] h-full">
+                <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
+                <p className="text-muted-foreground text-[15px] leading-relaxed italic">{a.text}</p>
+              </div>
             </div>
           ))}
         </div>
