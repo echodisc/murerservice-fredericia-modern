@@ -63,14 +63,24 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (!emblaApi) return;
     setCount(emblaApi.scrollSnapList().length);
     const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    const onScroll = () => {
+      const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+      setScrollProgress(progress);
+    };
     emblaApi.on('select', onSelect);
+    emblaApi.on('scroll', onScroll);
     onSelect();
-    return () => { emblaApi.off('select', onSelect); };
+    onScroll();
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('scroll', onScroll);
+    };
   }, [emblaApi]);
 
   return (
@@ -93,8 +103,10 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
           ))}
         </div>
       </div>
+
+      {/* Mobile: dots */}
       {count > 1 && (
-        <div className="flex justify-center gap-2 mt-4">
+        <div className="flex md:hidden justify-center gap-2 mt-4">
           {Array.from({ length: count }).map((_, i) => (
             <button
               key={i}
@@ -104,10 +116,22 @@ const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem
           ))}
         </div>
       )}
+
+      {/* Desktop: progress slider */}
+      <div className="hidden md:flex justify-center mt-6">
+        <div className="w-48 h-1 rounded-full bg-border relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 h-full rounded-full bg-[hsl(var(--red-accent))] transition-[left,width] duration-100"
+            style={{
+              width: `${(1 / (services.length - 1 || 1)) * 100}%`,
+              left: `${scrollProgress * (1 - 1 / (services.length - 1 || 1)) * 100}%`,
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
-
 const ServiceBlock = ({ title, services, id, onCardClick }: { title: string; services: ServiceItem[]; id: string; onCardClick: (title: string) => void }) => (
   <section id={id} className="py-12 md:py-16 px-6 lg:px-16 scroll-mt-24">
     <div className="max-w-6xl mx-auto">
