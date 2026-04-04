@@ -127,22 +127,22 @@ const OmMig = () => {
       </section>
 
       {/* Timeline */}
-      <section className="bg-card py-16 px-6 lg:px-16">
+      <section className="bg-card py-10 px-6 lg:px-16">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-semibold text-foreground text-2xl md:text-3xl text-center mb-12">
+          <h2 className="font-semibold text-foreground text-2xl md:text-3xl text-center mb-8">
             25 år i murerfaget
           </h2>
           <div className="relative">
             <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-px" />
 
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-6">
               {milestones.map((m, i) => (
-                <div key={m.year} className={`relative flex flex-col lg:flex-row items-start lg:items-center gap-4 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  <div className="absolute left-4 lg:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-1 bg-[hsl(var(--red-accent))]" />
+                <div key={m.year} className={`relative flex flex-col lg:flex-row items-start lg:items-center gap-2 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                  <div className="absolute left-4 lg:left-1/2 w-2.5 h-2.5 rounded-full -translate-x-1/2 mt-1 bg-[hsl(var(--red-accent))]" />
 
                   <div className={`pl-10 lg:pl-0 lg:w-1/2 ${i % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12'}`}>
-                    <span className="font-semibold text-foreground text-lg">{m.year}</span>
-                    <p className="text-muted-foreground text-[15px] leading-relaxed mt-1">{m.text}</p>
+                    <span className="font-semibold text-foreground text-base">{m.year}</span>
+                    <p className="text-muted-foreground text-[14px] leading-relaxed mt-0.5">{m.text}</p>
                   </div>
                   <div className="hidden lg:block lg:w-1/2" />
                 </div>
