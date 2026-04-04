@@ -59,7 +59,7 @@ const ContactOverlay = ({ serviceName, onClose }: { serviceName: string; onClose
 );
 
 /* ── Service carousel (used on both mobile and desktop) ── */
-const ServiceCarouselBlock = ({ services, onCardClick, slideSizeMd = '45%' }: { services: ServiceItem[]; onCardClick: (title: string) => void; slideSizeMd?: string }) => {
+const ServiceCarouselBlock = ({ services, onCardClick }: { services: ServiceItem[]; onCardClick: (title: string) => void }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', slidesToScroll: 1 });
   const [selected, setSelected] = useState(0);
   const [count, setCount] = useState(0);
