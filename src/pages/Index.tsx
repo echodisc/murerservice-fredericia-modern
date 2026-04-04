@@ -39,6 +39,8 @@ const Index = () => {
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
           width={1920}
           height={1080}
+          fetchPriority="high"
+          decoding="sync"
           className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
 
