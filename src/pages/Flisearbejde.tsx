@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
+import fliseImg from '@/assets/flisearbejde-placeholder.webp';
 import flise2 from '@/assets/flise-2.jpg';
 import flise3 from '@/assets/flise-3.jpg';
 import fliseBathroom from '@/assets/flise-bathroom.jpg';

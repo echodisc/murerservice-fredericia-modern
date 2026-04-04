@@ -10,7 +10,7 @@ import murer2 from '@/assets/murer-2.jpg';
 import murer3 from '@/assets/murer-3.jpg';
 import murerRepair from '@/assets/murer-repair.jpg';
 import murerChimney from '@/assets/murer-chimney.jpg';
-import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
+import fliseImg from '@/assets/flisearbejde-placeholder.webp';
 import flise2 from '@/assets/flise-2.jpg';
 import flise3 from '@/assets/flise-3.jpg';
 import fliseBathroom from '@/assets/flise-bathroom.jpg';

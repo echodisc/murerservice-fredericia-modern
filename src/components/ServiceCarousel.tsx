@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import murerImg from '@/assets/murerarbejde-placeholder.jpg';
-import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
+import murerImg from '@/assets/murerarbejde-placeholder.webp';
+import fliseImg from '@/assets/flisearbejde-placeholder.webp';
 
 const serviceSlides = [
   { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Facader, skorstene, trapper m.m.', hash: 'murerarbejde' },
