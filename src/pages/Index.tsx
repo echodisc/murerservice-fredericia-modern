@@ -45,7 +45,7 @@ const Index = () => {
         />
 
         {/* Main content */}
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[140px] md:mb-0">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[100px] md:mb-0">
           <h1
             className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
             style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
