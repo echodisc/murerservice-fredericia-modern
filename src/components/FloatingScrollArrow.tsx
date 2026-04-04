@@ -1,10 +1,24 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const SECTION_IDS = ['ydelser', 'om', 'kontakt'];
 const HEADER_HEIGHT = 64;
 
 const FloatingScrollArrow = () => {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    function check() {
+      const kontakt = document.getElementById('kontakt');
+      if (!kontakt) { setVisible(true); return; }
+      const top = kontakt.getBoundingClientRect().top;
+      setVisible(top > window.innerHeight);
+    }
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    return () => window.removeEventListener('scroll', check);
+  }, []);
+
   const handleClick = useCallback(() => {
     const scrollY = window.scrollY + HEADER_HEIGHT + 20;
 
@@ -21,7 +35,11 @@ const FloatingScrollArrow = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-0 right-0 z-40 flex justify-center pb-[env(safe-area-inset-bottom,0px)] animate-[fadeIn_0.5s_ease-out_1s_both]">
+    <div
+      className={`fixed bottom-4 md:bottom-6 left-0 right-0 z-40 flex justify-center pb-[env(safe-area-inset-bottom,0px)] transition-opacity duration-300 ${
+        visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+    >
       <button
         onClick={handleClick}
         aria-label="Scroll ned"
