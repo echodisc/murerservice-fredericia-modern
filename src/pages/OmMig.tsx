@@ -17,12 +17,12 @@ const milestones = [
 
 const anecdotes = [
   {
-    title: "Den skæve skorsten i Børkop",
-    text: 'En af mine første opgaver var en skorsten, der hældede så meget, at ejeren jokede med at den snart ville falde ned i haven. Det krævede to dage, en del kreativ stilladsopsætning og en god portion stædighed — men resultatet stod lige så ret som en lineal. Ejeren ringede igen ti år senere: "Den står stadig perfekt."',
+    title: "Svømmehallen der ringede",
+    text: "Engang lavede jeg reparationer på poolen i en svømmehal — nye kanter, hvor vandet skulle løbe henover med en margen på +/- 2 mm over 25 meters længde. Da jeg var færdig og på sommerferie, ringede de og sagde vandet kun løb over i den ene ende. Jeg blev hed om ørerne — men banditterne lavede bare sjov og ønskede god ferie. Kanterne fungerede 100%.",
   },
   {
-    title: "Badeværelset der blev til to",
-    text: "Et par i Vejle bad mig om at lægge fliser i ét badeværelse. Da de så resultatet, besluttede de sig for at rive det andet badeværelse ned og starte forfra. Det tager jeg som et kompliment.",
+    title: "Bondemandens badeværelse",
+    text: '"Du skal bare lave det lige som hvis det var hjemme ved dig selv," sagde bonden. "Fint," sagde jeg, "så fjerner vi det hele og starter forfra." Så grinede han og sagde det måske lige var rigeligt. Men han var glad for resultatet i sidste ende.',
   },
   {
     title: "Mursten fra 1890",
