@@ -208,12 +208,12 @@ const OmMig = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 lg:px-16 bg-[hsl(var(--inverse-bg))]">
+      <section className="py-16 px-6 lg:px-16 bg-card border-t border-border/50">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="font-semibold text-2xl md:text-3xl text-[hsl(var(--inverse-fg))] mb-4">
+          <h2 className="font-semibold text-2xl md:text-3xl text-foreground mb-4">
             Klar til at komme i gang?
           </h2>
-          <p className="text-[hsl(var(--inverse-muted))] mb-8 max-w-lg mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
             Ring eller skriv — så tager vi en uforpligtende snak om dit projekt.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -225,7 +225,7 @@ const OmMig = () => {
             </a>
             <Link
               to="/#kontakt"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--inverse-border)/0.6)] text-[hsl(var(--inverse-fg))] font-medium px-8 py-4 text-base transition-colors hover:bg-[hsl(var(--inverse-fg)/0.1)]"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-primary text-primary font-medium px-8 py-4 text-base transition-colors hover:bg-primary/10"
             >
               Send en besked
             </Link>
