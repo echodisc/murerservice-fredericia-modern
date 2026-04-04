@@ -8,17 +8,11 @@ import profilImg from "@/assets/om-profil.jpg";
 import projektImg from "@/assets/om-projekt.jpg";
 
 const milestones = [
-  {
-    year: "1999",
-    text: "Starter ML Murerservice i Fredericia — den første kunde var en nabo, der skulle have omfuget et helt gavlparti.",
-  },
-  { year: "2004", text: "De første større entrepriser kommer ind. Renoveringer af ældre ejendomme i Kolding centrum." },
-  { year: "2010", text: "Udvider til flisearbejde efter stigende efterspørgsel på totalløsninger til badeværelser." },
-  {
-    year: "2016",
-    text: "Har nu udført over 500 projekter i Trekantområdet — fra små reparationer til komplette ombygninger.",
-  },
-  { year: "2024", text: "25 års erfaring og stadig lige så stor passion for godt håndværk som dag ét." },
+  { year: "1999", text: "Starter ML Murerservice på Fyn. De første kunder kommer hurtigt, og alt fra nybyggeri til småreparationer holder mig beskæftiget." },
+  { year: "2003", text: "Flisearbejde bliver en fast del af forretningen — en naturlig udvidelse efter flere år som professionel flisemurer." },
+  { year: "2007", text: "Flytter firmaet fra Fyn til Trekantområdet. Kolding, Vejle og Fredericia bliver det nye hjemmeområde." },
+  { year: "2012", text: "Stigende efterspørgsel på totalløsninger til badeværelser. Kombinationen af murer- og flisearbejde bliver et kendetegn for firmaet." },
+  { year: "2024", text: "25 års erfaring og stadig samme passion for godt håndværk, ærlige svar og en god snak med kunderne." },
 ];
 
 const anecdotes = [
