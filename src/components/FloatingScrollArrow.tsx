@@ -12,7 +12,7 @@ const FloatingScrollArrow = () => {
       const kontakt = document.getElementById('kontakt');
       if (!kontakt) { setVisible(true); return; }
       const top = kontakt.getBoundingClientRect().top;
-      setVisible(top > window.innerHeight);
+      setVisible(top > window.innerHeight * 0.3);
     }
     check();
     window.addEventListener('scroll', check, { passive: true });
