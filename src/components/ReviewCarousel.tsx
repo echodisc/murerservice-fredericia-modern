@@ -29,17 +29,19 @@ const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
         ref={emblaRef}
         style={{ touchAction: 'pan-y pinch-zoom', maskImage: 'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)' }}
       >
-        <div className="flex">
+        <div className="flex -ml-5">
           {reviews.map((r, i) => (
             <div
               key={i}
-              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 bg-card rounded-xl p-8 mr-5 last:mr-0"
+              className="flex-[0_0_90%] md:flex-[0_0_calc(33.333%-14px)] min-w-0 pl-5"
             >
-              <div className="text-[18px] text-accent mb-3">★★★★★</div>
-              <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
-                &ldquo;{r.quote}&rdquo;
-              </p>
-              <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
+              <div className="bg-card rounded-xl p-8 h-full">
+                <div className="text-[18px] text-accent mb-3">★★★★★</div>
+                <p className="italic text-[15px] text-muted-foreground leading-relaxed mb-4">
+                  &ldquo;{r.quote}&rdquo;
+                </p>
+                <span className="font-semibold text-[14px] text-muted-foreground">{r.name}</span>
+              </div>
             </div>
           ))}
         </div>
