@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -29,6 +30,48 @@ const anecdotes = [
     text: 'Ved en renovering i Kolding fandt vi originale mursten fra 1890 bag et lag puds. Vi rensede dem én for én og genbrugte dem i facaden. Ejeren var begejstret — og det var jeg også. Der er noget særligt ved at give gammelt håndværk nyt liv.',
   },
 ];
+
+const AnecdoteCarousel = ({ anecdotes }: { anecdotes: { title: string; text: string }[] }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [selected, setSelected] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelected(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on('select', onSelect);
+    onSelect();
+    return () => { emblaApi.off('select', onSelect); };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div className="md:hidden">
+      <div className="overflow-hidden" ref={emblaRef} style={{ touchAction: 'pan-y pinch-zoom' }}>
+        <div className="flex gap-4">
+          {anecdotes.map((a) => (
+            <div key={a.title} className="flex-[0_0_85%] min-w-0 bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
+              <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
+              <p className="text-muted-foreground text-[15px] leading-relaxed italic">{a.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center gap-2 mt-4">
+        {anecdotes.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === selected ? 'bg-[hsl(var(--red-accent))]' : 'bg-border'}`}
+            aria-label={`Gå til historie ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const OmMig = () => {
 
@@ -117,7 +160,8 @@ const OmMig = () => {
             Hvert projekt har sin egen historie. Her er et par af mine favoritter.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Desktop grid */}
+          <div className="hidden md:grid grid-cols-3 gap-6">
             {anecdotes.map((a) => (
               <div key={a.title} className="bg-card rounded-xl p-6 shadow-[0_2px_8px_hsl(var(--foreground)/0.06)]">
                 <h3 className="font-semibold text-foreground text-lg mb-3">{a.title}</h3>
@@ -125,6 +169,9 @@ const OmMig = () => {
               </div>
             ))}
           </div>
+
+          {/* Mobile carousel */}
+          <AnecdoteCarousel anecdotes={anecdotes} />
         </div>
       </section>
 
