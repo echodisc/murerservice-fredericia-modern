@@ -77,9 +77,9 @@ const OmMig = () => {
           <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">Om mig</span>
           <h2 className="font-semibold text-foreground text-2xl md:text-3xl">Mere end bare mursten og mørtel</h2>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
-            Jeg hedder Martin, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det blev
-            hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten til
-            et færdigt resultat, der skal holde i generationer.
+            Jeg hedder Mogens Larsen, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det
+            blev hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten
+            til et færdigt resultat, der skal holde i generationer.
           </p>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
             Jeg tror på ærlig kommunikation og ordentligt arbejde. Ingen skjulte overraskelser, ingen sjusk. Når jeg
