@@ -8,27 +8,21 @@ import profilImg from "@/assets/om-profil.jpg";
 import projektImg from "@/assets/om-projekt.jpg";
 
 const milestones = [
-  {
-    year: "1999",
-    text: "Starter ML Murerservice i Fredericia — den første kunde var en nabo, der skulle have omfuget et helt gavlparti.",
-  },
-  { year: "2004", text: "De første større entrepriser kommer ind. Renoveringer af ældre ejendomme i Kolding centrum." },
-  { year: "2010", text: "Udvider til flisearbejde efter stigende efterspørgsel på totalløsninger til badeværelser." },
-  {
-    year: "2016",
-    text: "Har nu udført over 500 projekter i Trekantområdet — fra små reparationer til komplette ombygninger.",
-  },
-  { year: "2024", text: "25 års erfaring og stadig lige så stor passion for godt håndværk som dag ét." },
+  { year: "1999", text: "Starter ML Murerservice på Fyn. De første kunder kommer hurtigt, og alt fra nybyggeri til småreparationer holder mig beskæftiget." },
+  { year: "2003", text: "Flisearbejde bliver en fast del af forretningen — en naturlig udvidelse efter flere år som professionel flisemurer." },
+  { year: "2007", text: "Flytter firmaet fra Fyn til Trekantområdet. Kolding, Vejle og Fredericia bliver det nye hjemmeområde." },
+  { year: "2012", text: "Stigende efterspørgsel på totalløsninger til badeværelser. Kombinationen af murer- og flisearbejde bliver et kendetegn for firmaet." },
+  { year: "2024", text: "25 års erfaring og stadig samme passion for godt håndværk, ærlige svar og en god snak med kunderne." },
 ];
 
 const anecdotes = [
   {
-    title: "Den skæve skorsten i Børkop",
-    text: 'En af mine første opgaver var en skorsten, der hældede så meget, at ejeren jokede med at den snart ville falde ned i haven. Det krævede to dage, en del kreativ stilladsopsætning og en god portion stædighed — men resultatet stod lige så ret som en lineal. Ejeren ringede igen ti år senere: "Den står stadig perfekt."',
+    title: "Svømmehallen der ringede",
+    text: "Engang lavede jeg reparationer på poolen i en svømmehal — nye kanter, hvor vandet skulle løbe henover med en margen på +/- 2 mm over 25 meters længde. Da jeg var færdig og på sommerferie, ringede de og sagde vandet kun løb over i den ene ende. Jeg blev hed om ørerne — men banditterne lavede bare sjov og ønskede god ferie. Kanterne fungerede 100%.",
   },
   {
-    title: "Badeværelset der blev til to",
-    text: "Et par i Vejle bad mig om at lægge fliser i ét badeværelse. Da de så resultatet, besluttede de sig for at rive det andet badeværelse ned og starte forfra. Det tager jeg som et kompliment.",
+    title: "Bondemandens badeværelse",
+    text: '"Du skal bare lave det lige som hvis det var hjemme ved dig selv," sagde bonden. "Fint," sagde jeg, "så fjerner vi det hele og starter forfra." Så grinede han og sagde det måske lige var rigeligt. Men han var glad for resultatet i sidste ende.',
   },
   {
     title: "Mursten fra 1890",
@@ -77,13 +71,17 @@ const OmMig = () => {
           <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">Om mig</span>
           <h2 className="font-semibold text-foreground text-2xl md:text-3xl">Mere end bare mursten og mørtel</h2>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
-            Jeg hedder Mogens Larsen, og jeg har været murer siden jeg var 17. Det startede som en læreplads — men det
-            blev hurtigt en passion. Der er noget dybt tilfredsstillende ved at se et projekt vokse fra en bunke mursten
-            til et færdigt resultat, der skal holde i generationer.
+            ML Murerservice har eksisteret siden 1999. De første otte år var firmaet på Fyn, men i 2007 rykkede jeg til
+            Trekantområdet — og har siden arbejdet i Kolding, Vejle, Fredericia og omegn.
           </p>
           <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
-            Jeg tror på ærlig kommunikation og ordentligt arbejde. Ingen skjulte overraskelser, ingen sjusk. Når jeg
-            giver et tilbud, holder det. Og når jeg siger tirsdag, mener jeg tirsdag.
+            I dag fokuserer jeg mest på reparationer, renoveringer og flisearbejde. Nybyggeri har jeg lavet rigeligt af i
+            mine unge år — nu nyder jeg de opgaver der kræver præcision, tålmodighed og et godt øje for detaljen.
+            Badeværelser, skorstene, trapper, facader og tusinde andre småting.
+          </p>
+          <p className="text-muted-foreground text-[16px] leading-relaxed max-w-2xl">
+            Jeg satser altid på en god dialog med mine kunder. Gensidig tillid og et ærligt svar — det er fundamentet for
+            alt hvad jeg laver. Det giver altid det bedste resultat.
           </p>
         </div>
       </section>
