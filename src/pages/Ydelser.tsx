@@ -5,7 +5,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
-import murerImg from '@/assets/murerarbejde-placeholder.jpg';
+import murerImg from '@/assets/murerarbejde-placeholder.webp';
 import murer2 from '@/assets/murer-2.jpg';
 import murer3 from '@/assets/murer-3.jpg';
 import murerRepair from '@/assets/murer-repair.jpg';
