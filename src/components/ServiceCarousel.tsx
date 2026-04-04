@@ -5,8 +5,8 @@ import murerImg from '@/assets/murerarbejde-placeholder.jpg';
 import fliseImg from '@/assets/flisearbejde-placeholder.jpg';
 
 const serviceSlides = [
-  { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Nybyggeri, tilbygninger og alle typer muropgaver.', hash: 'murerarbejde' },
-  { img: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle', title: 'Flisearbejde', text: 'Badeværelser, køkkener, terrasser og specialopgaver.', hash: 'flisearbejde' },
+  { img: murerImg, alt: 'Murerarbejde udført af ML Murerservice i Kolding', title: 'Murerarbejde', text: 'Facader, skorstene, trapper m.m.', hash: 'murerarbejde' },
+  { img: fliseImg, alt: 'Flisearbejde i badeværelse, Vejle', title: 'Flisearbejde', text: 'Badeværelser, køkkener, terrasser m.m.', hash: 'flisearbejde' },
 ];
 
 const ServiceCard = ({ slide }: { slide: typeof serviceSlides[0] }) => (
