@@ -109,7 +109,7 @@ const OmMig = () => {
       </div>
 
       {/* Intro */}
-      <section className="bg-background py-16 px-6 lg:px-16">
+      <section className="bg-background pt-10 pb-16 px-6 lg:px-16">
         <div className="max-w-5xl mx-auto flex flex-col gap-4">
           <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
             Om mig
