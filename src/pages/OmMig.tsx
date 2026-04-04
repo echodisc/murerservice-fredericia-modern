@@ -31,7 +31,7 @@ const anecdotes = [
   },
 ];
 
-const AnecdoteCarousel = ({ anecdotes }: { anecdotes: typeof import('./OmMig')['default'] extends never ? { title: string; text: string }[] : { title: string; text: string }[] }) => {
+const AnecdoteCarousel = ({ anecdotes }: { anecdotes: { title: string; text: string }[] }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [selected, setSelected] = useState(0);
 
