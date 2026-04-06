@@ -68,7 +68,7 @@ const Index = () => {
         />
 
         {/* Split content — vertically centered, top-aligned columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 mb-[100px] md:mb-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14">
           {/* Left column — text + CTAs */}
           <div className="w-full md:w-[55%] flex flex-col items-start text-left">
             <h1
@@ -103,7 +103,7 @@ const Index = () => {
           </div>
 
           {/* Right column — ContactForm */}
-          <div id="kontakt-form" className="w-full md:w-[45%] flex justify-center md:justify-end scroll-mt-24">
+          <div id="kontakt-form" className="hidden md:flex w-full md:w-[45%] justify-center md:justify-end scroll-mt-24">
             <div className="w-full max-w-[500px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
               <ContactForm />
             </div>
