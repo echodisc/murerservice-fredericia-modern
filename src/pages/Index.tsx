@@ -33,7 +33,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section — split layout */}
-      <section className="relative overflow-hidden flex flex-col" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
+      <section className="relative overflow-hidden flex flex-col items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
@@ -45,7 +45,7 @@ const Index = () => {
         />
 
         {/* Split content — vertically centered, top-aligned columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 my-auto pt-20 md:pt-24 mb-[100px] md:mb-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 mb-[100px] md:mb-0">
           {/* Left column — text + CTAs */}
           <div className="w-full md:w-[55%] flex flex-col items-start text-left">
             <h1
