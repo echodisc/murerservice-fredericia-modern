@@ -68,7 +68,7 @@ const Index = () => {
         />
 
         {/* Split content — vertically centered, top-aligned columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 mb-[100px] md:mb-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14">
           {/* Left column — text + CTAs */}
           <div className="w-full md:w-[55%] flex flex-col items-start text-left">
             <h1
