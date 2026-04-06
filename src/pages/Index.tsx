@@ -56,7 +56,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section — split layout */}
-      <section className="relative overflow-hidden flex flex-col items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 50)', minHeight: '420px' }} >
+      <section className="relative overflow-hidden flex flex-col items-center justify-center h-[50vh] md:h-[70vh] min-h-[400px]">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
