@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown, Lightbulb } from 'lucide-react';
 import FloatingScrollArrow from '@/components/FloatingScrollArrow';
