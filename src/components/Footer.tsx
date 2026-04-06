@@ -5,7 +5,7 @@ const footerLinks = [
   { label: 'Hjem', href: '/' },
   { label: 'Ydelser', href: '/ydelser' },
   { label: 'Om mig', href: '/om' },
-  { label: 'Kontakt', href: '/#kontakt' },
+  { label: 'Kontakt', href: '/#kontakt-form' },
 ];
 
 const Footer = () => (
