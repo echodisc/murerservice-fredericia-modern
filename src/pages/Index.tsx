@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown, Lightbulb } from 'lucide-react';
 import FloatingScrollArrow from '@/components/FloatingScrollArrow';
