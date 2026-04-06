@@ -17,7 +17,7 @@ const ContactForm = () => {
 
   if (submitted) {
     return (
-      <div className="w-full max-w-[440px] rounded-2xl p-10 text-center bg-card border border-border animate-in fade-in duration-300">
+      <div className="w-full max-w-[440px] rounded-2xl p-10 text-center animate-in fade-in duration-300">
         <div className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style={{ background: 'hsl(var(--red-accent) / 0.1)' }}>
           <span className="text-2xl" style={{ color: 'hsl(var(--red-accent))' }}>✓</span>
         </div>
@@ -30,7 +30,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-[440px] flex flex-col gap-4 bg-card rounded-2xl p-6 md:p-8 border border-border">
+    <form onSubmit={handleSubmit} className="w-full max-w-[440px] flex flex-col gap-4 rounded-2xl p-6 md:p-8">
       <div className="flex flex-col gap-1">
         <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Navn</label>
         <input

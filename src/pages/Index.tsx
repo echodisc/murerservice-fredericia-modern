@@ -32,7 +32,7 @@ const Index = () => {
   return (
     <main>
       <Header />
-      {/* Hero Section */}
+      {/* Hero Section — split layout */}
       <section className="relative overflow-hidden flex flex-col items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
         <img
           src={heroImg}
@@ -44,42 +44,51 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
 
-        {/* Main content */}
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4 md:gap-6 mb-[100px] md:mb-0">
-          <h1
-            className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
-            style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
-          >
-            Din murer i Kolding, Vejle &amp; Fredericia
-            <span className="block h-1 w-16 rounded-full mt-4 mx-auto bg-[hsl(var(--red-accent))]" />
-          </h1>
-          <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
-            Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-1">
-            <button
-              onClick={() => {
-                const el = document.getElementById('kontakt');
-                if (el) {
-                  const top = el.getBoundingClientRect().top + window.scrollY - 80;
-                  window.scrollTo({ top, behavior: 'smooth' });
-                }
-              }}
-              className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:brightness-90"
+        {/* Split content */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12 mb-[100px] md:mb-0">
+          {/* Left column — text + CTAs */}
+          <div className="w-full md:w-[58%] flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+            <h1
+              className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
+              style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
             >
-              Få et gratis tilbud
-            </button>
-             <a
-              href="tel:+4520329095"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--hero-border)/0.6)] text-[hsl(var(--hero-text))] font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-[hsl(var(--hero-border)/0.1)]"
-            >
-              Ring 20 32 90 95
-            </a>
+              Din murer i Kolding, Vejle &amp; Fredericia
+              <span className="block h-1 w-16 rounded-full mt-4 mx-auto md:ml-0 bg-[hsl(var(--red-accent))]" />
+            </h1>
+            <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
+              Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mt-1">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('kontakt-form');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
+                className="inline-flex items-center justify-center rounded-lg bg-accent text-accent-foreground font-bold px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:brightness-90"
+              >
+                Få et gratis tilbud
+              </button>
+              <a
+                href="tel:+4520329095"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-[hsl(var(--hero-border)/0.6)] text-[hsl(var(--hero-text))] font-medium px-6 py-3 md:px-8 md:py-4 text-sm md:text-base transition-colors hover:bg-[hsl(var(--hero-border)/0.1)]"
+              >
+                Ring 20 32 90 95
+              </a>
+            </div>
+          </div>
+
+          {/* Right column — ContactForm */}
+          <div id="kontakt-form" className="w-full md:w-[42%] flex justify-center md:justify-end scroll-mt-24">
+            <div className="w-full max-w-[440px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
+              <ContactForm />
+            </div>
           </div>
         </div>
 
         {/* USP Bar */}
-         <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
+        <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
           <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
             {trustItems.map(({ icon: Icon, label, text }) => (
               <div key={label} className="flex flex-col items-center text-center gap-1.5">
@@ -159,39 +168,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="kontakt" className="py-6 md:py-16 px-6 md:px-16 bg-card scroll-mt-20">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 md:gap-14 items-start">
-          <div className="w-full md:w-1/2 flex flex-col gap-2 md:gap-5">
-            <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
-              Kontakt
-            </span>
-            <h2 className="font-semibold text-xl md:text-3xl text-foreground">
-              Få et uforpligtende tilbud
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Ring eller udfyld formularen — så vender jeg tilbage hurtigst muligt.
-            </p>
-            <a href="tel:+4520329095" className="text-foreground no-underline hover:underline flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">📞</span>
-              20 32 90 95
-            </a>
-            <div className="hidden md:flex flex-col gap-3">
-              <a href="mailto:ml@mlmurerservice.dk" className="text-foreground no-underline hover:underline flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">✉️</span>
-                ml@mlmurerservice.dk
-              </a>
-              <span className="text-foreground flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm bg-[hsl(var(--red-accent)/0.1)] text-[hsl(var(--red-accent))]">📍</span>
-                Fruetoften 2, 7000 Fredericia
-              </span>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <ContactForm />
-          </div>
-        </div>
-      </section>
       <FloatingScrollArrow />
       <Footer />
     </main>
