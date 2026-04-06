@@ -45,9 +45,9 @@ const Index = () => {
         />
 
         {/* Split content */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12 mb-[100px] md:mb-0">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-14 mb-[100px] md:mb-0">
           {/* Left column — text + CTAs */}
-          <div className="w-full md:w-[58%] flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+          <div className="w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-6 md:pl-8 lg:pl-16">
             <h1
               className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
               style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
@@ -80,24 +80,24 @@ const Index = () => {
           </div>
 
           {/* Right column — ContactForm */}
-          <div id="kontakt-form" className="w-full md:w-[42%] flex justify-center md:justify-end scroll-mt-24">
-            <div className="w-full max-w-[440px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
+          <div id="kontakt-form" className="w-full md:w-[50%] flex justify-center md:justify-end scroll-mt-24">
+            <div className="w-full max-w-[500px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
               <ContactForm />
             </div>
           </div>
         </div>
+      </section>
 
-        {/* USP Bar */}
-        <div className="absolute bottom-[100px] md:bottom-20 left-0 right-0 z-10 px-6 lg:px-16 pb-[env(safe-area-inset-bottom,0px)]">
-          <div className="max-w-3xl mx-auto grid grid-cols-3 gap-6 md:gap-10">
-            {trustItems.map(({ icon: Icon, label, text }) => (
-              <div key={label} className="flex flex-col items-center text-center gap-1.5">
-                <Icon className="text-[hsl(var(--hero-text-muted)/0.8)]" size={20} strokeWidth={1.5} />
-                <h3 className="font-medium text-[12px] md:text-[13px] text-[hsl(var(--hero-text)/0.9)]">{label}</h3>
-                <p className="text-[hsl(var(--hero-text-subtle)/0.5)] text-xs hidden sm:block">{text}</p>
-              </div>
-            ))}
-          </div>
+      {/* Trust / USP Bar */}
+      <section className="bg-card border-b border-border/50 py-10 md:py-14 px-6 lg:px-16">
+        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-8 md:gap-12">
+          {trustItems.map(({ icon: Icon, label, text }) => (
+            <div key={label} className="flex flex-col items-center text-center gap-2.5">
+              <Icon className="text-[hsl(var(--red-accent))]" size={28} strokeWidth={1.5} />
+              <h3 className="font-semibold text-sm md:text-lg text-foreground">{label}</h3>
+              <p className="text-muted-foreground text-xs md:text-base hidden sm:block">{text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
