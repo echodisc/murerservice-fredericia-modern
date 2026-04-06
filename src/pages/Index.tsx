@@ -103,7 +103,7 @@ const Index = () => {
           </div>
 
           {/* Right column — ContactForm */}
-          <div id="kontakt-form" className="w-full md:w-[45%] flex justify-center md:justify-end scroll-mt-24">
+          <div id="kontakt-form" className="hidden md:flex w-full md:w-[45%] justify-center md:justify-end scroll-mt-24">
             <div className="w-full max-w-[500px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
               <ContactForm />
             </div>
