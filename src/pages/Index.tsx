@@ -45,20 +45,20 @@ const Index = () => {
         />
 
         {/* Split content */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-14 mb-[100px] md:mb-0">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 mb-[100px] md:mb-0">
           {/* Left column — text + CTAs */}
-          <div className="w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-6 md:pl-8 lg:pl-16">
+          <div className="w-full md:w-[50%] flex flex-col items-start text-left gap-4 md:gap-6">
             <h1
               className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
               style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
             >
               Din murer i Kolding, Vejle &amp; Fredericia
-              <span className="block h-1 w-16 rounded-full mt-4 mx-auto md:ml-0 bg-[hsl(var(--red-accent))]" />
+              <span className="block h-1 w-16 rounded-full mt-4 ml-0 bg-[hsl(var(--red-accent))]" />
             </h1>
             <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
               Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
             </p>
-            <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mt-1">
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4 mt-1">
               <button
                 onClick={() => {
                   const el = document.getElementById('kontakt-form');
