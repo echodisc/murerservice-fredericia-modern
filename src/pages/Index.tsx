@@ -56,7 +56,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section — split layout */}
-      <section className="relative overflow-hidden flex flex-col items-center justify-center h-[65vh] md:h-[70vh] min-h-[400px]">
+      <section className="relative overflow-hidden flex flex-col items-center justify-center h-[85vh] md:h-[70vh] min-h-[400px]">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
@@ -68,20 +68,20 @@ const Index = () => {
         />
 
         {/* Split content — vertically centered, top-aligned columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col items-center md:flex-row md:items-start gap-8 md:gap-14">
           {/* Left column — text + CTAs */}
-          <div className="w-full md:w-[55%] flex flex-col items-start text-left">
+          <div className="w-full md:w-[55%] flex flex-col items-center text-center md:items-start md:text-left">
             <h1
               className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
               style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
             >
               Din murer i Kolding, Vejle &amp; Fredericia
-              <span className="block h-1 w-16 rounded-full mt-4 ml-0 bg-[hsl(var(--red-accent))]" />
+              <span className="block h-1 w-16 rounded-full mt-4 mx-auto md:ml-0 md:mr-auto bg-[hsl(var(--red-accent))]" />
             </h1>
             <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl mt-3">
               Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
             </p>
-            <div className="flex flex-wrap justify-start gap-3 md:gap-4 mt-5">
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mt-5">
               <button
                 onClick={() => {
                   const el = document.getElementById('kontakt-form');
