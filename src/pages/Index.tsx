@@ -154,7 +154,44 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About + Reviews */}
+      {/* Gode råd fra mureren */}
+      <section className="bg-background py-12 md:py-16 px-6 lg:px-16">
+        <div className="max-w-5xl mx-auto">
+          <span className="uppercase tracking-[1px] font-medium text-[13px] text-[hsl(var(--red-accent))]">
+            Tips fra værkstedet
+          </span>
+          <h2 className="font-semibold text-foreground text-xl md:text-3xl mt-2">
+            Gode råd fra din murer
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mt-3">
+            Gennem 25+ år som murer har jeg set det meste. Her er et par tips, hvis du selv går i gang derhjemme — eller bare vil vide, hvad du skal kigge efter.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+            {[
+              { title: 'Bland ikke for meget vand i', text: 'Det er den mest almindelige fejl ved murerarbejde. For meget vand i mørtlen svækker den og giver revner. Konsistensen skal ligne tyk peanutbutter — ikke pandekageblanding.' },
+              { title: 'Hold styr på dine vinkler', text: 'Ekstremt vigtigt ved gulvfliser. Brug altid en laservaterpas og tjek vinklen fra flere retninger, inden du starter. En skæv start ganger sig selv over hele gulvet.' },
+              { title: 'Fugerne er lige så vigtige som stenene', text: 'Dårlig fugning er det første der svigter. Hvis fugerne smuldrer, trænger fugt ind i væggen og skaden vokser hurtigt. Tjek dine fuger hvert forår.' },
+              { title: 'Lad aldrig mørtel tørre for hurtigt', text: 'Direkte sol og blæst kan tørre mørtlen for hurtigt, så den revner. I varmt vejr: dæk nyt murværk af med et vådt klæde de første 24 timer.' },
+              { title: 'Spørg altid efter referencer', text: 'En god murer har intet problem med at vise tidligere arbejde. Bed om billeder eller adresser — og ring gerne til en tidligere kunde.' },
+              { title: 'Gør-det-selv har en grænse', text: 'Jeg elsker at folk tager fat selv. Men bærende vægge, vådrum og skorstene kræver erfaring og certificering. Ring hellere én gang for meget end én for lidt.' },
+            ].map((tip) => (
+              <div key={tip.title} className="bg-card rounded-xl p-5 md:p-6 border border-border hover:border-[hsl(var(--red-accent)/0.3)] transition-colors">
+                <Lightbulb size={20} className="text-[hsl(var(--red-accent)/0.6)]" strokeWidth={1.5} />
+                <h3 className="font-semibold text-foreground text-base mt-2">{tip.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mt-1.5">{tip.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-muted-foreground text-sm italic text-center mt-8">
+            Har du spørgsmål? Ring til mig på{' '}
+            <a href="tel:+4520329095" className="text-primary font-medium not-italic">20 32 90 95</a>
+            {' '}— jeg bider ikke!
+          </p>
+        </div>
+      </section>
+
       <section id="om" className="bg-background py-8 md:py-10 px-6 md:px-16">
         <div className="max-w-5xl mx-auto">
           {/* About row */}
