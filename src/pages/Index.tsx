@@ -27,8 +27,30 @@ const reviews = [
   { quote: 'Reparation af skorsten klaret på én dag. Dygtig og effektiv.', name: '— Anne, Børkop' },
 ];
 
+const tips = [
+  { title: 'Bland ikke for meget vand i', text: 'Det er den mest almindelige fejl ved murerarbejde. For meget vand i mørtlen svækker den og giver revner. Konsistensen skal ligne tyk peanutbutter — ikke pandekageblanding.' },
+  { title: 'Hold styr på dine vinkler', text: 'Ekstremt vigtigt ved gulvfliser. Brug altid en laservaterpas og tjek vinklen fra flere retninger, inden du starter. En skæv start ganger sig selv over hele gulvet.' },
+  { title: 'Fugerne er lige så vigtige som stenene', text: 'Dårlig fugning er det første der svigter. Hvis fugerne smuldrer, trænger fugt ind i væggen og skaden vokser hurtigt. Tjek dine fuger hvert forår.' },
+  { title: 'Lad aldrig mørtel tørre for hurtigt', text: 'Direkte sol og blæst kan tørre mørtlen for hurtigt, så den revner. I varmt vejr: dæk nyt murværk af med et vådt klæde de første 24 timer.' },
+  { title: 'Spørg altid efter referencer', text: 'En god murer har intet problem med at vise tidligere arbejde. Bed om billeder eller adresser — og ring gerne til en tidligere kunde.' },
+  { title: 'Gør-det-selv har en grænse', text: 'Jeg elsker at folk tager fat selv. Men bærende vægge, vådrum og skorstene kræver erfaring og certificering. Ring hellere én gang for meget end én for lidt.' },
+];
+
 const Index = () => {
   const [showReviews, setShowReviews] = useState(false);
+  const [tipsRef, tipsApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [tipIndex, setTipIndex] = useState(0);
+
+  const scrollTipsPrev = useCallback(() => tipsApi?.scrollPrev(), [tipsApi]);
+  const scrollTipsNext = useCallback(() => tipsApi?.scrollNext(), [tipsApi]);
+
+  useEffect(() => {
+    if (!tipsApi) return;
+    const onSelect = () => setTipIndex(tipsApi.selectedScrollSnap());
+    tipsApi.on('select', onSelect);
+    onSelect();
+    return () => { tipsApi.off('select', onSelect); };
+  }, [tipsApi]);
 
   return (
     <main>
