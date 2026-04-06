@@ -104,6 +104,56 @@ const Index = () => {
       {/* Services Section */}
       <ServiceCarousel />
 
+      {/* Service detail previews */}
+      <section className="bg-background py-12 md:py-16 px-6 lg:px-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-semibold text-foreground text-xl md:text-3xl text-center">
+            Hvad dækker vi?
+            <span className="block h-1 w-16 rounded-full mt-3 mx-auto bg-[hsl(var(--red-accent))]" />
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-8">
+            {[
+              { title: 'Reparation & vedligehold', text: 'Revner, fugtskader og slid — vi udbedrer hurtigt og effektivt.' },
+              { title: 'Skorstensarbejde', text: 'Reparation og opbygning af skorstene. Tæt, stabil og forskriftsmæssig.' },
+              { title: 'Badeværelser', text: 'Fra store formater til mosaik — vandtætte løsninger der holder i årtier.' },
+              { title: 'Terrasser & udendørs', text: 'Frostfaste fliser, natursten og klinker til det danske vejr.' },
+            ].map((item) => (
+              <div key={item.title} className="bg-card rounded-xl p-6 border border-border flex flex-col gap-1.5">
+                <span className="block w-2.5 h-2.5 rounded-full bg-[hsl(var(--red-accent))] mb-1" />
+                <h3 className="font-semibold text-foreground text-base">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.text}</p>
+                <Link to="/ydelser" className="text-primary font-medium text-sm no-underline hover:underline mt-2">
+                  Læs mere <span className="text-[hsl(var(--red-accent))]">→</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process / workflow */}
+      <section className="bg-card py-12 md:py-16 px-6 lg:px-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-semibold text-foreground text-xl md:text-3xl text-center">
+            Sådan arbejder vi
+            <span className="block h-1 w-16 rounded-full mt-3 mx-auto bg-[hsl(var(--red-accent))]" />
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            {[
+              { num: '01', title: 'Kontakt & uforpligtende tilbud', text: 'Ring eller skriv — vi aftaler et tidspunkt og giver dig et ærligt tilbud.' },
+              { num: '02', title: 'Planlægning & opstart', text: 'Vi gennemgår opgaven sammen og aftaler tidsplan, materialer og pris.' },
+              { num: '03', title: 'Udførelse & aflevering', text: 'Arbejdet udføres til aftalt tid og kvalitet. Vi rydder op efter os.' },
+            ].map((step) => (
+              <div key={step.num} className="flex flex-col">
+                <span className="text-4xl md:text-5xl font-bold text-[hsl(var(--red-accent)/0.15)]">{step.num}</span>
+                <h3 className="font-semibold text-foreground text-base md:text-lg mt-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed mt-1.5">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About + Reviews */}
       <section id="om" className="bg-background py-8 md:py-10 px-6 md:px-16">
         <div className="max-w-5xl mx-auto">
