@@ -190,21 +190,45 @@ const Index = () => {
             Gennem 25+ år som murer har jeg set det meste. Her er et par tips, hvis du selv går i gang derhjemme — eller bare vil vide, hvad du skal kigge efter.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
-            {[
-              { title: 'Bland ikke for meget vand i', text: 'Det er den mest almindelige fejl ved murerarbejde. For meget vand i mørtlen svækker den og giver revner. Konsistensen skal ligne tyk peanutbutter — ikke pandekageblanding.' },
-              { title: 'Hold styr på dine vinkler', text: 'Ekstremt vigtigt ved gulvfliser. Brug altid en laservaterpas og tjek vinklen fra flere retninger, inden du starter. En skæv start ganger sig selv over hele gulvet.' },
-              { title: 'Fugerne er lige så vigtige som stenene', text: 'Dårlig fugning er det første der svigter. Hvis fugerne smuldrer, trænger fugt ind i væggen og skaden vokser hurtigt. Tjek dine fuger hvert forår.' },
-              { title: 'Lad aldrig mørtel tørre for hurtigt', text: 'Direkte sol og blæst kan tørre mørtlen for hurtigt, så den revner. I varmt vejr: dæk nyt murværk af med et vådt klæde de første 24 timer.' },
-              { title: 'Spørg altid efter referencer', text: 'En god murer har intet problem med at vise tidligere arbejde. Bed om billeder eller adresser — og ring gerne til en tidligere kunde.' },
-              { title: 'Gør-det-selv har en grænse', text: 'Jeg elsker at folk tager fat selv. Men bærende vægge, vådrum og skorstene kræver erfaring og certificering. Ring hellere én gang for meget end én for lidt.' },
-            ].map((tip) => (
+          {/* Desktop grid */}
+          <div className="hidden md:grid md:grid-cols-2 gap-5 mt-8">
+            {tips.map((tip) => (
               <div key={tip.title} className="bg-card rounded-xl p-5 md:p-6 border border-border hover:border-[hsl(var(--red-accent)/0.3)] transition-colors">
                 <Lightbulb size={20} className="text-[hsl(var(--red-accent)/0.6)]" strokeWidth={1.5} />
                 <h3 className="font-semibold text-foreground text-base mt-2">{tip.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mt-1.5">{tip.text}</p>
               </div>
             ))}
+          </div>
+
+          {/* Mobile carousel */}
+          <div className="md:hidden mt-8">
+            <div className="overflow-hidden" ref={tipsRef}>
+              <div className="flex">
+                {tips.map((tip) => (
+                  <div key={tip.title} className="flex-[0_0_100%] min-w-0 px-1">
+                    <div className="bg-card rounded-xl p-5 border border-border">
+                      <Lightbulb size={20} className="text-[hsl(var(--red-accent)/0.6)]" strokeWidth={1.5} />
+                      <h3 className="font-semibold text-foreground text-base mt-2">{tip.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mt-1.5">{tip.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <button onClick={scrollTipsPrev} className="p-2 rounded-full border border-border text-muted-foreground hover:text-foreground transition-colors" aria-label="Forrige tip">
+                <ChevronLeft size={18} />
+              </button>
+              <div className="flex gap-1.5">
+                {tips.map((_, i) => (
+                  <span key={i} className={`block w-2 h-2 rounded-full transition-colors ${i === tipIndex ? 'bg-[hsl(var(--red-accent))]' : 'bg-border'}`} />
+                ))}
+              </div>
+              <button onClick={scrollTipsNext} className="p-2 rounded-full border border-border text-muted-foreground hover:text-foreground transition-colors" aria-label="Næste tip">
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
 
           <p className="text-muted-foreground text-sm italic text-center mt-8">
