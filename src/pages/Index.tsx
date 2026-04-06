@@ -33,7 +33,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section — split layout */}
-      <section className="relative overflow-hidden flex flex-col items-center justify-center" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
+      <section className="relative overflow-hidden flex flex-col" style={{ height: 'calc(var(--stable-vh, 1vh) * 100)' }}>
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
@@ -44,10 +44,10 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
 
-        {/* Split content */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 mb-[100px] md:mb-0">
+        {/* Split content — vertically centered, top-aligned columns */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-start gap-8 md:gap-14 my-auto pt-20 md:pt-24 mb-[100px] md:mb-0">
           {/* Left column — text + CTAs */}
-          <div className="w-full md:w-[50%] flex flex-col items-start text-left gap-4 md:gap-6">
+          <div className="w-full md:w-[55%] flex flex-col items-start text-left">
             <h1
               className="font-semibold text-[hsl(var(--hero-text))] leading-tight drop-shadow-lg"
               style={{ fontSize: 'clamp(1.75rem, 6vw, 3.5rem)' }}
@@ -55,10 +55,10 @@ const Index = () => {
               Din murer i Kolding, Vejle &amp; Fredericia
               <span className="block h-1 w-16 rounded-full mt-4 ml-0 bg-[hsl(var(--red-accent))]" />
             </h1>
-            <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl">
+            <p className="text-[hsl(var(--hero-text-muted)/0.8)] text-base md:text-xl max-w-xl mt-3">
               Murerarbejde, flisearbejde og badeværelser — udført med omhu siden 1999
             </p>
-            <div className="flex flex-wrap justify-start gap-3 md:gap-4 mt-1">
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4 mt-5">
               <button
                 onClick={() => {
                   const el = document.getElementById('kontakt-form');
@@ -80,7 +80,7 @@ const Index = () => {
           </div>
 
           {/* Right column — ContactForm */}
-          <div id="kontakt-form" className="w-full md:w-[50%] flex justify-center md:justify-end scroll-mt-24">
+          <div id="kontakt-form" className="w-full md:w-[45%] flex justify-center md:justify-end scroll-mt-24">
             <div className="w-full max-w-[500px] bg-card/90 backdrop-blur-sm rounded-2xl border border-[hsl(var(--hero-text)/0.1)]">
               <ContactForm />
             </div>
