@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Clock, Users, ChevronDown } from 'lucide-react';
+import { CheckCircle, Clock, Users, ChevronDown, Lightbulb } from 'lucide-react';
 import FloatingScrollArrow from '@/components/FloatingScrollArrow';
 import heroImg from '@/assets/hero-fullscreen.webp';
 import aboutImg from '@/assets/about-placeholder.webp';
