@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { ChevronDown as SeoChevron } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Clock, Users, ChevronDown, ChevronLeft, ChevronRight, Lightbulb } from 'lucide-react';
