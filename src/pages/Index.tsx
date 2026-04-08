@@ -304,6 +304,59 @@ const Index = () => {
         </div>
       </section>
 
+      {/* SEO text block */}
+      <section className="bg-background py-6 md:py-8 px-6 lg:px-16">
+        <div className="max-w-5xl mx-auto flex flex-col items-end">
+          <button
+            onClick={() => setShowSeo(!showSeo)}
+            className="flex items-center gap-1.5 text-muted-foreground/60 text-xs font-medium transition-colors hover:text-muted-foreground"
+          >
+            <span>Om vores ydelser</span>
+            <SeoChevron
+              size={14}
+              className={`transition-transform duration-300 ${showSeo ? 'rotate-180' : ''}`}
+            />
+          </button>
+          <div
+            className="overflow-hidden transition-[max-height] duration-500 ease-in-out w-full"
+            style={{ maxHeight: showSeo ? '3000px' : '0px' }}
+          >
+            <div className="text-right text-muted-foreground text-xs md:text-sm leading-relaxed space-y-4 pt-4 max-w-3xl ml-auto">
+              <p>
+                ML Murerservice er din lokale murer i Trekantområdet med speciale i murerarbejde, flisearbejde og totalrenovering af badeværelser. Vi dækker Vejle, Kolding, Fredericia, Middelfart, Børkop, Hedensted, Give og omegn. Siden 1999 har vi leveret håndværk af højeste kvalitet til både private og erhvervskunder i hele Sydøstjylland.
+              </p>
+              <p>
+                <strong className="text-foreground">Murerarbejde og facaderenovering:</strong> Vi udfører alt inden for traditionelt murerarbejde — fra opmuring af nye vægge og facader til reparation af eksisterende murværk. Det omfatter omfugning, udskiftning af revnede eller forvitrede sten, reparation af sålbænke og gesimser, samt pudsning og filtsning af facader. Vi arbejder med både røde og gule mursten, kalksandsten, Petersen Tegl og specialsten efter kundens ønske. Vores facaderenovering inkluderer også afrensning, højtryksrensning og efterfølgende imprægnering for at beskytte murværket mod fugt og frostskader.
+              </p>
+              <p>
+                <strong className="text-foreground">Skorstensarbejde:</strong> ML Murerservice tilbyder professionel reparation og opbygning af skorstene. Vi udfører udskiftning af skorstensforing, reparation af krone og krave, samt opsætning af nye skorstensinddækninger i zink eller bly. Alle arbejder udføres i henhold til gældende bygningsreglement og brandkrav. Vi samarbejder med skorstensfejere for syn og godkendelse, så du er sikret en lovlig og funktionel skorsten.
+              </p>
+              <p>
+                <strong className="text-foreground">Flisearbejde og gulvbelægning:</strong> Vi lægger alle typer fliser — fra store formater (60×60, 60×120, 120×120) til mosaik, natursten, klinker og terrazzogulve. Vi anvender professionelle nivelleringssystemer for et perfekt plant resultat og bruger fleksibel lim og fuge tilpasset det specifikke underlag. Vores flisearbejde dækker badeværelser, køkkener, entréer, terrasser, poolområder og erhvervslokaler. Vi rådgiver om materialevalg fra leverandører som Flise Faghandel, Konradssons, og italienske producenter.
+              </p>
+              <p>
+                <strong className="text-foreground">Badeværelsesrenovering — komplet totalløsning:</strong> Et nyt badeværelse er en af de mest værdiskabende renoveringer i boligen. ML Murerservice tilbyder totalrenovering fra nedrivning til nøglefærdigt resultat. Det inkluderer fjernelse af eksisterende fliser og vægge, etablering af nyt gulvfald mod afløb, montering af vandtætte membraner (vådrumsikring iht. SBi-anvisning 252), nye vandrør og afløb i samarbejde med autoriseret VVS-installatør, elinstallation ved autoriseret elektriker, opsætning af væg- og gulvfliser, montering af sanitet (toilet, håndvask, brusekabine eller badekar) samt fugning og afsluttende kvalitetskontrol.
+              </p>
+              <p>
+                <strong className="text-foreground">Terrasser og udendørs belægning:</strong> Vi etablerer terrasser i frostsikre klinker, natursten (granit, sandsten, skifer), betonfliser og keramiske udendørsfliser. Alle udendørs belægninger udføres med korrekt dræning, frostsikker opbygning og fald, så vand ledes væk fra bygningen. Vi kan også udføre trappe- og murede plantekasseløsninger, som giver et sammenhængende udtryk i haven.
+              </p>
+              <p>
+                <strong className="text-foreground">Fugtskader og reparationer:</strong> Fugt er murværkets største fjende. Vi diagnosticerer og udbedrer fugtproblemer fra kælder til kvist — herunder opstigende grundfugt, indtrængende slagregn, utætte fuger og defekte tagkonstruktioner. Vi anvender specialprodukter til fugtisolering, injicering af vandstandsende midler i fundamenter og etablering af udvendig kælderisolering. Tidlig indgriben forebygger skimmelsvamp og strukturelle skader.
+              </p>
+              <p>
+                <strong className="text-foreground">Materialer og metoder:</strong> Vi arbejder udelukkende med gennemprøvede materialer fra anerkendte producenter som Weber, Ardex, Mapei, Schönox og Sika. Alle mørtler, lime, fugemasser og imprægneringsmidler vælges efter opgavens specifikke krav — herunder understøttelse, belastning, fugtforhold og æstetik. Vi holder os løbende opdateret på nye produkter og teknikker gennem branchekurser og samarbejde med leverandørerne.
+              </p>
+              <p>
+                <strong className="text-foreground">Kvalitet og garanti:</strong> Alle opgaver udføres med omhu og faglig stolthed. Vi giver garanti på vores arbejde og står altid til rådighed for opfølgning efter endt projekt. Vores kunder vender tilbage, fordi vi holder hvad vi lover — til tiden, til prisen og i den kvalitet der er aftalt. Læs vores kundeanmeldelser for at se, hvad andre siger om samarbejdet med ML Murerservice.
+              </p>
+              <p>
+                Ring til os på <a href="tel:+4520329095" className="text-primary font-medium">20 32 90 95</a> for en uforpligtende snak om dit projekt — vi dækker hele Trekantområdet og omegn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <FloatingScrollArrow />
       <Footer />
     </main>
