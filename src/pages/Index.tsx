@@ -39,6 +39,7 @@ const tips = [
 
 const Index = () => {
   const [showReviews, setShowReviews] = useState(false);
+  const [showSeo, setShowSeo] = useState(false);
   const [tipsRef, tipsApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [tipIndex, setTipIndex] = useState(0);
 
