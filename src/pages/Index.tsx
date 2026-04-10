@@ -58,7 +58,7 @@ const Index = () => {
     <main>
       <Header />
       {/* Hero Section — split layout */}
-      <section className="relative overflow-hidden flex flex-col items-center justify-center h-[85vh] md:h-[70vh] min-h-[400px]">
+      <section className="relative overflow-hidden flex flex-col items-center justify-center h-[85vh] md:h-[70vh] min-h-[400px] pt-16 md:pt-20">
         <img
           src={heroImg}
           alt="Professionelt murerarbejde udført af ML Murerservice i Trekantområdet"
